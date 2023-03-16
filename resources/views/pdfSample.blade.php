@@ -2,6 +2,8 @@
 
 <html>
 <head>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
     <meta charset="UTF-8">
     <title>Resume</title>
     <style>
