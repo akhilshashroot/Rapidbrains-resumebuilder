@@ -236,15 +236,15 @@
 				<div class="form-group row">
 					<div class="col-md-4">
                         <label class="form-label">City:</label>
-                        <input type="date" class="form-control mb-2 mb-md-0" name="city" placeholder="Enter full name" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="city" placeholder="Enter city name" />
                     </div>
                     <div class="col-md-3">
                         <label class="form-label">State:</label>
-                        <input type="text" class="form-control mb-2 mb-md-0" name="state" placeholder="Enter contact number" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="state" placeholder="Enter state" />
                     </div>
 					<div class="col-md-3">
                         <label class="form-label">Country:</label>
-                        <input type="text" class="form-control mb-2 mb-md-0" name="country" placeholder="Enter contact number" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="country" placeholder="Enter country" />
                     </div>
 					<div class="col-md-2">
                         <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
@@ -443,6 +443,7 @@
 											</svg>
 										</span>
 										<!--end::Svg Icon--></button>
+										<a id="downloadlink" class="btn btn-lg btn-primary" style="display:none;" href="" download>Download</a>
 									</div>
 								</div>
 								<!--end::Actions-->
@@ -490,5 +491,9 @@ $('#kt_docs_repeater_basi').repeater({
         $(this).slideUp(deleteElement);
     }
 });
+/*$( document ).ready(function() {
+    $('#downloadlink').hide();
+});*/
+
 </script>
 @endsection
