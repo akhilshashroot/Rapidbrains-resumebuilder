@@ -80,6 +80,7 @@ class ResumebuilderController extends Controller
             'education_duration' => $request->education_duration,
             'education_location' => $request->education_location,
             'company_address' => $company_address,
+            'phone' => $request->phone,
         ];
   
         
