@@ -236,7 +236,6 @@ box-sizing: border-box;
 														<th class="min-w-125px">Full Name</th>
 														<th class="min-w-125px">Email</th>
 														<th class="min-w-125px">Role</th>
-														<th class="min-w-125px">Permission</th>
 														<th class="text-end min-w-70px">Actions</th>
 													</tr>
 													<!--end::Table row-->
@@ -259,10 +258,7 @@ box-sizing: border-box;
 														<td>
 															@if($list->role==1) Admin @else User @endif
 														</td>
-														<td>
-														<a onclick="permissionBox({{$list->id}})" class="menu-link px-3 ss">	
-														<i class="fas fa-sharp fa-solid fa-users"></i></a>
-														</td>
+														
 														<!--end::Date=-->
 														<!--begin::Action=-->
 														<td class="text-end">
@@ -390,54 +386,6 @@ box-sizing: border-box;
 <br><br>
 															
 
-<div class="row g-9 mb-8">
-								<!--begin::Col-->
-								<div class="col-md-6 fv-row fv-plugins-icon-container">
-								<label class=" fs-6 fw-semibold mb-2">Permission :</label><br>
-															
-							<div class="d-flex">
-                                                        <!--begin::Checkbox-->
-                                                        <label class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
-                                                            <input class="form-check-input"  type="checkbox" value="1" id="flexCheckDefault11" name="hashroot_p">
-                                                            <span class="form-check-label">
-															HashRoot-P
-                                                            </span>
-                                                        </label>
-                                                        <!--end::Checkbox-->
-
-                                                        <!--begin::Checkbox-->
-                                                        <label class="form-check form-check-custom form-check-solid me-5 me-lg-20">
-                                                            <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault21" name="hashroot_s">
-                                                            <span class="form-check-label">
-															HashRoot-S
-                                                            </span>
-                                                        </label>
-                                                        <!--end::Checkbox-->
-
-                                                        <!--begin::Checkbox-->
-                                                        <label class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
-                                                            <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault31" name="hashroot_ss">
-                                                            <span class="form-check-label">
-															HashRoot-SS
-                                                            </span>
-                                                        </label></div>
-                                                        <!--end::Checkbox-->
-<br><br>
-														<div class="d-flex">
-												
-												<label class="form-check form-check-custom form-check-solid">
-														<input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault41" name="hashroot">
-														<span class="form-check-label">
-														HashRoot
-														</span>
-													</label>
-													<!--end::Checkbox-->
-												
-
-                                                    </div>
-								</div>
-								<!--end::Col-->
-							</div>
 
 															<!--end::Input group-->
 															<!--begin::Input group-->
@@ -1043,23 +991,23 @@ function editBox(id) {
 		$("#phone").val(result.data.phone);
 		$("#email").val(result.data.email);
 		$("#name").val(result.data.username);
-		if(result.data.hashroot){
-		$('#flexCheckDefault41').prop('checked', true);
+	// 	if(result.data.hashroot){
+	// 	$('#flexCheckDefault41').prop('checked', true);
 
-	}
+	// }
 		
-	if(result.data.hashroot_p){
-		$('#flexCheckDefault11').prop('checked', true);
+	// if(result.data.hashroot_p){
+	// 	$('#flexCheckDefault11').prop('checked', true);
 
-	}
-	if(result.data.hashroot_s){
-		$('#flexCheckDefault21').prop('checked', true);
+	// }
+	// if(result.data.hashroot_s){
+	// 	$('#flexCheckDefault21').prop('checked', true);
 
-	}
-	if(result.data.hashroot_ss){
-		$('#flexCheckDefault31').prop('checked', true);
+	// }
+	// if(result.data.hashroot_ss){
+	// 	$('#flexCheckDefault31').prop('checked', true);
 
-	}
+	// }
 	if(result.data.role){
 		$('#flexCheckDefault').prop('checked', true);
 

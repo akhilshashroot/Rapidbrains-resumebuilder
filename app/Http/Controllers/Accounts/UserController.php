@@ -36,7 +36,7 @@ class UserController extends Controller
            'password' => 'required',
        ]);
       
-       try {
+  
        $user = new User;
        $user->email = $request->email;
        $user->username =  $request->name;
@@ -46,25 +46,22 @@ class UserController extends Controller
      
        $user->role = ($request->is_admin)?1:0;
        $user->phone = $request->phone;
-       $user->mail_id= $request->email;
-       $user->hashroot=($request->hashroot)?1:0;
+      // $user->mail_id= $request->email;
+    //    $user->hashroot=($request->hashroot)?1:0;
 
        
-       $user->hashroot_s=($request->hashroot_s)?1:0;
+    //    $user->hashroot_s=($request->hashroot_s)?1:0;
 
   
-       $user->hashroot_p=($request->hashroot_p)?1:0;
+    //    $user->hashroot_p=($request->hashroot_p)?1:0;
 
-       $user->hashroot_ss=($request->hashroot_ss)?1:0;
+    //    $user->hashroot_ss=($request->hashroot_ss)?1:0;
       
 
        $res = $user->save();
        return redirect()->back()
                ->with('success', 'Created successfully!');
-       } catch (\Exception $e){
-           return redirect()->back()
-               ->with('error', 'Error during the creation!');
-       }
+       
    }
 
    /**
@@ -129,16 +126,16 @@ class UserController extends Controller
     //    }
        $user->role = ($request->is_admin)?1:0;
        $user->phone = $request->phone;
-       $user->mail_id= $request->email;
-       $user->hashroot=($request->hashroot)?1:0;
+      // $user->mail_id= $request->email;
+    //    $user->hashroot=($request->hashroot)?1:0;
 
        
-       $user->hashroot_s=($request->hashroot_s)?1:0;
+    //    $user->hashroot_s=($request->hashroot_s)?1:0;
 
   
-       $user->hashroot_p=($request->hashroot_p)?1:0;
+    //    $user->hashroot_p=($request->hashroot_p)?1:0;
 
-       $user->hashroot_ss=($request->hashroot_ss)?1:0;
+    //    $user->hashroot_ss=($request->hashroot_ss)?1:0;
        $res = $user->save();
     
        return response()->json('success', 200);
