@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{!! $title !!}</title>
+    <title>Resume</title>
     <style>
 body {
     margin: 40px;
@@ -75,7 +75,6 @@ section ul {
 
 .tablerow {
     display: table-row;
-    text-indent:50px;
 }
 
 .jobtitle {
@@ -136,26 +135,33 @@ section ul {
 
    <tbody><tr>
     <td ></td>
-    <td style="padding-left:800px;" ><img width="100" src="https://www.rapidbrains.com/assets/img/svg/rblogo-mail.png" ></td>
+    <td style="padding-left:510px;" ><img width="100" src="https://www.rapidbrains.com/assets/img/svg/rblogo-mail.png" ></td>
     </tr></tbody></table>
     <header id="info">
-   <h2>{!! $fullname !!}</h2>
-        <span style="text-indent:50px;">TALENT ID: {!! $talentid !!}</span><br>
-        {!! $company_address !!}
+   <h1>{!! $data['fullname'] !!}</h1>
+        <span>TALENT ID: {!! $data['talentid'] !!}</span>
+       <br><br>
+        <span style="font-size: 16px;">999999999 <br>
+           test@rapidbrains.org <br>
+               Ground Floor, Athulya, Infopark,
+               Kochi, Kerala, India<br>
+               www.rapidbrains.com
+
+            </span>
     </header>
     <section id="statement">
         <h2>Profile</h2>
-        <p style="text-indent:50px;">{!! $summary !!}
+        <p style="text-indent:50px;">{!! $data['summary'] !!}
        </p>
     </section>
     <section id="employment">
         <h2>Experience</h2>
-        @foreach($experience as $exp)
+        @foreach($data['experience'] as $exp)
         <section>
             <div class="jobtable">
             <div class="tablerow">
                 <span class="jobtitle">{!! $exp['jobtitle'] !!}</span>
-                <span class="right">{!! $exp['from'] !!} - {!! $exp['to'] !!}</span>
+                <span class="right">{!! date("d/m/Y", strtotime($exp['from'])) !!} - {!! date("d/m/Y", strtotime($exp['to'])) !!}</span>
             </div>
             <div class="tablerow">
                 <span>{!! $exp['employer'] !!}</span>
@@ -175,14 +181,14 @@ section ul {
     <section id="skills">
         <h2>Skills</h2>
         <div class="skillstable">
-            <div class="tablerow">
-            <span>{!! $skills !!}</span>
+        <div class="tablerow">
+            <span>{!! $data['skills'] !!}</span>
             </div>
         </div>
     </section>
     <section id="projects">
         <h2>Projects</h2>
-        @foreach($projects as $prj)
+        @foreach($data['projects'] as $prj)
         <section>
             <div class="jobtable">
             <div class="tablerow">
@@ -200,10 +206,10 @@ section ul {
     <section id="education">
         <h2>Education</h2>
         <div class="edtable">
-        <span style="font-size: 14px;"><b>{!! $education !!}</b></span><br>
-                <span style="font-size: 14px;">{!! $education_institute !!}</span><br>
-                <span style="font-size: 14px;"><b>{!! $education_duration !!}</b></span><br>
-                <span style="font-size: 14px;"><b>{!! $education_location !!}</b></span><br>
+        <span style="font-size: 14px;"><b>{!! $data['education'] !!}</b></span><br>
+                <span style="font-size: 14px;">{!! $data['education_institute'] !!}</span><br>
+                <span style="font-size: 14px;"><b>{!! $data['education_duration'] !!}</b></span><br>
+                <span style="font-size: 14px;"><b>{!! $data['education_location'] !!}</b></span><br>
           
            
         </div>

@@ -11,6 +11,7 @@ use Redirect;
 use DB;
 use Illuminate\Support\Facades\Hash;
 use Carbon\CarbonPeriod;
+use PDF;
 class DashboardController extends Controller
 {
     /**
@@ -24,7 +25,6 @@ class DashboardController extends Controller
         {
             return Redirect::to('/login');
         }
-       
       //  return view('Account.dashboard',compact('data'));
       return view('Account.dashboard');
     }

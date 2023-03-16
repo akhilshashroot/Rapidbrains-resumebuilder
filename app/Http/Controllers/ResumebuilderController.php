@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ResumeDetails;
-use Elibyy\TCPDF\Facades\TCPDF;
 use Auth;
+use PDF;
 
 class ResumebuilderController extends Controller
 {
@@ -75,16 +75,9 @@ class ResumebuilderController extends Controller
             'company_address' => $company_address,
         ];
   
-        $html = view()->make('pdfSample', $data)->render();
-  
-        $pdf = new TCPDF;
-          
-        $pdf::SetTitle('Hello World');
-        $pdf::AddPage();
-        $pdf::writeHTML($html, true, false, true, false, '');
-  
-        $pdf::Output(public_path('Resume'.$filename), 'F');
-  
+        
+        $pdf = PDF::loadView('pdfSample',compact('data'));
+        $pdf->save(public_path('Resume'.$filename));
         //return response()->download(public_path('Resume'.$filename));
         if($res) {
             return response()->json([
