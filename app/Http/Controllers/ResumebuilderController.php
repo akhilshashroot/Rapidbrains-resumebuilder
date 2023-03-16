@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ResumeDetails;
 use Elibyy\TCPDF\Facades\TCPDF;
+use Auth;
 
 class ResumebuilderController extends Controller
 {
@@ -50,11 +51,28 @@ class ResumebuilderController extends Controller
         $resume->education_institute = $request->education_institute;
         $resume->education_duration = $request->education_duration;
         $resume->education_location = $request->education_location;
-        $res = $resume->save();
-
+        $resume->added_by = Auth::user()->fullname;
         $filename = $resume->fullname.now()->timestamp.'.pdf';
+        $resume->resume = 'Resume'.$filename;
+        $res = $resume->save();
+        $company_address = "999999999".'<br>'.
+        nl2br("test@rapidbrains.org")."<br>".
+        nl2br("Ground Floor, Athulya, Infopark")."<br>".
+        nl2br("Kochi, Kerala, India")."<br>".
+        nl2br("www.rapidbrains.com");
         $data = [
-            'title' => 'Resume'
+            'title' => 'Resume',
+            'fullname' => $request->fullname,
+            'talentid' => $request->talentid,
+            'summary' => $request->summary,
+            'experience'=> $request->kt_docs_repeater_basic,
+            'skills' => $request->skills,
+            'projects' => $request->kt_docs_repeater_basi,
+            'education' => $request->education_course,
+            'education_institute' =>$request->education_institute,
+            'education_duration' => $request->education_duration,
+            'education_location' => $request->education_location,
+            'company_address' => $company_address,
         ];
   
         $html = view()->make('pdfSample', $data)->render();

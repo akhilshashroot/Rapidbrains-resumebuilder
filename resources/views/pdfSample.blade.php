@@ -75,6 +75,7 @@ section ul {
 
 .tablerow {
     display: table-row;
+    text-indent:50px;
 }
 
 .jobtitle {
@@ -135,77 +136,74 @@ section ul {
 
    <tbody><tr>
     <td ></td>
-    <td style="padding-left:517px;" ><img width="100" src="https://www.rapidbrains.com/assets/img/svg/rblogo-mail.png" ></td>
+    <td style="padding-left:800px;" ><img width="100" src="https://www.rapidbrains.com/assets/img/svg/rblogo-mail.png" ></td>
     </tr></tbody></table>
     <header id="info">
-   <h1>Test name</h1>
-        <span>DEVOPS ENGINEER<br>
-        <span>TALENT ID: SHE13</span>
-       <br><br>
-        <span style="font-size: 16px;">999999999 <br>
-           test@rapidbrains.org <br>
-               Ground Floor, Athulya, Infopark,
-               Kochi, Kerala, India<br>
-               www.rapidbrains.com
-
-            </span>
+   <h2>{!! $fullname !!}</h2>
+        <span style="text-indent:50px;">TALENT ID: {!! $talentid !!}</span><br>
+        {!! $company_address !!}
     </header>
     <section id="statement">
         <h2>Profile</h2>
-        <p style="text-indent:50px;">3 years of experience in DevOps, Aws managing CI/CD pipeline, automation, version  control GIT, Jenkins CI/CD ,
-              Docker, Kubernetes, Ansible , support ,Maven.
+        <p style="text-indent:50px;">{!! $summary !!}
        </p>
     </section>
     <section id="employment">
         <h2>Experience</h2>
+        @foreach($experience as $exp)
         <section>
             <div class="jobtable">
             <div class="tablerow">
-                <span class="jobtitle">Pants Inspector</span>
-                <span class="right">February 2011 - Present</span>
+                <span class="jobtitle">{!! $exp['jobtitle'] !!}</span>
+                <span class="right">{!! $exp['from'] !!} - {!! $exp['to'] !!}</span>
             </div>
             <div class="tablerow">
-                <span>Perfect Pants, LLC</span>
-                <span class="right">San Francisco, CA</span>
+                <span>{!! $exp['employer'] !!}</span>
+                <span class="right">{!! $exp['city'] !!},{!! $exp['state'] !!},{!! $exp['country'] !!}</span>
+            </div>
+            <div class="tablerow">
+                <span>{!! $exp['job_description'] !!}</span>
+            </div>
+            <div class="tablerow">
+                <span>{!! $exp['job_projects'] !!}</span>
             </div>
             </div>
-            <ul>
-                <li>It has been said that astronomy is a humbling and
-                    character-building experience.</li>
-                <li>There is perhaps no better demonstration of the folly of
-                    human conceits than this distant image of our tiny world.</li>
-                <li>To me, it underscores our
-                    responsibility to deal more kindly with one another, and to
-                    preserve and cherish the pale blue dot, the only home we've
-                    ever known.</li>
-            </ul>
         </section>
+        @endforeach
        
     </section>
     <section id="skills">
         <h2>Skills</h2>
         <div class="skillstable">
             <div class="tablerow">
-                <ul class="cell">
-                    <li>Pants inspection</li>
-                    <li>Squirrel chasing</li>
-                    <li>Basket weaving</li>
-                </ul>
-                <ul class="cell">
-                    <li>Synergetic synthesis</li>
-                    <li>Flagrant goofing</li>
-                    <li>Perennial loafing</li>
-                </ul>
+            <span>{!! $skills !!}</span>
             </div>
         </div>
+    </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        @foreach($projects as $prj)
+        <section>
+            <div class="jobtable">
+            <div class="tablerow">
+                <span class="jobtitle">{!! $prj['project_name'] !!}</span>
+                <span class="right">{!! $prj['project_duration'] !!}</span>
+            </div>
+            <div class="tablerow">
+                <span>{!! $prj['project_description'] !!}</span>
+            </div>
+            </div>
+        </section>
+        @endforeach
     </section>
 
     <section id="education">
         <h2>Education</h2>
         <div class="edtable">
-        <span style="font-size: 14px;"><b>BACHELORS IN ENGINEERING</b></span><br>
-                <span style="font-size: 14px;">VTU Visvesvaraya Technological University</span><br>
-                <span style="font-size: 14px;"><b>2015 – 2019</b></span><br>
+        <span style="font-size: 14px;"><b>{!! $education !!}</b></span><br>
+                <span style="font-size: 14px;">{!! $education_institute !!}</span><br>
+                <span style="font-size: 14px;"><b>{!! $education_duration !!}</b></span><br>
+                <span style="font-size: 14px;"><b>{!! $education_location !!}</b></span><br>
           
            
         </div>

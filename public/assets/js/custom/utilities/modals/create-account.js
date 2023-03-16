@@ -128,7 +128,6 @@ var KTCreateAccount = (function () {
                         })
                     ),*/
                     o.addEventListener("click", function (e) {
-                        alert("hii");
                         $.ajaxSetup({
                             headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
