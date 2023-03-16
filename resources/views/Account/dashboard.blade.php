@@ -122,13 +122,8 @@
 										<!--begin::Heading-->
 										<div class="pb-10 pb-lg-15">
 											<!--begin::Title-->
-											<h2 class="fw-bold d-flex align-items-center text-dark">Profile & Skills
-											<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Billing is issued based on your selected account type"></i></h2>
-											<!--end::Title-->
-											<!--begin::Notice-->
-											<div class="text-muted fw-semibold fs-6">If you need more info, please check out
-											<a href="#" class="link-primary fw-bold">Help Page</a>.</div>
-											<!--end::Notice-->
+											<h2 class="fw-bold d-flex align-items-center text-dark">Profile & Skills<!--end::Title-->
+											<!--begin::Notice--><!--end::Notice-->
 										</div>
 										<!--end::Heading-->
 										<!--begin::Input group-->
@@ -197,8 +192,6 @@
 											<h2 class="fw-bold text-dark">Experience</h2>
 											<!--end::Title-->
 											<!--begin::Notice-->
-											<div class="text-muted fw-semibold fs-6">If you need more info, please check out
-											<a href="#" class="link-primary fw-bold">Help Page</a>.</div>
 											<!--end::Notice-->
 										</div>
 										
@@ -234,18 +227,13 @@
                         <label class="form-label">City:</label>
                         <input type="text" class="form-control mb-2 mb-md-0" name="city" placeholder="Enter city name" />
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <label class="form-label">State:</label>
                         <input type="text" class="form-control mb-2 mb-md-0" name="state" placeholder="Enter state" />
                     </div>
-					<div class="col-md-3">
+					<div class="col-md-4">
                         <label class="form-label">Country:</label>
                         <input type="text" class="form-control mb-2 mb-md-0" name="country" placeholder="Enter country" />
-                    </div>
-					<div class="col-md-2">
-                        <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
-                            <i class="la la-trash-o"></i>Delete
-                        </a>
                     </div>
 				</div>
 				<div class="form-group row">
@@ -255,11 +243,16 @@
 												</div>
 				</div>
 				<div class="form-group row">
-				<div class="col-lg-12">
+				<div class="col-lg-10">
 												<label class="form-label">Projects:</label>
 												<textarea class="form-control mb-2 mb-md-0" placeholder="Enter project details" name="job_projects" ></textarea>
 												</div>
 				</div>
+				<div class="col-md-2">
+                        <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
+                            <i class="la la-trash-o"></i>Delete
+                        </a>
+                    </div>
             </div>
         </div>
     </div>
@@ -308,10 +301,15 @@
                     
                 </div>
 				<div class="form-group row">
-				<div class="col-lg-12">
+				<div class="col-lg-10">
 												<label class="form-label">Description:</label>
 												<textarea class="form-control mb-2 mb-md-0" placeholder="Enter project description" name="project_description" ></textarea>
 												</div>
+												<div class="col-md-2">
+                        <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
+                            <i class="la la-trash-o"></i>Delete
+                        </a>
+                    </div>
 				</div>
             </div>
         </div>
@@ -450,9 +448,6 @@
 					</div>
 						@endsection
                         @section('js')
-
-						<script src="{{asset('assets/plugins/global/plugins.bundle.js')}}"></script>
-		<script src="{{asset('assets/js/scripts.bundle.js')}}"></script>
         <script src="{{asset('assets/plugins/custom/formrepeater/formrepeater.bundle.js')}}"></script>
 
 		<script src="{{asset('assets/js/custom/utilities/modals/create-account.js')}}"></script>
