@@ -232,7 +232,7 @@ box-sizing: border-box;
 												<thead>
 													<!--begin::Table row-->
 													<tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-													<th class="min-w-100px">#</th>
+													<th class="min-w-40px">#</th>
 														<th class="min-w-125px">Full Name</th>
 														<th class="min-w-125px">Email</th>
 														<th class="min-w-125px">Role</th>
