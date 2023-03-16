@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Accounts\DashboardController;
 use App\Http\Controllers\Accounts\UserController;
+use App\Http\Controllers\ResumebuilderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +38,7 @@ Route::group(['middleware' => 'auth'], function() {
   Route::post('permission-update', [UserController::class, 'permissionUpdate'])->name('users.permission'); 
   Route::get('my-profile',[UserController::class, 'profileDisplay'])->name('profile.index');
   Route::post('update-profile',[UserController::class, 'profileUpdate'])->name('update-profile');
+  Route::post('resume-builder',[ResumebuilderController::class, 'resumebuilder'])->name('resumebuilder');
 
   
   Route::get('users/edit/{id}', [UserController::class, 'show'])->name('users.edit'); 
