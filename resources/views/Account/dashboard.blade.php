@@ -9,8 +9,8 @@
 						<!--begin::Header-->
 						<div class="d-flex flex-center py-10 py-lg-20 mt-lg-20">
 							<!--begin::Logo-->
-							<a href="../../demo1/dist/index.html">
-								<img alt="Logo" src="assets/media/logos/custom-1.png" class="h-70px" />
+							<a href="#">
+								<img alt="Logo" src="{{asset('RapidBrains-white@2x.svg')}}" class="h-50px" />
 							</a>
 							<!--end::Logo-->
 						</div>
@@ -100,11 +100,7 @@
 						<!--begin::Footer-->
 						<div class="d-flex flex-center flex-wrap px-5 py-10">
 							<!--begin::Links-->
-							<div class="d-flex fw-normal">
-								<a href="https://keenthemes.com" class="text-success px-5" target="_blank">Terms</a>
-								<a href="https://devs.keenthemes.com" class="text-success px-5" target="_blank">Plans</a>
-								<a href="https://1.envato.market/EA4JP" class="text-success px-5" target="_blank">Contact Us</a>
-							</div>
+						
 							<!--end::Links-->
 						</div>
 						<!--end::Footer-->
