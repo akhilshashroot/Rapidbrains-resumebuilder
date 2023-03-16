@@ -146,10 +146,16 @@
 												</div>
 												<!--end::Col-->
 												<!--begin::Col-->
+												<div style="height: 10px;"></div>
 												<div class="col-lg-6">
 												<label class="form-label">Talent ID:</label>
 												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Talentid" name="talentid"/>
 												</div>
+												<div class="col-lg-6">
+												<label class="form-label">Position:</label>
+												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Position" name="position"/>
+												</div>
+												<div style="height: 10px;"></div>
 												<div class="col-lg-6">
 												<label class="form-label">Email:</label>
 												<input type="email" class="form-control mb-2 mb-md-0" placeholder="Enter email" name="email"/>
@@ -158,17 +164,20 @@
 												<label class="form-label">Phone number:</label>
 												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Phone number" name="phone"/>
 												</div>
+												<div style="height: 10px;"></div>
 												<div class="col-lg-12">
 												<label class="form-label">Address:</label>
 												<textarea class="form-control mb-2 mb-md-0" placeholder="Enter address" name="address" ></textarea>
 												</div>
+												<div style="height: 10px;"></div>
 												<div class="col-lg-12">
 												<label class="form-label">Summary:</label>
-												<textarea class="form-control mb-2 mb-md-0" placeholder="Enter summary" name="summary" ></textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter summary" name="summary" ></textarea>
 												</div>
+												<div style="height: 10px;"></div>
 												<div class="col-lg-12">
 												<label class="form-label">Skills:</label>
-												<textarea class="form-control mb-2 mb-md-0" placeholder="Enter skills" name="skills" ></textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter skills" name="skills" ></textarea>
 												</div>
 												<!--end::Col-->
 											</div>
@@ -211,6 +220,7 @@
                     </div>
                     
                 </div>
+				<div style="height: 10px;"></div>
 				<div class="form-group row">
 					<div class="col-md-6">
                         <label class="form-label">From:</label>
@@ -222,6 +232,7 @@
                     </div>
 				
 				</div>
+				<div style="height: 10px;"></div>
 				<div class="form-group row">
 					<div class="col-md-4">
                         <label class="form-label">City:</label>
@@ -236,18 +247,21 @@
                         <input type="text" class="form-control mb-2 mb-md-0" name="country" placeholder="Enter country" />
                     </div>
 				</div>
+				<div style="height: 10px;"></div>
 				<div class="form-group row">
 				<div class="col-lg-12">
 												<label class="form-label">Job description:</label>
-												<textarea class="form-control mb-2 mb-md-0" placeholder="Enter job description" name="job_description" ></textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter job description" name="job_description" ></textarea>
 												</div>
 				</div>
+				<div style="height: 10px;"></div>
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Projects:</label>
-												<textarea class="form-control mb-2 mb-md-0" placeholder="Enter project details" name="job_projects" ></textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter project details" name="job_projects" ></textarea>
 												</div>
 				</div>
+				
 				<div class="col-md-2">
                         <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
                             <i class="la la-trash-o"></i>Delete
@@ -300,10 +314,11 @@
                     </div>
                     
                 </div>
+				<div style="height: 10px;"></div>
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Description:</label>
-												<textarea class="form-control mb-2 mb-md-0" placeholder="Enter project description" name="project_description" ></textarea>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter project description" name="project_description" ></textarea>
 												</div>
 												<div class="col-md-2">
                         <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
@@ -347,6 +362,7 @@
 										<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter university" name="education_institute" />
 												</div>
 											</div>
+											<div style="height: 10px;"></div>
 											<div class="form-group row">
 											<div class="col-lg-6">
 										<label class="form-label">Duration:</label>

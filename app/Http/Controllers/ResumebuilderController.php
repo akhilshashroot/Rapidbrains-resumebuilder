@@ -21,6 +21,7 @@ class ResumebuilderController extends Controller
             'logo' => 'nullable',
             'fullname' => 'nullable',
             'talentid' => 'nullable',
+            'position' => 'nullable',
             'email' => 'nullable',
             'phone' => 'nullable',
             'address' => 'nullable',
@@ -61,6 +62,7 @@ class ResumebuilderController extends Controller
         $resume->added_by = Auth::user()->username;
         $filename = $resume->fullname.now()->timestamp.'.pdf';
         $resume->resume = 'Resume'.$filename;
+        $resume->designation = $request->position;
         $res = $resume->save();
         $company_address = "999999999".'<br>'.
         nl2br("test@rapidbrains.org")."<br>".
@@ -71,6 +73,7 @@ class ResumebuilderController extends Controller
             'title' => 'Resume',
             'fullname' => $request->fullname,
             'talentid' => $request->talentid,
+            'position' => $request->position,
             'summary' => $request->summary,
             'experience'=> $request->kt_docs_repeater_basic,
             'skills' => $request->skills,
@@ -81,6 +84,7 @@ class ResumebuilderController extends Controller
             'education_location' => $request->education_location,
             'company_address' => $company_address,
             'phone' => $request->phone,
+            'email' => $request->email,
         ];
   
         

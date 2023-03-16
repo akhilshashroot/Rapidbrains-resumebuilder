@@ -141,10 +141,11 @@ section ul {
     </tr></tbody></table>
     <header id="info">
    <h1>{!! $data['fullname'] !!}</h1>
+   <span>POSITION: {!! $data['position'] !!}</span></br>
         <span>TALENT ID: {!! $data['talentid'] !!}</span>
        <br><br>
         <span style="font-size: 16px;">{!! $data['phone'] !!} <br>
-           test@rapidbrains.org <br>
+        {!! $data['email'] !!} <br>
                Ground Floor, Athulya, Infopark,
                Kochi, Kerala, India<br>
                www.rapidbrains.com
