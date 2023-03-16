@@ -2,7 +2,7 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="">
-	<title>HASHROOT | ACCOUNTS PORTAL</title>
+	<title>RapidBrains Resume Builder</title>
 		<meta charset="utf-8" />
 		<!-- <meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Blazor, Django, Flask &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
 		<meta name="keywords" content="Metronic, Bootstrap, Bootstrap 5, Angular, VueJs, React, Asp.Net Core, Blazor, Django, Flask &amp; Laravel, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" /> -->
@@ -14,7 +14,7 @@
 		<meta property="og:site_name" content="ACCOUNTS PORTAL" />
 		<meta name="csrf-token" content="{{ csrf_token() }}" />
 		<link rel="canonical" href="https://accountsnew.hashroot.org/" />
-		<link rel="shortcut icon" href="{{asset('logo.png')}}" />
+		<link rel="shortcut icon" href="{{asset('favicon.png')}}" />
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
 		<!--end::Fonts-->
@@ -125,8 +125,8 @@
 						<!--begin::Logo-->
 						<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
 							<a href="/">
-							<img alt="Logo" src="{{asset('logo.png')}}" class="h-20px h-lg-30px app-sidebar-logo-default theme-light-show" />
-								<img alt="Logo" src="{{asset('logo.png')}}" class="h-20px h-lg-30px app-sidebar-logo-default theme-dark-show" />
+							<img alt="Logo" src="{{asset('RapidBrains-logo.svg')}}" class="h-20px h-lg-30px app-sidebar-logo-default theme-light-show" />
+								<img alt="Logo" src="{{asset('RapidBrains-logo.svg')}}" class="h-20px h-lg-30px app-sidebar-logo-default theme-dark-show" />
 								</a>
 						</div>
 						<!--end::Logo-->
@@ -1198,7 +1198,7 @@
 								<!--begin::Copyright-->
 								<div class="text-dark order-2 order-md-1">
 									<span class="text-muted fw-semibold me-1"><?php echo date('Y'); ?>©</span>
-									<a href="" target="_blank" class="text-gray-800 text-hover-primary">HashRoot Accounts</a>
+									<a href="" target="_blank" class="text-gray-800 text-hover-primary">RapidBrains Resume Builder</a>
 								</div>
 								<!--end::Copyright-->
 								<!--begin::Menu-->

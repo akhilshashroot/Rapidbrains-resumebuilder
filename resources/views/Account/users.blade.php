@@ -67,7 +67,7 @@ box-sizing: border-box;
 										<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 											<!--begin::Item-->
 											<li class="breadcrumb-item text-muted">
-												<a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
+												<a href="#" class="text-muted text-hover-primary">Home</a>
 											</li>
 											<!--end::Item-->
 											<!--begin::Item-->
@@ -232,11 +232,10 @@ box-sizing: border-box;
 												<thead>
 													<!--begin::Table row-->
 													<tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-													<th class="min-w-100px">#</th>
+													<th class="min-w-40px">#</th>
 														<th class="min-w-125px">Full Name</th>
 														<th class="min-w-125px">Email</th>
 														<th class="min-w-125px">Role</th>
-														<th class="min-w-125px">Permission</th>
 														<th class="text-end min-w-70px">Actions</th>
 													</tr>
 													<!--end::Table row-->
@@ -259,10 +258,7 @@ box-sizing: border-box;
 														<td>
 															@if($list->role==1) Admin @else User @endif
 														</td>
-														<td>
-														<a onclick="permissionBox({{$list->id}})" class="menu-link px-3 ss">	
-														<i class="fas fa-sharp fa-solid fa-users"></i></a>
-														</td>
+														
 														<!--end::Date=-->
 														<!--begin::Action=-->
 														<td class="text-end">
@@ -390,54 +386,6 @@ box-sizing: border-box;
 <br><br>
 															
 
-<div class="row g-9 mb-8">
-								<!--begin::Col-->
-								<div class="col-md-6 fv-row fv-plugins-icon-container">
-								<label class=" fs-6 fw-semibold mb-2">Permission :</label><br>
-															
-							<div class="d-flex">
-                                                        <!--begin::Checkbox-->
-                                                        <label class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
-                                                            <input class="form-check-input"  type="checkbox" value="1" id="flexCheckDefault11" name="hashroot_p">
-                                                            <span class="form-check-label">
-															HashRoot-P
-                                                            </span>
-                                                        </label>
-                                                        <!--end::Checkbox-->
-
-                                                        <!--begin::Checkbox-->
-                                                        <label class="form-check form-check-custom form-check-solid me-5 me-lg-20">
-                                                            <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault21" name="hashroot_s">
-                                                            <span class="form-check-label">
-															HashRoot-S
-                                                            </span>
-                                                        </label>
-                                                        <!--end::Checkbox-->
-
-                                                        <!--begin::Checkbox-->
-                                                        <label class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
-                                                            <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault31" name="hashroot_ss">
-                                                            <span class="form-check-label">
-															HashRoot-SS
-                                                            </span>
-                                                        </label></div>
-                                                        <!--end::Checkbox-->
-<br><br>
-														<div class="d-flex">
-												
-												<label class="form-check form-check-custom form-check-solid">
-														<input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault41" name="hashroot">
-														<span class="form-check-label">
-														HashRoot
-														</span>
-													</label>
-													<!--end::Checkbox-->
-												
-
-                                                    </div>
-								</div>
-								<!--end::Col-->
-							</div>
 
 															<!--end::Input group-->
 															<!--begin::Input group-->
@@ -1043,23 +991,23 @@ function editBox(id) {
 		$("#phone").val(result.data.phone);
 		$("#email").val(result.data.email);
 		$("#name").val(result.data.username);
-		if(result.data.hashroot){
-		$('#flexCheckDefault41').prop('checked', true);
+	// 	if(result.data.hashroot){
+	// 	$('#flexCheckDefault41').prop('checked', true);
 
-	}
+	// }
 		
-	if(result.data.hashroot_p){
-		$('#flexCheckDefault11').prop('checked', true);
+	// if(result.data.hashroot_p){
+	// 	$('#flexCheckDefault11').prop('checked', true);
 
-	}
-	if(result.data.hashroot_s){
-		$('#flexCheckDefault21').prop('checked', true);
+	// }
+	// if(result.data.hashroot_s){
+	// 	$('#flexCheckDefault21').prop('checked', true);
 
-	}
-	if(result.data.hashroot_ss){
-		$('#flexCheckDefault31').prop('checked', true);
+	// }
+	// if(result.data.hashroot_ss){
+	// 	$('#flexCheckDefault31').prop('checked', true);
 
-	}
+	// }
 	if(result.data.role){
 		$('#flexCheckDefault').prop('checked', true);
 
