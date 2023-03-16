@@ -7,12 +7,12 @@
     <style>
 body {
     margin: 40px;
-    font-family: "Adobe Caslon Pro", "Minion Pro", serif;
+    font-family: 'Roboto';
     font-size: 12pt;
 }
 
 header {
-    font-family: "Trajan Pro", serif;
+    font-family: 'Roboto';
     padding-bottom: 10px;
 }
 
@@ -29,7 +29,7 @@ header span {
 }
 
 section h2 {
-    font-family: "Trajan Pro", serif;
+    font-family: 'Roboto';
     font-size: 14pt;
 }
 
