@@ -9,8 +9,8 @@
 						<!--begin::Header-->
 						<div class="d-flex flex-center py-10 py-lg-20 mt-lg-20">
 							<!--begin::Logo-->
-							<a href="../../demo1/dist/index.html">
-								<img alt="Logo" src="assets/media/logos/custom-1.png" class="h-70px" />
+							<a href="#">
+								<img alt="Logo" src="{{asset('RapidBrains-white@2x.svg')}}" class="h-50px" />
 							</a>
 							<!--end::Logo-->
 						</div>
@@ -97,6 +97,12 @@
 							<!--end::Nav-->
 						</div>
 						<!--end::Body-->
+						<!--begin::Footer-->
+						<div class="d-flex flex-center flex-wrap px-5 py-10">
+							<!--begin::Links-->
+						
+							<!--end::Links-->
+						</div>
 						<!--end::Footer-->
 					</div>
 				</div>
