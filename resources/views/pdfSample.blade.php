@@ -79,7 +79,7 @@ section ul {
 
 .jobtitle {
     display: table-cell;
-    font-style: italic;
+    /*font-style: italic;*/
 }
 
 .right {
@@ -92,7 +92,7 @@ section ul {
 }
 
 .onlinecell {
-    font-style: italic;
+    /*font-style: italic;*/
     padding-right: 10px;
 }
 
@@ -141,7 +141,7 @@ section ul {
    <h1>{!! $data['fullname'] !!}</h1>
         <span>TALENT ID: {!! $data['talentid'] !!}</span>
        <br><br>
-        <span style="font-size: 16px;">999999999 <br>
+        <span style="font-size: 16px;">{!! $data['phone'] !!} <br>
            test@rapidbrains.org <br>
                Ground Floor, Athulya, Infopark,
                Kochi, Kerala, India<br>

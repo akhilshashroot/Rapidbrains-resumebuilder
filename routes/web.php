@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function() {
   Route::get('my-profile',[UserController::class, 'profileDisplay'])->name('profile.index');
   Route::post('update-profile',[UserController::class, 'profileUpdate'])->name('update-profile');
   Route::post('resume-builder',[ResumebuilderController::class, 'resumebuilder'])->name('resumebuilder');
+  Route::get('resumes', [ResumebuilderController::class, 'resume'])->name('listresumes'); 
 
   
   Route::get('users/edit/{id}', [UserController::class, 'show'])->name('users.edit'); 

@@ -9,6 +9,13 @@ use PDF;
 
 class ResumebuilderController extends Controller
 {
+    public function resume()
+    {
+        
+      $resumes= ResumeDetails::orderBy('id','desc')->get();
+      //  return view('Account.dashboard',compact('data'));
+      return view('Resume.resumelist',compact('resumes'));
+    }
     public function resumebuilder(Request $request) {
         $request->validate([
             'logo' => 'nullable',
@@ -51,7 +58,7 @@ class ResumebuilderController extends Controller
         $resume->education_institute = $request->education_institute;
         $resume->education_duration = $request->education_duration;
         $resume->education_location = $request->education_location;
-        $resume->added_by = Auth::user()->fullname;
+        $resume->added_by = Auth::user()->username;
         $filename = $resume->fullname.now()->timestamp.'.pdf';
         $resume->resume = 'Resume'.$filename;
         $res = $resume->save();

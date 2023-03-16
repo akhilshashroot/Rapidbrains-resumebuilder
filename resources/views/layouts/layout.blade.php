@@ -184,7 +184,18 @@
 									</div> @endif
 									<!--end:Menu item-->
 									<!--begin:Menu item-->
-									
+									<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
+										<!--begin:Menu link-->
+										<a href="{{route('listresumes')}}">	<span class="menu-link">
+											<span class="menu-title">Resumes</span>
+											<span class="menu-arrow d-lg-none"></span>
+										</span></a>
+										<!--end:Menu link-->
+										<!--begin:Menu sub-->
+										
+										
+										<!--end:Menu sub-->
+									</div>
 									<!--end:Menu item-->
 								</div>
 								<!--end::Menu-->
