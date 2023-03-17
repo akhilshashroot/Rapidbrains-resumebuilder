@@ -111,8 +111,8 @@ class ResumebuilderController extends Controller
     $name=   strtolower($request->name);
     $email_id=preg_replace('/\s+/', '_', $name);
     $email_id= $email_id.'@hashroot.org';
-    $email= ResumeDetails::where('email', $email_id)->get();
-   
+    $email= ResumeDetails::where('fullname', 'like', '%' .$request->name. '%')->get();
+  ;
     if(count($email)>0){
         $email_id=  preg_replace('/\s+/', '_', $name);
         $count=count($email);
