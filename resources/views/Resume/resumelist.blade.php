@@ -233,6 +233,10 @@ box-sizing: border-box;
 													<th class="min-w-40px">#</th>
 														<th class="min-w-125px">Full Name</th>
 														<th class="min-w-125px">Talent ID</th>
+														<th class="min-w-125px">Position</th>
+														<th class="min-w-125px">Email</th>
+
+
                                                         <th class="min-w-125px">Added By</th>
 														<th class="min-w-125px">Resume</th>
 													</tr>
@@ -252,6 +256,12 @@ box-sizing: border-box;
 														</td>
 														<td>
 															{{$list->talentid}}
+														</td>
+														<td>
+															{{$list->designation}}
+														</td>
+														<td>
+															{{$list->email}}
 														</td>
                                                         <td>
 															{{$list->added_by}}
