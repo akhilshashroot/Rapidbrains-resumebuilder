@@ -23,6 +23,21 @@ var KTCreateAccount = (function () {
                     }),
                     s.on("kt.stepper.next", function (e) {
                         console.log("stepper.next");
+                        console.log($('#hidden_talent_id').val());
+
+                        if($('#hidden_talent_id').val()=='1'){
+                            Swal.fire({
+                                text: "Sorry, looks like there are some errors detected, please try again.",
+                                icon: "error",
+                                buttonsStyling: !1,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: { confirmButton: "btn btn-light" },
+                            }).then(function () {
+                                KTUtil.scrollTop();
+                            });
+                           return false;
+                        }
+
                         var t = n[e.getCurrentStepIndex() - 1];
                         t
                             ? t.validate().then(function (t) {

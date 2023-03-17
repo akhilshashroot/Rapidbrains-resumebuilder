@@ -144,7 +144,7 @@ section ul {
    <span>POSITION: {!! $data['position'] !!}</span></br>
         <span>TALENT ID: {!! $data['talentid'] !!}</span>
        <br><br>
-        <span style="font-size: 16px;">{!! $data['phone'] !!} <br>
+        <span style="font-size: 16px;">+91 977 8426 319 <br>
         {!! $data['email'] !!} <br>
                Ground Floor, Athulya, Infopark,
                Kochi, Kerala, India<br>

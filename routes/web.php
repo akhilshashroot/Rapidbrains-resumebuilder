@@ -43,8 +43,11 @@ Route::group(['middleware' => 'auth'], function() {
 
   
   Route::get('users/edit/{id}', [UserController::class, 'show'])->name('users.edit'); 
+  Route::post('users/email', [ResumebuilderController::class, 'emailChecker'])->name('getEmployee.email'); 
+  Route::post('talent/check', [ResumebuilderController::class, 'talentIdChecker'])->name('talentid.check'); 
 
- 
+  
+  
     Route::get('logout', [LoginController::class,'logout']);
 
 

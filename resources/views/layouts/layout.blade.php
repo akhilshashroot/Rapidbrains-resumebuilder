@@ -41,7 +41,9 @@
     /* z-index: 101 !important; */
     z-index: 9999999;
 }
-
+#email-error{
+	color:red;
+}
 .toast {
 
     --bs-toast-bg: #d9214e !important;

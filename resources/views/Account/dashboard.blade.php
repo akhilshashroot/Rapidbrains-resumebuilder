@@ -130,6 +130,9 @@
 										<div class="fv-row">
 											<!--begin::Row-->
 											<div class="row">
+											<input type="hidden"  name="hidden_talent_id" id="hidden_talent_id"/>
+											<input type="hidden"  name="email" id="email" />
+
 												<!--begin::Col-->
 												<div class="col-lg-6">
 												<label class="form-label">Select Logo:</label>
@@ -142,33 +145,22 @@
 												</div>
 												<div class="col-lg-6">
 												<label class="form-label">Full Name:</label>
-												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter full name" name="fullname"/>
+												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter full name" name="fullname" onblur="javascript:mail_add(this);"/>
 												</div>
 												<!--end::Col-->
 												<!--begin::Col-->
 												<div style="height: 10px;"></div>
 												<div class="col-lg-6">
 												<label class="form-label">Talent ID:</label>
-												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Talentid" name="talentid"/>
-												</div>
+												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Talentid" name="talentid" onblur="javascript:talentIdCheck(this);"/>
+												<label id="email-error" class="email" for="email" style="display:none;">Talent ID already exist</label>
+											   </div>
 												<div class="col-lg-6">
 												<label class="form-label">Position:</label>
 												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Position" name="position"/>
 												</div>
 												<div style="height: 10px;"></div>
-												<div class="col-lg-6">
-												<label class="form-label">Email:</label>
-												<input type="email" class="form-control mb-2 mb-md-0" placeholder="Enter email" name="email"/>
-												</div>
-												<div class="col-lg-6">
-												<label class="form-label">Phone number:</label>
-												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Phone number" name="phone"/>
-												</div>
-												<div style="height: 10px;"></div>
-												<div class="col-lg-12">
-												<label class="form-label">Address:</label>
-												<textarea class="form-control mb-2 mb-md-0" placeholder="Enter address" name="address" ></textarea>
-												</div>
+											
 												<div style="height: 10px;"></div>
 												<div class="col-lg-12">
 												<label class="form-label">Summary:</label>
@@ -501,6 +493,73 @@ $('#kt_docs_repeater_basi').repeater({
 /*$( document ).ready(function() {
     $('#downloadlink').hide();
 });*/
+function mail_add(e){
 
+	 
+	var url = "{{ route('getEmployee.email') }}";
+
+	$.ajax({
+		
+                            url: url,
+                            type: 'POST',
+
+    dataType: 'json',
+    data:{
+        '_token': '{{ csrf_token() }}',
+		'name':e.value
+    },
+    success: function(result) {
+        console.log(result.data);
+		$('#email').val(result.data);
+       
+   
+    },
+    error: function(request,msg,error) {
+        // handle failure
+    }      
+                        });
+
+					
+    
+}
+
+function talentIdCheck(e){
+
+	 
+var url = "{{ route('talentid.check') }}";
+
+$.ajax({
+	
+						url: url,
+						type: 'POST',
+
+dataType: 'json',
+data:{
+	'_token': '{{ csrf_token() }}',
+	'talentid':e.value
+},
+success: function(result) {
+	console.log(result);
+if(result==1){
+	
+	$('#hidden_talent_id').val(1);
+
+	document.getElementById('email-error').style.display    = 'block';
+
+}else{
+	document.getElementById('email-error').style.display    = 'none';
+
+	$('#hidden_talent_id').val(0);
+}
+
+},
+error: function(request,msg,error) {
+	// handle failure
+}      
+					});
+
+				
+
+}
 </script>
 @endsection

@@ -106,4 +106,38 @@ class ResumebuilderController extends Controller
         
 
     }
+
+    public function emailChecker(Request $request) {
+    $name=   strtolower($request->name);
+    $email_id=preg_replace('/\s+/', '_', $name);
+    $email_id= $email_id.'@hashroot.org';
+    $email= ResumeDetails::where('email', $email_id)->get();
+   
+    if(count($email)>0){
+        $email_id=  preg_replace('/\s+/', '_', $name);
+        $count=count($email);
+        $email_id= $email_id.$count.'@rapidbrains.org';
+        return response()->json([
+            'data' => $email_id
+          ]); 
+
+    }
+    $email_id=preg_replace('/\s+/', '_', $name);
+    $email_id= $email_id.'@rapidbrains.org';
+    return response()->json([
+        'data' => $email_id
+      ]);  
+   
+ 
+    }
+    public function talentIdChecker(Request $request) {
+      
+        $talentid= ResumeDetails::where('talentid',$request->talentid)->first();
+       
+        if($talentid){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 }
