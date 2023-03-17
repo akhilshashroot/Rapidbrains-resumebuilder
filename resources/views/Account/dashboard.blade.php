@@ -312,6 +312,13 @@
 												<label class="form-label">Description:</label>
 												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter project description" name="project_description" ></textarea>
 												</div>
+				</div>
+				<div style="height: 10px;"></div>
+				<div class="form-group row">
+				<div class="col-lg-10">
+												<label class="form-label">Roles & Responsibilities:</label>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter Roles & Responsibilities" name="roles_responsibility" ></textarea>
+												</div>
 												<div class="col-md-2">
                         <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
                             <i class="la la-trash-o"></i>Delete
@@ -334,6 +341,50 @@
 										
 										<!--end::Heading-->
 										<!--begin::Input group-->
+										<div class="pb-10 pb-lg-15">
+											<!--begin::Title-->
+											<h2 class="fw-bold text-dark">Certifications</h2>
+											<!--end::Title-->
+											<!--begin::Notice-->
+											<!--end::Notice-->
+										</div>
+										<div id="kt_docs_repeater_certification">
+    <!--begin::Form group-->
+    <div class="form-group">
+        <div data-repeater-list="kt_docs_repeater_certification">
+            <div data-repeater-item>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <label class="form-label">certification:</label>
+                        <input type="text" class="form-control mb-2 mb-md-0" name="certification" placeholder="Enter certification" />
+                    </div>
+                    
+                </div>
+				<div style="height: 10px;"></div>
+				<div class="form-group row">
+				<div class="col-lg-10">
+												<label class="form-label">Description:</label>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter certification description" name="certification_description" ></textarea>
+												</div>
+												<div class="col-md-2">
+                        <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
+                            <i class="la la-trash-o"></i>Delete
+                        </a>
+                    </div>
+				</div>
+            </div>
+        </div>
+    </div>
+    <!--end::Form group-->
+
+    <!--begin::Form group-->
+    <div class="form-group mt-5">
+        <a href="javascript:;" data-repeater-create class="btn btn-light-primary">
+            <i class="la la-plus"></i>Add
+        </a>
+    </div>
+    <!--end::Form group-->
+</div>
 										
 										<div class="pb-10 pb-lg-15">
 											<!--begin::Title-->
@@ -366,6 +417,8 @@
 												</div>
 										</div>
 										</div>
+
+										
 										<!--end::Input group-->
 										<!--begin::Input group-->
 										
@@ -476,6 +529,21 @@ $('#kt_docs_repeater_basic').repeater({
     }
 });
 $('#kt_docs_repeater_basi').repeater({
+    initEmpty: false,
+
+    defaultValues: {
+        'text-input': 'foo'
+    },
+
+    show: function () {
+        $(this).slideDown();
+    },
+
+    hide: function (deleteElement) {
+        $(this).slideUp(deleteElement);
+    }
+});
+$('#kt_docs_repeater_certification').repeater({
     initEmpty: false,
 
     defaultValues: {

@@ -42,7 +42,9 @@ class ResumebuilderController extends Controller
             'education_course' => 'nullable',
             'education_institute' => 'nullable',
             'education_duration' => 'nullable',
-            'education_location' => 'nullable'
+            'education_location' => 'nullable',
+            'certification' => 'nullable',
+            'certification_description' => 'nullable',
             ]);
         $resume = new ResumeDetails;
         $resume->logo = $request->logo;
@@ -63,6 +65,7 @@ class ResumebuilderController extends Controller
         $filename = $resume->fullname.now()->timestamp.'.pdf';
         $resume->resume = 'Resume'.$filename;
         $resume->designation = $request->position;
+        $resume->certifications = json_encode($request->kt_docs_repeater_certification);
         $res = $resume->save();
         $company_address = "999999999".'<br>'.
         nl2br("test@rapidbrains.org")."<br>".
@@ -85,6 +88,7 @@ class ResumebuilderController extends Controller
             'company_address' => $company_address,
             'phone' => $request->phone,
             'email' => $request->email,
+            'certifications'=> $request->kt_docs_repeater_certification,
         ];
   
         

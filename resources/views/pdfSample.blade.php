@@ -157,6 +157,7 @@ section ul {
         <p style="text-indent:50px;">{!! $data['summary'] !!}
        </p>
     </section>
+    @if(count($data['experience']))
     <section id="employment">
         <h2>Experience</h2>
         @foreach($data['experience'] as $exp)
@@ -181,6 +182,7 @@ section ul {
         @endforeach
        
     </section>
+    @endif
     <section id="skills">
         <h2>Skills</h2>
         <div class="skillstable">
@@ -189,6 +191,7 @@ section ul {
             </div>
         </div>
     </section>
+    @if(count($data['projects']))
     <section id="projects">
         <h2>Projects</h2>
         @foreach($data['projects'] as $prj)
@@ -201,11 +204,31 @@ section ul {
             <div class="tablerow">
                 <span>{!! $prj['project_description'] !!}</span>
             </div>
+            <div class="tablerow">
+                <span>{!! $prj['roles_responsibility'] !!}</span>
+            </div>
             </div>
         </section>
         @endforeach
     </section>
-
+      @endif
+      @if(count($data['certifications']))
+    <section id="certifications">
+        <h2>Certifications</h2>
+        @foreach($data['certifications'] as $cert)
+        <section>
+            <div class="jobtable">
+            <div class="tablerow">
+                <span class="jobtitle">{!! $cert['certification'] !!}</span>
+            </div>
+            <div class="tablerow">
+                <span>{!! $cert['certification_description'] !!}</span>
+            </div>
+            </div>
+        </section>
+        @endforeach
+    </section>
+      @endif
     <section id="education">
         <h2>Education</h2>
         <div class="edtable">
