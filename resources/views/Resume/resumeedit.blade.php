@@ -5,7 +5,7 @@
 			<div class="d-flex flex-column flex-lg-row flex-column-fluid stepper stepper-pills stepper-column stepper-multistep" id="kt_create_account_stepper">
 				<!--begin::Aside-->
 				<div class="d-flex flex-column flex-lg-row-auto w-lg-350px w-xl-500px">
-					<div class="d-flex flex-column position-lg-fixed top-0 bottom-0 w-lg-350px w-xl-500px scroll-y bgi-size-cover bgi-position-center" style="background-image: url(assets/media/misc/auth-bg.png)">
+					<div class="d-flex flex-column position-lg-fixed top-0 bottom-0 w-lg-350px w-xl-500px scroll-y bgi-size-cover bgi-position-center" style="background-image: url({{ URL::asset('assets/media/misc/auth-bg.png')}})">
 						<!--begin::Header-->
 						<div class="d-flex flex-center py-10 py-lg-20 mt-lg-20">
 							<!--begin::Logo-->
@@ -132,6 +132,7 @@
 											<div class="row">
 											<input type="hidden"  name="hidden_talent_id" id="hidden_talent_id"/>
 											<input type="hidden"  name="email" id="email" />
+											<input type="hidden"  name="resumeid" id="resumeid" value="{{$resume_details->id}}" />
 
 												<!--begin::Col-->
 												<div class="col-lg-6">
@@ -145,31 +146,31 @@
 												</div>
 												<div class="col-lg-6">
 												<label class="form-label">Full Name:</label>
-												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter full name" name="fullname" onblur="javascript:mail_add(this);"/>
+												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter full name" name="fullname" value="{{$resume_details->fullname}}"/>
 												</div>
 												<!--end::Col-->
 												<!--begin::Col-->
 												<div style="height: 10px;"></div>
 												<div class="col-lg-6">
 												<label class="form-label">Talent ID:</label>
-												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Talentid" name="talentid" onblur="javascript:talentIdCheck(this);"/>
+												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Talentid" name="talentid" value="{{$resume_details->talentid}}" readonly/>
 												<label id="email-error" class="email" for="email" style="display:none;">Talent ID already exist</label>
 											   </div>
 												<div class="col-lg-6">
 												<label class="form-label">Position:</label>
-												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Position" name="position"/>
+												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Position" name="position" value="{{$resume_details->designation}}"/>
 												</div>
 												<div style="height: 10px;"></div>
 											
 												<div style="height: 10px;"></div>
 												<div class="col-lg-12">
 												<label class="form-label">Summary:</label>
-												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter summary" name="summary" ></textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter summary" name="summary" >{{$resume_details->summary}}</textarea>
 												</div>
 												<div style="height: 10px;"></div>
 												<div class="col-lg-12">
 												<label class="form-label">Skills:</label>
-												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter skills" name="skills" ></textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter skills" name="skills" >{{$resume_details->skillArray}}</textarea>
 												</div>
 												<!--end::Col-->
 											</div>
@@ -200,15 +201,16 @@
     <!--begin::Form group-->
     <div class="form-group">
         <div data-repeater-list="kt_docs_repeater_basic">
+			@foreach($resume_details->experienceArray as $exp)
             <div data-repeater-item>
                 <div class="form-group row">
                     <div class="col-md-6">
                         <label class="form-label">Employer:</label>
-                        <input type="text" class="form-control mb-2 mb-md-0" name="employer" placeholder="Enter full name" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="employer" placeholder="Enter full name" value="{{$exp->employer}}" />
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Role or Job title:</label>
-                        <input type="text" class="form-control mb-2 mb-md-0" name="jobtitle" placeholder="Enter contact number" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="jobtitle" placeholder="Enter jobtitle" value="{{$exp->jobtitle}}" />
                     </div>
                     
                 </div>
@@ -216,11 +218,11 @@
 				<div class="form-group row">
 					<div class="col-md-6">
                         <label class="form-label">From:</label>
-                        <input type="date" class="form-control mb-2 mb-md-0" name="from" placeholder="Enter full name" />
+                        <input type="date" class="form-control mb-2 mb-md-0" name="from" placeholder="Enter full name" value="{{$exp->from}}" />
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">To:</label>
-                        <input type="date" class="form-control mb-2 mb-md-0" name="to" placeholder="Enter contact number" />
+                        <input type="date" class="form-control mb-2 mb-md-0" name="to" placeholder="Enter contact number" value="{{$exp->to}}"/>
                     </div>
 				
 				</div>
@@ -228,29 +230,29 @@
 				<div class="form-group row">
 					<div class="col-md-4">
                         <label class="form-label">City:</label>
-                        <input type="text" class="form-control mb-2 mb-md-0" name="city" placeholder="Enter city name" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="city" placeholder="Enter city name" value="{{$exp->city}}"/>
                     </div>
                     <div class="col-md-4">
                         <label class="form-label">State:</label>
-                        <input type="text" class="form-control mb-2 mb-md-0" name="state" placeholder="Enter state" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="state" placeholder="Enter state" value="{{$exp->state}}" />
                     </div>
 					<div class="col-md-4">
                         <label class="form-label">Country:</label>
-                        <input type="text" class="form-control mb-2 mb-md-0" name="country" placeholder="Enter country" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="country" placeholder="Enter country" value="{{$exp->country}}"/>
                     </div>
 				</div>
 				<div style="height: 10px;"></div>
 				<div class="form-group row">
 				<div class="col-lg-12">
 												<label class="form-label">Job description:</label>
-												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter job description" name="job_description" ></textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter job description" name="job_description" >{{$exp->job_description}}</textarea>
 												</div>
 				</div>
 				<div style="height: 10px;"></div>
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Projects:</label>
-												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter project details" name="job_projects" ></textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter project details" name="job_projects" >{{$exp->job_projects}}</textarea>
 												</div>
 				</div>
 				
@@ -260,6 +262,7 @@
                         </a>
                     </div>
             </div>
+			@endforeach
         </div>
     </div>
     <!--end::Form group-->
@@ -294,15 +297,16 @@
     <!--begin::Form group-->
     <div class="form-group">
         <div data-repeater-list="kt_docs_repeater_basi">
+			@foreach($resume_details->projectdetailsArray as $prj)
             <div data-repeater-item>
                 <div class="form-group row">
                     <div class="col-md-6">
                         <label class="form-label">Project Name:</label>
-                        <input type="text" class="form-control mb-2 mb-md-0" name="project_name" placeholder="Enter full name" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="project_name" placeholder="Enter full name" value="{{$prj->project_name}}"/>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Duration:</label>
-                        <input type="text" class="form-control mb-2 mb-md-0" name="project_duration" placeholder="Enter contact number" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="project_duration" placeholder="Enter contact number" value="{{$prj->project_duration}}"/>
                     </div>
                     
                 </div>
@@ -310,14 +314,14 @@
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Description:</label>
-												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter project description" name="project_description" ></textarea>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter project description" name="project_description" >{{$prj->project_description}}</textarea>
 												</div>
 				</div>
 				<div style="height: 10px;"></div>
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Roles & Responsibilities:</label>
-												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter Roles & Responsibilities" name="roles_responsibility" ></textarea>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter Roles & Responsibilities" name="roles_responsibility" >{{$prj->roles_responsibility}}</textarea>
 												</div>
 												<div class="col-md-2">
                         <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
@@ -326,6 +330,7 @@
                     </div>
 				</div>
             </div>
+			@endforeach
         </div>
     </div>
     <!--end::Form group-->
@@ -352,11 +357,12 @@
     <!--begin::Form group-->
     <div class="form-group">
         <div data-repeater-list="kt_docs_repeater_certification">
+			@foreach($resume_details->certificationsArray as $cert)
             <div data-repeater-item>
                 <div class="form-group row">
                     <div class="col-md-12">
                         <label class="form-label">certification:</label>
-                        <input type="text" class="form-control mb-2 mb-md-0" name="certification" placeholder="Enter certification" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="certification" placeholder="Enter certification" value="{{$cert->certification}}" />
                     </div>
                     
                 </div>
@@ -364,7 +370,7 @@
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Description:</label>
-												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter certification description" name="certification_description" ></textarea>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter certification description" name="certification_description" >{{$cert->certification_description}}</textarea>
 												</div>
 												<div class="col-md-2">
                         <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
@@ -373,59 +379,7 @@
                     </div>
 				</div>
             </div>
-        </div>
-    </div>
-    <!--end::Form group-->
-
-    <!--begin::Form group-->
-    <div class="form-group mt-5">
-        <a href="javascript:;" data-repeater-create class="btn btn-light-primary">
-            <i class="la la-plus"></i>Add
-        </a>
-    </div>
-    <!--end::Form group-->
-</div>
-
-<div class="pb-10 pb-lg-15">
-											<!--begin::Title-->
-											<h2 class="fw-bold text-dark">Education Details</h2>
-											<!--end::Title-->
-											<!--begin::Notice-->
-											<!--end::Notice-->
-										</div>
-										<div id="kt_docs_repeater_education">
-    <!--begin::Form group-->
-    <div class="form-group">
-        <div data-repeater-list="kt_docs_repeater_education">
-            <div data-repeater-item>
-			<div class="form-group row">
-										<div class="col-lg-6">
-										<label class="form-label">Course:</label>
-										<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter  qualification" name="education_course" />
-												</div>
-												<div class="col-lg-6">
-										<label class="form-label">Institute Name:</label>
-										<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter university" name="education_institute" />
-												</div>
-											</div>
-											<div style="height: 10px;"></div>
-											<div class="form-group row">
-											<div class="col-lg-6">
-										<label class="form-label">Duration:</label>
-										<input type="text" class="form-control mb-2 mb-md-0" placeholder="Duration" name="education_duration" />
-												</div>
-												<div class="col-lg-4">
-										<label class="form-label">Location:</label>
-										<input type="text" class="form-control mb-2 mb-md-0" placeholder="Location" name="education_location"/>
-												</div>
-												<div class="col-md-2">
-                        <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
-                            <i class="la la-trash-o"></i>Delete
-                        </a>
-                    </div>
-										</div>
-				
-            </div>
+			@endforeach
         </div>
     </div>
     <!--end::Form group-->
@@ -439,6 +393,60 @@
     <!--end::Form group-->
 </div>
 										
+<div class="pb-10 pb-lg-15">
+											<!--begin::Title-->
+											<h2 class="fw-bold text-dark">Education Details</h2>
+											<!--end::Title-->
+											<!--begin::Notice-->
+											<!--end::Notice-->
+										</div>
+										<div id="kt_docs_repeater_education">
+    <!--begin::Form group-->
+    <div class="form-group">
+        <div data-repeater-list="kt_docs_repeater_education">
+		@foreach($resume_details->educationArray as $edu)
+            <div data-repeater-item>
+			<div class="form-group row">
+										<div class="col-lg-6">
+										<label class="form-label">Course:</label>
+										<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter  qualification" name="education_course" value="{{$edu->education_course}}" />
+												</div>
+												<div class="col-lg-6">
+										<label class="form-label">Institute Name:</label>
+										<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter university" name="education_institute" value="{{$edu->education_institute}}" />
+												</div>
+											</div>
+											<div style="height: 10px;"></div>
+											<div class="form-group row">
+											<div class="col-lg-6">
+										<label class="form-label">Duration:</label>
+										<input type="text" class="form-control mb-2 mb-md-0" placeholder="Duration" name="education_duration" value="{{$edu->education_duration}}" />
+												</div>
+												<div class="col-lg-4">
+										<label class="form-label">Location:</label>
+										<input type="text" class="form-control mb-2 mb-md-0" placeholder="Location" name="education_location" value="{{$edu->education_location}}"/>
+												</div>
+												<div class="col-md-2">
+                        <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
+                            <i class="la la-trash-o"></i>Delete
+                        </a>
+                    </div>
+										</div>
+				
+            </div>
+			@endforeach
+        </div>
+    </div>
+    <!--end::Form group-->
+
+    <!--begin::Form group-->
+    <div class="form-group mt-5">
+        <a href="javascript:;" data-repeater-create class="btn btn-light-primary">
+            <i class="la la-plus"></i>Add
+        </a>
+    </div>
+    <!--end::Form group-->
+</div>
 
 										
 										<!--end::Input group-->
@@ -498,7 +506,7 @@
 										<!--end::Svg Icon-->Previous</button>
 									</div>
 									<div>
-										<button type="button" class="btn btn-lg btn-primary" data-kt-stepper-action="submit" id="display-submit">
+										<button type="button" class="btn btn-lg btn-primary" data-kt-stepper-action="submit">
 											<span class="indicator-label">Submit
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
 											<span class="svg-icon svg-icon-4 ms-2">
@@ -533,7 +541,7 @@
                         @section('js')
         <script src="{{asset('assets/plugins/custom/formrepeater/formrepeater.bundle.js')}}"></script>
 
-		<script src="{{asset('assets/js/custom/utilities/modals/create-account.js')}}"></script>
+		<script src="{{asset('assets/js/custom/utilities/modals/edit-account.js')}}"></script>
 <script>
 $('#kt_docs_repeater_basic').repeater({
     initEmpty: false,
@@ -566,21 +574,6 @@ $('#kt_docs_repeater_basi').repeater({
     }
 });
 $('#kt_docs_repeater_certification').repeater({
-    initEmpty: false,
-
-    defaultValues: {
-        'text-input': 'foo'
-    },
-
-    show: function () {
-        $(this).slideDown();
-    },
-
-    hide: function (deleteElement) {
-        $(this).slideUp(deleteElement);
-    }
-});
-$('#kt_docs_repeater_education').repeater({
     initEmpty: false,
 
     defaultValues: {

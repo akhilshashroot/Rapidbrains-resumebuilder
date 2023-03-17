@@ -229,19 +229,21 @@ section ul {
         @endforeach
     </section>
       @endif
+      @if(count($data['education_details']))
     <section id="education">
         <h2>Education</h2>
+        @foreach($data['education_details'] as $edu)
         <div class="edtable">
-        <span style="font-size: 14px;"><b>{!! $data['education'] !!}</b></span><br>
-                <span style="font-size: 14px;">{!! $data['education_institute'] !!}</span><br>
-                <span style="font-size: 14px;"><b>{!! $data['education_duration'] !!}</b></span><br>
-                <span style="font-size: 14px;"><b>{!! $data['education_location'] !!}</b></span><br>
+        <span style="font-size: 14px;"><b>{!! $edu['education_course'] !!}</b></span><br>
+                <span style="font-size: 14px;">{!! $edu['education_institute'] !!}</span><br>
+                <span style="font-size: 14px;"><b>{!! $edu['education_duration'] !!}</b></span><br>
+                <span style="font-size: 14px;"><b>{!! $edu['education_location'] !!}</b></span><br>
           
            
         </div>
-       
+       @endforeach
     </section>
-    
+    @endif
    
 </body>
 </html>

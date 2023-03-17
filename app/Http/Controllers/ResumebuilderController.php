@@ -66,6 +66,7 @@ class ResumebuilderController extends Controller
         $resume->resume = 'Resume'.$filename;
         $resume->designation = $request->position;
         $resume->certifications = json_encode($request->kt_docs_repeater_certification);
+        $resume->education_details = json_encode($request->kt_docs_repeater_education);
         $res = $resume->save();
         $company_address = "999999999".'<br>'.
         nl2br("test@rapidbrains.org")."<br>".
@@ -89,6 +90,7 @@ class ResumebuilderController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
             'certifications'=> $request->kt_docs_repeater_certification,
+            'education_details'=> $request->kt_docs_repeater_education,
         ];
   
         
@@ -143,5 +145,19 @@ class ResumebuilderController extends Controller
         }else{
             return 0;
         }
+    }
+    public function show(Request $request, $id) {
+        $resume_details = ResumeDetails::find($id);
+        $resume_details->skillArray = json_decode($resume_details->skill);
+        $resume_details->experienceArray = json_decode($resume_details->experience);
+        $resume_details->projectdetailsArray = json_decode($resume_details->project_details);
+        $resume_details->certificationsArray = json_decode($resume_details->certifications);
+        $resume_details->educationArray = json_decode($resume_details->education_details);
+        //$bg_url = 
+        //dd($resume_details);
+        return view('Resume.resumeedit',compact('resume_details'));
+    }
+    public function update(Request $request, $id) {
+        dd($id);
     }
 }

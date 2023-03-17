@@ -268,6 +268,7 @@ box-sizing: border-box;
 														</td>
 														<td>
                                                         <a id="downloadlink" class="btn btn-lg btn-primary" href="{{$list->resume}}" download>Download</a>
+                                                        <a id="" class="btn btn-lg btn-primary" href="{{route('resume.edit',$list->id)}}">Edit</a>
 														</td>
 														
 														<!--end::Date=-->
