@@ -476,7 +476,7 @@
 										<!--end::Svg Icon-->Previous</button>
 									</div>
 									<div>
-										<button type="button" class="btn btn-lg btn-primary" data-kt-stepper-action="submit">
+										<button type="button" class="btn btn-lg btn-primary" data-kt-stepper-action="submit" id="display-submit">
 											<span class="indicator-label">Submit
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
 											<span class="svg-icon svg-icon-4 ms-2">

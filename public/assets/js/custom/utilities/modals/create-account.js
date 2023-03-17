@@ -148,6 +148,8 @@ var KTCreateAccount = (function () {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             }
                         });
+                        $("#display-submit").prop("disabled", true);
+
                         var formData = new FormData(document.getElementById("kt_create_account_form"));
                                         console.log(formData);
                                         var url = 'resume-builder';
@@ -160,6 +162,8 @@ var KTCreateAccount = (function () {
                         processData: false,
                                             success: function (result) {
                                                 console.log(result.status);
+                                                $("#display-submit").removeAttr('disabled');
+
                                                 if(result.status == true) {
                                                     $("#downloadlink").attr("href", result.file)
                                                         $('#downloadlink').show();
