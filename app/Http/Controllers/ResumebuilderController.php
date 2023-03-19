@@ -73,6 +73,12 @@ class ResumebuilderController extends Controller
         nl2br("Ground Floor, Athulya, Infopark")."<br>".
         nl2br("Kochi, Kerala, India")."<br>".
         nl2br("www.rapidbrains.com");
+
+        $certifications_count= array_filter($request->kt_docs_repeater_certification[0]);
+        $kt_docs_repeater_basi_count= array_filter($request->kt_docs_repeater_basi[0]);
+        $kt_docs_repeater_basic_count= array_filter($request->kt_docs_repeater_basic[0]);
+        $kt_docs_repeater_education_count= array_filter($request->kt_docs_repeater_education[0]);
+
         $data = [
             'title' => 'Resume',
             'fullname' => $request->fullname,
@@ -91,8 +97,12 @@ class ResumebuilderController extends Controller
             'email' => $request->email,
             'certifications'=> $request->kt_docs_repeater_certification,
             'education_details'=> $request->kt_docs_repeater_education,
+            'certifications_count'=>$certifications_count,
+            'kt_docs_repeater_basic_count'=>$kt_docs_repeater_basic_count,
+            'kt_docs_repeater_basi_count'=>$kt_docs_repeater_basi_count,
+            'kt_docs_repeater_education_count'=>$kt_docs_repeater_education_count
         ];
-  
+       
         
         $pdf = PDF::loadView('pdfSample',compact('data'));
         $pdf->save(public_path('Resume'.$filename));
