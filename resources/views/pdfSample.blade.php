@@ -54,7 +54,7 @@ section ul {
 .jobtable {
     display: table;
     width: 100%;
-    border-bottom: 1px solid black;
+    /*border-bottom: 1px solid black;*/
     margin-left: 20px;
 }
 
@@ -144,7 +144,7 @@ section ul {
     <td style="padding-left:510px;" ><img width="100" src="https://www.rapidbrains.com/assets/img/svg/rblogo-mail.png" ></td>
     </tr></tbody></table>
     <header id="info">
-   <h1>{!! $data['fullname'] !!}</h1>
+   <h1 style="text-transform:uppercase;">{!! $data['fullname'] !!}</h1>
    <span>POSITION: {!! $data['position'] !!}</span></br>
         <span>TALENT ID: {!! $data['talentid'] !!}</span>
        <br><br>
@@ -157,7 +157,7 @@ section ul {
             </span>
     </header>
     <section id="statement">
-        <h2>Profile</h2>
+        <h2 style="border-bottom: 1px solid black;">Profile</h2>
       
 
         <div class="jobtable">
@@ -171,13 +171,18 @@ section ul {
     </section>
     @if(count($data['kt_docs_repeater_basic_count'])>0)
     <section id="employment">
-        <h2>Experience</h2>
+        <h2 style="border-bottom: 1px solid black;">Experience</h2>
         @foreach($data['experience'] as $exp)
+        <li>
         <section>
             <div class="jobtable">
             <div class="tablerow">
                 <span >{!! $exp['jobtitle'] !!}</span>
+                @if(!isset($exp['to']))
+                <span style="padding-left:320px;">{!! date("M-Y", strtotime($exp['from'])) !!} - Present</span>
+                @else
                 <span style="padding-left:320px;">{!! date("M-Y", strtotime($exp['from'])) !!} - {!! date("M-Y", strtotime($exp['to'])) !!}</span>
+                @endif
             </div>
             <div class="tablerow">
                 <span>{!! $exp['employer'] !!}</br>
@@ -191,12 +196,13 @@ section ul {
             </div>
             </div>
         </section>
+    </li>
         @endforeach
        
     </section>
     @endif
     <section id="skills">
-        <h2>Skills</h2>
+        <h2 style="border-bottom: 1px solid black;">Skills</h2>
         <div class="jobtable">
         <div class="tablerow">
             <span class="jobtitle">{!! $data['skills'] !!}</span>
@@ -204,9 +210,11 @@ section ul {
         </div>
     </section>
     @if(count($data['kt_docs_repeater_basi_count'])>0)
+    
     <section id="projects">
-        <h2>Projects</h2>
+        <h2 style="border-bottom: 1px solid black;">Projects</h2>
         @foreach($data['projects'] as $prj)
+        <li>
         <section>
             <div class="jobtable">
             <div class="tablerow">
@@ -221,13 +229,16 @@ section ul {
             </div>
             </div>
         </section>
+    </li>
         @endforeach
     </section>
       @endif
       @if(count($data['certifications_count'])>0)
+     
     <section id="certifications">
-        <h2>Certifications</h2>
+        <h2 style="border-bottom: 1px solid black;">Certifications</h2>
         @foreach($data['certifications'] as $cert)
+        <li>
         <section>
             <div class="jobtable">
             <div class="tablerow">
@@ -238,30 +249,32 @@ section ul {
             </div>
             </div>
         </section>
+    </li>
         @endforeach
     </section>
       @endif
       @if(count( $data['kt_docs_repeater_education_count'])>0)
     <section id="education">
-        <h2>Education</h2>
+        <h2 style="border-bottom: 1px solid black;">Education</h2>
         @foreach($data['education_details'] as $edu)
-      
+      <li>
         <section>
             <div class="jobtable">
             <div class="tablerow">
-                <span class="jobtitle"><b>{!! $edu['education_course'] !!}</b></span>
+                <span class="jobtitle">{!! $edu['education_course'] !!}</span>
             </div>
             <div class="tablerow">
                 <span>{!! $edu['education_institute'] !!}</span>
             </div>
             <div class="tablerow">
-                <span><b>{!! $edu['education_duration'] !!}</b></span>
+                <span>{!! $edu['education_duration'] !!}</span>
             </div>
             <div class="tablerow">
                 <span>{!! $edu['education_location'] !!}</span>
             </div>
             </div>
         </section>
+    </li>
        @endforeach
     </section>
     @endif

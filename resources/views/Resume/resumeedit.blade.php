@@ -371,7 +371,7 @@
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Duration:</label>
-                        <input type="text" class="form-control mb-2 mb-md-0" name="project_duration" placeholder="Enter contact number" value="{{$prj->project_duration}}"/>
+                        <input type="text" class="form-control mb-2 mb-md-0" name="project_duration" placeholder="Enter project duration" value="{{$prj->project_duration}}"/>
                     </div>
                     
                 </div>
@@ -538,8 +538,8 @@
 										<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter  qualification" name="education_course" value="{{$edu->education_course}}" />
 												</div>
 												<div class="col-lg-6">
-										<label class="form-label">Institute Name:</label>
-										<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter university" name="education_institute" value="{{$edu->education_institute}}" />
+										<label class="form-label">Institute/University Name:</label>
+										<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter institute/university" name="education_institute" value="{{$edu->education_institute}}" />
 												</div>
 											</div>
 											<div style="height: 10px;"></div>
