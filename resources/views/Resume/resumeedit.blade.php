@@ -133,6 +133,7 @@
 											<input type="hidden"  name="hidden_talent_id" id="hidden_talent_id"/>
 											<input type="hidden"  name="email" id="email" />
 											<input type="hidden"  name="resumeid" id="resumeid" value="{{$resume_details->id}}" />
+											<input type="hidden"  name="url" id="url" value="{{$resume_details->url}}" />
 
 												<!--begin::Col-->
 												<div class="col-lg-6">

@@ -163,6 +163,7 @@ class ResumebuilderController extends Controller
         $resume_details->projectdetailsArray = json_decode($resume_details->project_details);
         $resume_details->certificationsArray = json_decode($resume_details->certifications);
         $resume_details->educationArray = json_decode($resume_details->education_details);
+        $resume_details->url = url('/');
         //$bg_url = 
         //dd($resume_details);
         return view('Resume.resumeedit',compact('resume_details'));
