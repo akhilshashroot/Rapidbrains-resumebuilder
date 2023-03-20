@@ -193,7 +193,7 @@ class ResumebuilderController extends Controller
             'title' => 'Resume',
             'fullname' => $request->fullname,
             'talentid' => $resume->talentid,
-            'position' => $resume->position,
+            'position' => $resume->designation,
             'summary' => $resume->summary,
             'experience'=> $request->kt_docs_repeater_basic,
             'skills' => $request->skills,
