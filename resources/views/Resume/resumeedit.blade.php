@@ -201,6 +201,7 @@
     <!--begin::Form group-->
     <div class="form-group">
         <div data-repeater-list="kt_docs_repeater_basic">
+			@if(isset($resume_details->experienceArray))
 			@foreach($resume_details->experienceArray as $exp)
             <div data-repeater-item>
                 <div class="form-group row">
@@ -263,6 +264,68 @@
                     </div>
             </div>
 			@endforeach
+			@else
+			<div data-repeater-item>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="form-label">Employer:</label>
+                        <input type="text" class="form-control mb-2 mb-md-0" name="employer" placeholder="Enter full name"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Role or Job title:</label>
+                        <input type="text" class="form-control mb-2 mb-md-0" name="jobtitle" placeholder="Enter jobtitle" />
+                    </div>
+                    
+                </div>
+				<div style="height: 10px;"></div>
+				<div class="form-group row">
+					<div class="col-md-6">
+                        <label class="form-label">From:</label>
+                        <input type="date" class="form-control mb-2 mb-md-0" name="from" placeholder="Enter full name" value="" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">To:</label>
+                        <input type="date" class="form-control mb-2 mb-md-0" name="to" placeholder="Enter contact number" value=""/>
+                    </div>
+				
+				</div>
+				<div style="height: 10px;"></div>
+				<div class="form-group row">
+					<div class="col-md-4">
+                        <label class="form-label">City:</label>
+                        <input type="text" class="form-control mb-2 mb-md-0" name="city" placeholder="Enter city name" value=""/>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">State:</label>
+                        <input type="text" class="form-control mb-2 mb-md-0" name="state" placeholder="Enter state" value="" />
+                    </div>
+					<div class="col-md-4">
+                        <label class="form-label">Country:</label>
+                        <input type="text" class="form-control mb-2 mb-md-0" name="country" placeholder="Enter country" value=""/>
+                    </div>
+				</div>
+				<div style="height: 10px;"></div>
+				<div class="form-group row">
+				<div class="col-lg-12">
+												<label class="form-label">Job description:</label>
+												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter job description" name="job_description" ></textarea>
+												</div>
+				</div>
+				<div style="height: 10px;"></div>
+				<div class="form-group row">
+				<div class="col-lg-10">
+												<label class="form-label">Projects:</label>
+												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter project details" name="job_projects" ></textarea>
+												</div>
+				</div>
+				
+				<div class="col-md-2">
+                        <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
+                            <i class="la la-trash-o"></i>Delete
+                        </a>
+                    </div>
+            </div>
+			@endif
         </div>
     </div>
     <!--end::Form group-->
@@ -297,6 +360,7 @@
     <!--begin::Form group-->
     <div class="form-group">
         <div data-repeater-list="kt_docs_repeater_basi">
+			@if(isset($resume_details->projectdetailsArray))
 			@foreach($resume_details->projectdetailsArray as $prj)
             <div data-repeater-item>
                 <div class="form-group row">
@@ -317,12 +381,14 @@
 												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter project description" name="project_description" >{{$prj->project_description}}</textarea>
 												</div>
 				</div>
+				@if(isset($prj->roles_responsibility))
 				<div style="height: 10px;"></div>
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Roles & Responsibilities:</label>
 												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter Roles & Responsibilities" name="roles_responsibility" >{{$prj->roles_responsibility}}</textarea>
 												</div>
+												@endif
 												<div class="col-md-2">
                         <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
                             <i class="la la-trash-o"></i>Delete
@@ -331,6 +397,40 @@
 				</div>
             </div>
 			@endforeach
+			@else
+			<div data-repeater-item>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="form-label">Project Name:</label>
+                        <input type="text" class="form-control mb-2 mb-md-0" name="project_name" placeholder="Enter full name"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Duration:</label>
+                        <input type="text" class="form-control mb-2 mb-md-0" name="project_duration" placeholder="Enter contact number"/>
+                    </div>
+                    
+                </div>
+				<div style="height: 10px;"></div>
+				<div class="form-group row">
+				<div class="col-lg-10">
+												<label class="form-label">Description:</label>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter project description" name="project_description" ></textarea>
+												</div>
+				</div>
+				<div style="height: 10px;"></div>
+				<div class="form-group row">
+				<div class="col-lg-10">
+												<label class="form-label">Roles & Responsibilities:</label>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter Roles & Responsibilities" name="roles_responsibility" ></textarea>
+												</div>
+												<div class="col-md-2">
+                        <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
+                            <i class="la la-trash-o"></i>Delete
+                        </a>
+                    </div>
+				</div>
+            </div>
+			@endif
         </div>
     </div>
     <!--end::Form group-->
@@ -357,6 +457,7 @@
     <!--begin::Form group-->
     <div class="form-group">
         <div data-repeater-list="kt_docs_repeater_certification">
+			@if(isset($resume_details->certificationsArray))
 			@foreach($resume_details->certificationsArray as $cert)
             <div data-repeater-item>
                 <div class="form-group row">
@@ -380,6 +481,29 @@
 				</div>
             </div>
 			@endforeach
+			@else
+			<div data-repeater-item>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <label class="form-label">certification:</label>
+                        <input type="text" class="form-control mb-2 mb-md-0" name="certification" placeholder="Enter certification"/>
+                    </div>
+                    
+                </div>
+				<div style="height: 10px;"></div>
+				<div class="form-group row">
+				<div class="col-lg-10">
+												<label class="form-label">Description:</label>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter certification description" name="certification_description" ></textarea>
+												</div>
+												<div class="col-md-2">
+                        <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
+                            <i class="la la-trash-o"></i>Delete
+                        </a>
+                    </div>
+				</div>
+            </div>
+			@endif
         </div>
     </div>
     <!--end::Form group-->
@@ -404,6 +528,7 @@
     <!--begin::Form group-->
     <div class="form-group">
         <div data-repeater-list="kt_docs_repeater_education">
+			@if($resume_details->educationArray)
 		@foreach($resume_details->educationArray as $edu)
             <div data-repeater-item>
 			<div class="form-group row">
@@ -435,6 +560,37 @@
 				
             </div>
 			@endforeach
+			@else 
+			<div data-repeater-item>
+			<div class="form-group row">
+										<div class="col-lg-6">
+										<label class="form-label">Course:</label>
+										<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter  qualification" name="education_course" />
+												</div>
+												<div class="col-lg-6">
+										<label class="form-label">Institute Name:</label>
+										<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter university" name="education_institute"/>
+												</div>
+											</div>
+											<div style="height: 10px;"></div>
+											<div class="form-group row">
+											<div class="col-lg-6">
+										<label class="form-label">Duration:</label>
+										<input type="text" class="form-control mb-2 mb-md-0" placeholder="Duration" name="education_duration"/>
+												</div>
+												<div class="col-lg-4">
+										<label class="form-label">Location:</label>
+										<input type="text" class="form-control mb-2 mb-md-0" placeholder="Location" name="education_location"/>
+												</div>
+												<div class="col-md-2">
+                        <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
+                            <i class="la la-trash-o"></i>Delete
+                        </a>
+                    </div>
+										</div>
+				
+            </div>
+			@endif
         </div>
     </div>
     <!--end::Form group-->
@@ -574,6 +730,21 @@ $('#kt_docs_repeater_basi').repeater({
     }
 });
 $('#kt_docs_repeater_certification').repeater({
+    initEmpty: false,
+
+    defaultValues: {
+        'text-input': 'foo'
+    },
+
+    show: function () {
+        $(this).slideDown();
+    },
+
+    hide: function (deleteElement) {
+        $(this).slideUp(deleteElement);
+    }
+});
+$('#kt_docs_repeater_education').repeater({
     initEmpty: false,
 
     defaultValues: {

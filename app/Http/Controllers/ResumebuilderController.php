@@ -168,6 +168,62 @@ class ResumebuilderController extends Controller
         return view('Resume.resumeedit',compact('resume_details'));
     }
     public function update(Request $request, $id) {
-        dd($id);
+        $resume = ResumeDetails::find($id);
+        $resume->fullname = $request->fullname;
+        $resume->address = $request->address;
+        $resume->summary = $request->summary;
+        $resume->skill = json_encode($request->skills);
+        $resume->experience = json_encode($request->kt_docs_repeater_basic);
+        $resume->project_details = json_encode($request->kt_docs_repeater_basi);
+        $resume->course = $request->education_course;
+        $resume->education_institute = $request->education_institute;
+        $resume->education_duration = $request->education_duration;
+        $resume->education_location = $request->education_location;
+        $resume->added_by = Auth::user()->username;
+        $resume->designation = $request->position;
+        $resume->certifications = json_encode($request->kt_docs_repeater_certification);
+        $resume->education_details = json_encode($request->kt_docs_repeater_education);
+        $res = $resume->save();
+        $certifications_count= array_filter($request->kt_docs_repeater_certification[0]);
+        $kt_docs_repeater_basi_count= array_filter($request->kt_docs_repeater_basi[0]);
+        $kt_docs_repeater_basic_count= array_filter($request->kt_docs_repeater_basic[0]);
+        $kt_docs_repeater_education_count= array_filter($request->kt_docs_repeater_education[0]);
+        $data = [
+            'title' => 'Resume',
+            'fullname' => $request->fullname,
+            'talentid' => $resume->talentid,
+            'position' => $resume->position,
+            'summary' => $resume->summary,
+            'experience'=> $request->kt_docs_repeater_basic,
+            'skills' => $request->skills,
+            'projects' => $request->kt_docs_repeater_basi,
+            'education' => $request->education_course,
+            'education_institute' =>$request->education_institute,
+            'education_duration' => $request->education_duration,
+            'education_location' => $request->education_location,
+            'phone' => $resume->phone,
+            'email' => $resume->email,
+            'certifications'=> $request->kt_docs_repeater_certification,
+            'education_details'=> $request->kt_docs_repeater_education,
+            'certifications_count'=>$certifications_count,
+            'kt_docs_repeater_basic_count'=>$kt_docs_repeater_basic_count,
+            'kt_docs_repeater_basi_count'=>$kt_docs_repeater_basi_count,
+            'kt_docs_repeater_education_count'=>$kt_docs_repeater_education_count
+        ];
+        $filename = $resume->resume;
+        $pdf = PDF::loadView('pdfSample',compact('data'));
+        $pdf->save(public_path($filename));
+        if($res) {
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'file' => url($filename)
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Error'
+              ], 200);
+        }
     }
 }

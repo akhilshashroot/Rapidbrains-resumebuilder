@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth'], function() {
   Route::post('resume-builder',[ResumebuilderController::class, 'resumebuilder'])->name('resumebuilder');
   Route::get('resumes', [ResumebuilderController::class, 'resume'])->name('listresumes'); 
   Route::get('resume/edit/{id}', [ResumebuilderController::class, 'show'])->name('resume.edit'); 
-  Route::put('resume/update/{id}', [ResumebuilderController::class, 'update'])->name('resume.update');
+  Route::post('resume/update/{id}', [ResumebuilderController::class, 'update'])->name('resume.update');
 
   
   Route::get('users/edit/{id}', [UserController::class, 'show'])->name('users.edit'); 

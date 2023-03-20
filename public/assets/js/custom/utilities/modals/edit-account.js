@@ -151,11 +151,10 @@ var KTCreateAccount = (function () {
                         var formData = new FormData(document.getElementById("kt_create_account_form"));
                                         console.log(formData);
                                         var id = $('#resumeid').val();
-                                        var url = '{{ route("resume.update", ":id") }}';
-                                        url = url.replace(':id', id);
+                                        var url = 'http://resumebuilder.test:8080/resume/update/'+id;
                                         console.log(url);
                                         $.ajax({
-                                            type: 'put',
+                                            type: 'post',
                                             url: url,
                                             data: formData,
                                             contentType:false,
