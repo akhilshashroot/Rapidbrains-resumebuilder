@@ -238,7 +238,7 @@ box-sizing: border-box;
 
 
                                                         <th class="min-w-125px">Added By</th>
-														<th class="min-w-125px">Resume</th>
+														<th class="min-w-125px">Actions</th>
 													</tr>
 													<!--end::Table row-->
 												</thead>
@@ -267,8 +267,12 @@ box-sizing: border-box;
 															{{$list->added_by}}
 														</td>
 														<td>
-                                                        <a id="downloadlink" class="btn btn-lg btn-primary" href="{{$list->resume}}" download>Download</a>
-                                                        <a id="" class="btn btn-lg btn-primary" href="{{route('resume.edit',$list->id)}}">Edit</a>
+														<a target="_blank" id="downloadlink" href="{{$list->resume}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Download Resume"><i class="fas fa-download"></i></a>&nbsp;&nbsp;
+
+                                            <a class="" href="{{route('resume.edit',$list->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Resume"><i class="fa fa-edit" ></i></a>&nbsp;&nbsp;
+                                                <a class="delete-color" data-id="{{$list->id}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"  href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal" id="delete-user"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;
+                                         
+
 														</td>
 														
 														<!--end::Date=-->
@@ -1027,10 +1031,10 @@ function resetFn(){
 	 $(document).on('click','#delete-user',function(){
       event.preventDefault();
 	  var job_ids = $(this).data('id');
-      const url = 'users/delete/'+job_ids;
+      const url = 'resume/delete/'+job_ids;
 	  new swal({
                 title: 'Are you sure?',
-                text: "Are you sure you want to delete selected user?",
+                text: "Are you sure you want to delete selected resume?",
                 icon: 'warning',
                 buttons: ["Cancel", "Yes!"],
                 }).then(function(value) {

@@ -227,4 +227,17 @@ class ResumebuilderController extends Controller
               ], 200);
         }
     }
+
+
+    public function destroy($id)
+   {
+       try{
+        ResumeDetails::find($id)->delete();
+        return redirect()->back()
+        ->with('success', 'Deleted successfully!');
+       } catch (\Exception $e){
+           return response()->json('error', 200);
+       }
+       
+   }
 }

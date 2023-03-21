@@ -42,8 +42,9 @@ Route::group(['middleware' => 'auth'], function() {
   Route::get('resumes', [ResumebuilderController::class, 'resume'])->name('listresumes'); 
   Route::get('resume/edit/{id}', [ResumebuilderController::class, 'show'])->name('resume.edit'); 
   Route::post('resume/update/{id}', [ResumebuilderController::class, 'update'])->name('resume.update');
+ 
+  Route::get('resume/delete/{id}', [ResumebuilderController::class, 'destroy'])->name('resume.destroy'); 
 
-  
   Route::get('users/edit/{id}', [UserController::class, 'show'])->name('users.edit'); 
   Route::post('users/email', [ResumebuilderController::class, 'emailChecker'])->name('getEmployee.email'); 
   Route::post('talent/check', [ResumebuilderController::class, 'talentIdChecker'])->name('talentid.check'); 
