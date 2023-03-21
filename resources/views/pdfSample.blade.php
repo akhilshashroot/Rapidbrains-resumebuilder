@@ -214,7 +214,7 @@ section ul {
 
     </header>
     <section id="statement">
-        <h2 style="border-bottom: 1px solid black;font-size: 18px;">Profile</h2>
+        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;">Profile</h2>
       
 
         <div class="jobtable">
@@ -228,7 +228,7 @@ section ul {
     </section>
     @if(count($data['kt_docs_repeater_basic_count'])>0)
     <section id="employment">
-        <h2 style="border-bottom: 1px solid black;font-size: 18px;">Experience</h2>
+        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;">Experience</h2>
         @foreach($data['experience'] as $exp)
         <section>
             <div class="jobtable">
@@ -256,7 +256,7 @@ section ul {
     </section>
     @endif
     <section id="skills">
-        <h2 style="border-bottom: 1px solid black;font-size: 18px;">Skills</h2>
+        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;">Skills</h2>
         <div class="jobtable">
         <div class="tablerow">
             <span class="jobtitle" style="font-size: 12px;">{!! $data['skills'] !!}</span>
@@ -266,7 +266,7 @@ section ul {
     @if(count($data['kt_docs_repeater_basi_count'])>0)
     
     <section id="projects">
-        <h2 style="border-bottom: 1px solid black;font-size: 18px;">Projects</h2>
+        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;">Projects</h2>
         @foreach($data['projects'] as $prj)
         <section>
             <div class="jobtable">
@@ -287,7 +287,7 @@ section ul {
       @if(count($data['certifications_count'])>0)
      
     <section id="certifications">
-        <h2 style="border-bottom: 1px solid black;font-size: 18px;">Certifications</h2>
+        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;">Certifications</h2>
         @foreach($data['certifications'] as $cert)
         <section>
             <div class="jobtable">
@@ -304,7 +304,7 @@ section ul {
       @endif
       @if(count( $data['kt_docs_repeater_education_count'])>0)
     <section id="education">
-        <h2 style="border-bottom: 1px solid black;font-size: 18px;">Education</h2>
+        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;">Education</h2>
         @foreach($data['education_details'] as $edu)
         <section>
             <div class="jobtable">
