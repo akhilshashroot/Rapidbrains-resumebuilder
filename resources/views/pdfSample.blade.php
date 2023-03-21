@@ -58,13 +58,13 @@ section ul {
     display: table;
     width: 100%;
     /*border-bottom: 1px solid black;*/
-    margin-left: 20px;
+    margin-left: 0px;
 }
 
 .edtable {
   /* //  display: table; */
     width: 100%;
-    margin-left: 20px;
+    margin-left: 10px;
     padding-bottom: 15px;
 }
 
@@ -131,7 +131,10 @@ section ul {
     margin-right:-90px  !important;
 
 }
+.bullet-check{
+    margin-left:15px  !important;
 
+}
 #example {
    position: absolute;
    top: -48px;
@@ -244,9 +247,9 @@ section ul {
                 <span style="font-size: 12px;">{!! $exp['employer'] !!}</br>
                {!! $exp['city'] !!},{!! $exp['state'] !!},{!! $exp['country'] !!}</span>
             </div>
-            <li>
+            <li class="bullet-check">
                 <span style="font-size: 12px;">{!! $exp['job_description'] !!}</span></li>
-                <li>
+                <li class="bullet-check">
                 <span style="font-size: 12px;">{!! $exp['job_projects'] !!}</span>
     </li>
             </div>
@@ -274,9 +277,9 @@ section ul {
                 <span class="jobtitle" style="font-size: 13px;">{!! $prj['project_name'] !!}</span>
                 <span style="font-size: 12px;">{!! $prj['project_duration'] !!}</span>
             </div>
-            <li>
+            <li class="bullet-check">
                 <span style="font-size: 12px;">{!! $prj['project_description'] !!}</span>
-    </li><li>
+    </li><li class="bullet-check">
                 <span style="font-size: 12px;">{!! $prj['roles_responsibility'] !!}</span>
     </li>
             </div>
