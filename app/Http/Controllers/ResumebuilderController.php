@@ -11,8 +11,13 @@ class ResumebuilderController extends Controller
 {
     public function resume()
     {
-        
-      $resumes= ResumeDetails::orderBy('id','desc')->get();
+      if(Auth::user()->role=='1'){
+        $resumes= ResumeDetails::orderBy('id','desc')->get();
+      }else{
+        $resumes= ResumeDetails::orderBy('id','desc')->where('added_by',Auth::user()->username)->get();
+
+      }  
+     
       //  return view('Account.dashboard',compact('data'));
       return view('Resume.resumelist',compact('resumes'));
     }
