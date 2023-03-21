@@ -2,7 +2,8 @@
 
 <html>
 <head>
-<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,100italic,300italic,400italic,500italic,500,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
 
     <meta charset="UTF-8">
     <title>Resume</title>
@@ -16,6 +17,8 @@ body {
 header {
     font-family: 'Roboto';
     padding-bottom: 10px;
+    margin-top: -100px;
+    /* border-bottom: 1px solid black !important; */
 }
 
 header h1 {
@@ -121,7 +124,30 @@ section ul {
         align-items: center;
         justify-content: center
       }
+#container {
+    position: relative;    
+    top: -64px;
+    margin-left:-90px  !important;
+    margin-right:-90px  !important;
+
+}
+
+#example {
+   position: absolute;
+   top: -48px;
+    left: 10px;
+    padding: 60px;
  
+}
+.full-width{
+  
+    
+        left: 100px !important;
+        right: 0 !important;
+}
+.space{
+    margin: 10px 0;
+}
     </style>
 </head>
 
@@ -137,24 +163,55 @@ section ul {
 </div>	
 
 </div> -->
-<table border="0">
 
-   <tbody><tr>
-    <td ></td>
-    <td style="padding-left:510px;" ><img width="100" src="https://www.rapidbrains.com/assets/img/svg/rblogo-mail.png" ></td>
-    </tr></tbody></table>
+<div id="container">
+<img style="width:100%;" class="full-width" src="https://www.rapidbrains.com/assets/img/svg/header-rb.png" >
+    <div id="example"><br>
+    <span style="text-transform:uppercase;font-size:28;color:#343f52; letter-spacing: 2px;"><b>{!! $data['fullname'] !!}</b></span><br>
+    <div style="padding-top:10px;"></div>
+   <span  style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e;">{!! $data['position'] !!}</span><br>
+   <div style="padding-top:10px;"></div>
+        <span style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</span>
+      
+
+    </div>
+</div>
+
     <header id="info">
-   <h1 style="text-transform:uppercase;">{!! $data['fullname'] !!}</h1>
-   <span>POSITION: {!! $data['position'] !!}</span></br>
-        <span>TALENT ID: {!! $data['talentid'] !!}</span>
-       <br><br>
-        <span style="font-size: 16px;">+91 977 8426 319 <br>
-        {!! $data['email'] !!} <br>
-               Ground Floor, Athulya, Infopark,
-               Kochi, Kerala, India<br>
-               www.rapidbrains.com
+    <table style="margin-top: 45px;">
 
-            </span>
+<tbody><tr>
+ <td ><img style="width:8%;" class="full-width" src="https://www.rapidbrains.com/assets/img/icons/phone.png" > &nbsp;&nbsp;+91 977 8426 319 
+ </td>
+
+ <td style="padding-left:182px;"><img style="width:8%;" class="full-width" src="https://www.rapidbrains.com/assets/img/icons/2.png" > &nbsp;&nbsp;{!! $data['email'] !!}
+ </td>
+ <!-- <td style="padding-left:62px;"> Ground Floor, Athulya, Infopark,
+               Kochi, Kerala, India<br>
+
+               www.rapidbrains.com
+</td> -->
+
+ 
+ </tr>
+ <tr>
+ <td ><img style="width:8%;" class="full-width" src="https://www.rapidbrains.com/assets/img/icons/3.png" >&nbsp;  Ground Floor, Athulya, Infopark, Kochi, Kerala, India</td>
+
+ <td style="padding-left:182px;"><img style="width:8%;" class="full-width" src="https://www.rapidbrains.com/assets/img/icons/4.png" >&nbsp;&nbsp;  www.rapidbrains.com
+ </td>
+ <!-- <td style="padding-left:62px;"> Ground Floor, Athulya, Infopark,
+               Kochi, Kerala, India<br>
+
+               www.rapidbrains.com
+</td> -->
+
+ 
+ </tr>
+
+
+
+</tbody></table>
+
     </header>
     <section id="statement">
         <h2 style="border-bottom: 1px solid black;">Profile</h2>
