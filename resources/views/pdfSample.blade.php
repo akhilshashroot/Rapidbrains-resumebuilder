@@ -184,7 +184,7 @@ section ul {
  <td ><img style="width:8%;" class="full-width" src="https://www.rapidbrains.com/assets/img/icons/phone.png" > &nbsp;&nbsp;+91 977 8426 319 
  </td>
 
- <td style="padding-left:182px;"><img style="width:8%;" class="full-width" src="https://www.rapidbrains.com/assets/img/icons/2.png" > &nbsp;&nbsp;{!! $data['email'] !!}
+ <td style="padding-left:172px;"><img style="width:8%;" class="full-width" src="https://www.rapidbrains.com/assets/img/icons/2.png" > &nbsp;&nbsp;{!! $data['email'] !!}
  </td>
  <!-- <td style="padding-left:62px;"> Ground Floor, Athulya, Infopark,
                Kochi, Kerala, India<br>
@@ -195,9 +195,9 @@ section ul {
  
  </tr>
  <tr>
- <td ><img style="width:8%;" class="full-width" src="https://www.rapidbrains.com/assets/img/icons/3.png" >&nbsp;  Ground Floor, Athulya, Infopark, Kochi, Kerala, India</td>
+ <td ><img style="width:8%;" class="full-width" src="https://www.rapidbrains.com/assets/img/icons/3.png" >&nbsp;&nbsp;  Ground Floor, Athulya, Infopark, Kochi, Kerala, India</td>
 
- <td style="padding-left:182px;"><img style="width:8%;" class="full-width" src="https://www.rapidbrains.com/assets/img/icons/4.png" >&nbsp;&nbsp;  www.rapidbrains.com
+ <td style="padding-left:172px;"><img style="width:8%;" class="full-width" src="https://www.rapidbrains.com/assets/img/icons/4.png" >&nbsp;&nbsp;  www.rapidbrains.com
  </td>
  <!-- <td style="padding-left:62px;"> Ground Floor, Athulya, Infopark,
                Kochi, Kerala, India<br>
