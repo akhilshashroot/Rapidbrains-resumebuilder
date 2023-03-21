@@ -128,7 +128,7 @@
 						<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
 							<a href="/">
 							<img alt="Logo" src="{{asset('RapidBrains-logo.svg')}}" class="h-20px h-lg-30px app-sidebar-logo-default theme-light-show" />
-								<img alt="Logo" src="{{asset('RapidBrains-logo.svg')}}" class="h-20px h-lg-30px app-sidebar-logo-default theme-dark-show" />
+								<img alt="Logo" src="{{asset('RapidBrains-white@2x.svg')}}" class="h-20px h-lg-30px app-sidebar-logo-default theme-dark-show" />
 								</a>
 						</div>
 						<!--end::Logo-->
