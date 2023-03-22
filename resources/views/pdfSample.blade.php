@@ -255,11 +255,15 @@ section ul {
                 <span style="font-size: 12px;color:#706F6F;">{!! $exp['employer'] !!}, {!! $exp['city'] !!}, 
                 {!! $exp['state'] !!}, {!! $exp['country'] !!}</span>
             </div>
+            @if(isset($exp['job_description']))
             <li class="bullet-check">
                 <span style="font-size: 12px;color:#706F6F;">{!! $exp['job_description'] !!}</span></li>
+                @endif
+                @if(isset($exp['job_projects']))
                 <li class="bullet-check">
                 <span style="font-size: 12px;color:#706F6F;">{!! $exp['job_projects'] !!}</span>
     </li>
+    @endif
             </div>
         </section>
         @endforeach
@@ -285,11 +289,15 @@ section ul {
                 <span class="jobtitle" style="font-size: 13px;color:#464A4E;text-transform:uppercase;">{!! $prj['project_name'] !!}</span>
                 <span style="font-size: 12px;color:#706F6F;">{!! $prj['project_duration'] !!}</span>
             </div>
+            @if(isset($prj['project_description']))
             <li class="bullet-check">
                 <span style="font-size: 12px;color:#706F6F;">{!! $prj['project_description'] !!}</span>
-    </li><li class="bullet-check">
+    </li>@endif
+    @if(isset($prj['roles_responsibility']))
+    <li class="bullet-check">
                 <span style="font-size: 12px;color:#706F6F;">{!! $prj['roles_responsibility'] !!}</span>
     </li>
+    @endif
             </div>
         </section>
         @endforeach
