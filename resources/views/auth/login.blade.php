@@ -134,7 +134,7 @@ License: For each use you must have a valid license purchased only from above li
 					<div class="d-flex flex-column flex-center py-15 px-5 px-md-15 w-100">
 						<!--begin::Logo-->
 						<a href="../../demo1/dist/index.html" class="mb-12">
-							<img alt="Logo" src="assets/media/logos/custom-1.png" class="h-75px" />
+							<img alt="Logo" src="{{asset('RapidBrains-logo.svg')}}" class="h-75px" />
 						</a>
 						<!--end::Logo-->
 						<!--begin::Image-->
