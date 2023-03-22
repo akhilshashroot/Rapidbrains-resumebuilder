@@ -31,8 +31,8 @@
 										<!--end::Icon-->
 										<!--begin::Label-->
 										<div class="stepper-label">
-											<h3 class="stepper-title fs-2">Profile & Skills</h3>
-											<div class="stepper-desc fw-normal">Add your profile and skills</div>
+											<h3 class="stepper-title fs-2" style="color:#343F52;">Profile & Skills</h3>
+											<div class="stepper-desc fw-normal" style="color:#8F9AAD;">Add your profile and skills</div>
 										</div>
 										<!--end::Label-->
 									</div>
@@ -54,8 +54,8 @@
 										<!--end::Icon-->
 										<!--begin::Label-->
 										<div class="stepper-label">
-											<h3 class="stepper-title fs-2">Experiences</h3>
-											<div class="stepper-desc fw-normal">Add your experience here</div>
+											<h3 class="stepper-title fs-2" style="color:#343F52;">Experiences</h3>
+											<div class="stepper-desc fw-normal" style="color:#8F9AAD;">Add your experience here</div>
 										</div>
 										<!--end::Label-->
 									</div>
@@ -77,8 +77,8 @@
 										<!--end::Icon-->
 										<!--begin::Label-->
 										<div class="stepper-label">
-											<h3 class="stepper-title fs-2">Projects & Education</h3>
-											<div class="stepper-desc fw-normal">Provide your projects and education info</div>
+											<h3 class="stepper-title fs-2" style="color:#343F52;">Projects & Education</h3>
+											<div class="stepper-desc fw-normal" style="color:#8F9AAD;">Provide your projects and education info</div>
 										</div>
 										<!--end::Label-->
 									</div>
