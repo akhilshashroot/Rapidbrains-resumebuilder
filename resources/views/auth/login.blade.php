@@ -133,22 +133,16 @@ License: For each use you must have a valid license purchased only from above li
 					<!--begin::Content-->
 					<div class="d-flex flex-column flex-center py-15 px-5 px-md-15 w-100">
 						<!--begin::Logo-->
-						<a href="../../demo1/dist/index.html" class="mb-12">
-							<img alt="Logo" src="{{asset('RapidBrains-logo.svg')}}" class="h-75px" />
-						</a>
+							<img alt="Logo" src="{{asset('RapidBrains-logo.svg')}}" style="padding-left:100px;" class="h-55px" />
 						<!--end::Logo-->
 						<!--begin::Image-->
 						<img class="mx-auto w-275px w-md-50 w-xl-500px mb-10 mb-lg-20" src="assets/media/misc/auth-screens.png" alt="" />
 						<!--end::Image-->
 						<!--begin::Title-->
-						<h1 class="text-white fs-2qx fw-bolder text-center mb-7">Fast, Efficient and Productive</h1>
+						<h1 class="text-white fs-2qx fw-bolder text-center mb-7" style="color:#343F52 !important;">Fast, Efficient and Productive</h1>
 						<!--end::Title-->
 						<!--begin::Text-->
-						<div class="text-white fs-base text-center">In this kind of post,
-						<a href="#" class="opacity-75-hover text-warning fw-bold me-1">the blogger</a>introduces a person they’ve interviewed
-						<br />and provides some background information about
-						<a href="#" class="opacity-75-hover text-warning fw-bold me-1">the interviewee</a>and their
-						<br />work following this is a transcript of the interview.</div>
+						<div class="text-center" style="color:#333E48 !important; width:300px;">Create a professional resume that sets you apart from the competition and lands your dream job</div>
 						<!--end::Text-->
 					</div>
 					<!--end::Content-->
