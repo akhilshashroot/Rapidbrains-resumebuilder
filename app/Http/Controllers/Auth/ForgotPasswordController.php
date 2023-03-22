@@ -45,8 +45,13 @@ class ForgotPasswordController extends Controller
         }
         $token = Str::random(60);
         $email=$request->email;
+        
         $user = User::where('email', $request->email)->first();
-        if (!$user) {
+        $user->token = $token;
+            $user->save();
+            Mail::to($email)->send(new ResetPassword($user->username, $token));
+        //dd($user);
+        /*if (!$user) {
             $admin = Admin::where('email', $request->email)->first();
             if(!$admin) {
                 $recruiter = Recruiter::where('email', $request->email)->first();
@@ -62,12 +67,11 @@ class ForgotPasswordController extends Controller
                 $admin->save();
                 Mail::to($email)->send(new ResetPassword($admin->name, $token));
             }
-            //return response()->json(['error' => 'Email is not registered.'], 200);
         } else {
             $user->token = $token;
             $user->save();
-            Mail::to($email)->send(new ResetPassword($user->name, $token));
-        }
+            Mail::to($email)->send(new ResetPassword($user->username, $token));
+        }*/
         //$user['token'] = $token;
         // $user['is_verified'] = 0;
         //$user->save();
