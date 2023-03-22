@@ -10,7 +10,7 @@
 						<div class="d-flex flex-center py-10 py-lg-20 mt-lg-20">
 							<!--begin::Logo-->
 							<a href="#">
-								<img alt="Logo" src="{{asset('RapidBrains-white@2x.svg')}}" class="h-50px" />
+								<img alt="Logo" src="{{asset('RapidBrains-logo.svg')}}" class="h-50px" />
 							</a>
 							<!--end::Logo-->
 						</div>
