@@ -46286,7 +46286,7 @@ a:hover {
     --kt-stepper-icon-check-size: 1.25rem;
     --kt-stepper-icon-bg-color: #ffff;
     --kt-stepper-icon-bg-color-current: #343F52;
-    --kt-stepper-icon-bg-color-completed: rgba(255, 255, 255, 0.03);
+    --kt-stepper-icon-bg-color-completed: #ffff;
     --kt-stepper-icon-border: 1px dashed rgba(255, 255, 255, 0.3);
     --kt-stepper-icon-border-current: 0;
     --kt-stepper-icon-border-completed: 1px dashed rgba(255, 255, 255, 0.3);
