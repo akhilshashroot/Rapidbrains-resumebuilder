@@ -133,6 +133,7 @@ section ul {
 }
 .bullet-check{
     margin-left:15px  !important;
+    color:#706f6f   !important;
 
 }
 #example {
@@ -209,27 +210,27 @@ section ul {
     <span><img style="width:4%;" src="https://www.rapidbrains.com/assets/img/icons/phone.png" > &nbsp;&nbsp;+91 977 8426 319 </span>
   </div>
   <div class="column1" >
-    <span><img style="width:4%;"  src="https://www.rapidbrains.com/assets/img/icons/2.png" > &nbsp;&nbsp;{!! $data['email'] !!}</span>
+    <span><img style="width:3%;"  src="https://www.rapidbrains.com/assets/img/icons/2.png" > &nbsp;&nbsp;{!! $data['email'] !!}</span>
   </div>
 </div>
 
 <div class="row">
   <div class="column" >
-   
-    <span><img style="width:4%;"  src="https://www.rapidbrains.com/assets/img/icons/3.png" >&nbsp;&nbsp;  Ground Floor, Athulya, Infopark, Kochi, Kerala, India</span>
+  <img style="width:4%;"  src="https://www.rapidbrains.com/assets/img/icons/3.png" >
+    <span >&nbsp;&nbsp;Ground Floor, Athulya, Infopark,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kochi, Kerala, India</span>
   </div>
   <div class="column1" >
-    <span><img style="width:4%;" src="https://www.rapidbrains.com/assets/img/icons/4.png" >&nbsp;&nbsp;  www.rapidbrains.com</span>
+  <img style="width:3%;" src="https://www.rapidbrains.com/assets/img/icons/4.png" ><span>&nbsp;&nbsp;  www.rapidbrains.com</span>
   </div>
 </div>
     </header>
     <section id="statement">
-        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;">Profile</h2>
+        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Profile</h2>
       
 
         <div class="jobtable">
             <div class="tablerow">
-                <span class="jobtitle" style="font-size: 12px;">{!! $data['summary'] !!}</span>
+                <span class="jobtitle" style="font-size: 12px;color:#706F6F;text-align: justify;">{!! $data['summary'] !!}</span>
             </div>
           
           
@@ -238,26 +239,26 @@ section ul {
     </section>
     @if(count($data['kt_docs_repeater_basic_count'])>0)
     <section id="employment">
-        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;">Experience</h2>
+        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Experience</h2>
         @foreach($data['experience'] as $exp)
         <section>
             <div class="jobtable">
             <div class="tablerow">
-                <span style="font-size: 12px;text-transform:uppercase;">{!! $exp['jobtitle'] !!}</span>
+                <span style="font-size: 12px;text-transform:uppercase;color:#464A4E;text-transform:uppercase;">{!! $exp['jobtitle'] !!}</span>
                 @if(!isset($exp['to']))
-                <span style="padding-left:320px;font-size: 12px;">{!! date("M-Y", strtotime($exp['from'])) !!} - Present</span>
+                <span style="padding-left:380px;font-size: 12px;color:#706F6F;">{!! date("M-Y", strtotime($exp['from'])) !!} - Present</span>
                 @else
-                <span style="padding-left:320px;font-size: 12px;">{!! date("M-Y", strtotime($exp['from'])) !!} - {!! date("M-Y", strtotime($exp['to'])) !!}</span>
+                <span style="padding-left:370px;font-size: 12px;color:#706F6F;">{!! date("M-Y", strtotime($exp['from'])) !!} - {!! date("M-Y", strtotime($exp['to'])) !!}</span>
                 @endif
             </div>
             <div class="tablerow">
-                <span style="font-size: 12px;">{!! $exp['employer'] !!}</br>
-               {!! $exp['city'] !!},{!! $exp['state'] !!},{!! $exp['country'] !!}</span>
+                <span style="font-size: 12px;color:#706F6F;">{!! $exp['employer'] !!}, {!! $exp['city'] !!}, 
+                {!! $exp['state'] !!}, {!! $exp['country'] !!}</span>
             </div>
             <li class="bullet-check">
-                <span style="font-size: 12px;">{!! $exp['job_description'] !!}</span></li>
+                <span style="font-size: 12px;color:#706F6F;">{!! $exp['job_description'] !!}</span></li>
                 <li class="bullet-check">
-                <span style="font-size: 12px;">{!! $exp['job_projects'] !!}</span>
+                <span style="font-size: 12px;color:#706F6F;">{!! $exp['job_projects'] !!}</span>
     </li>
             </div>
         </section>
@@ -266,28 +267,28 @@ section ul {
     </section>
     @endif
     <section id="skills">
-        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;">Skills</h2>
+        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Skills</h2>
         <div class="jobtable">
         <div class="tablerow">
-            <span class="jobtitle" style="font-size: 12px;">{!! $data['skills'] !!}</span>
+            <span class="jobtitle" style="font-size: 12px;color:#706F6F;">{!! $data['skills'] !!}</span>
             </div>
         </div>
     </section>
     @if(count($data['kt_docs_repeater_basi_count'])>0)
     
     <section id="projects">
-        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;">Projects</h2>
+        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Projects</h2>
         @foreach($data['projects'] as $prj)
         <section>
             <div class="jobtable">
             <div class="tablerow">
-                <span class="jobtitle" style="font-size: 13px;">{!! $prj['project_name'] !!}</span>
-                <span style="font-size: 12px;">{!! $prj['project_duration'] !!}</span>
+                <span class="jobtitle" style="font-size: 13px;color:#464A4E;text-transform:uppercase;">{!! $prj['project_name'] !!}</span>
+                <span style="font-size: 12px;color:#706F6F;">{!! $prj['project_duration'] !!}</span>
             </div>
             <li class="bullet-check">
-                <span style="font-size: 12px;">{!! $prj['project_description'] !!}</span>
+                <span style="font-size: 12px;color:#706F6F;">{!! $prj['project_description'] !!}</span>
     </li><li class="bullet-check">
-                <span style="font-size: 12px;">{!! $prj['roles_responsibility'] !!}</span>
+                <span style="font-size: 12px;color:#706F6F;">{!! $prj['roles_responsibility'] !!}</span>
     </li>
             </div>
         </section>
@@ -297,15 +298,15 @@ section ul {
       @if(count($data['certifications_count'])>0)
      
     <section id="certifications">
-        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;">Certifications</h2>
+        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Certifications</h2>
         @foreach($data['certifications'] as $cert)
         <section>
             <div class="jobtable">
             <div class="tablerow">
-                <span class="jobtitle" style="font-size: 13px;">{!! $cert['certification'] !!}</span>
+                <span class="jobtitle" style="font-size: 13px;color:#464A4E;text-transform:uppercase;">{!! $cert['certification'] !!}</span>
             </div>
             <div class="tablerow">
-                <span style="font-size: 12px;">{!! $cert['certification_description'] !!}</span>
+                <span style="font-size: 12px;color:#706F6F;">{!! $cert['certification_description'] !!}</span>
             </div>
             </div>
         </section>
@@ -314,17 +315,17 @@ section ul {
       @endif
       @if(count( $data['kt_docs_repeater_education_count'])>0)
     <section id="education">
-        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;">Education</h2>
+        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Education</h2>
         @foreach($data['education_details'] as $edu)
         <section>
             <div class="jobtable">
             <div class="tablerow">
-                <span class="jobtitle" style="font-size: 12px;">{!! $edu['education_course'] !!}</span>
+                <span class="jobtitle" style="font-size: 12px;color:#464A4E;text-transform:uppercase;">{!! $edu['education_course'] !!}</span>
             </div>
-            <div class="tablerow" style="font-size: 12px;">
-                <span>{!! $edu['education_institute'] !!},{!! $edu['education_location'] !!}</span>
+            <div class="tablerow" style="font-size: 12px;color:#706F6F;">
+                <span>{!! $edu['education_institute'] !!}, {!! $edu['education_location'] !!}</span>
             </div>
-            <div class="tablerow" style="font-size: 12px;">
+            <div class="tablerow" style="font-size: 12px;color:#706F6F;">
                 <span>{!! $edu['education_duration'] !!}</span>
             </div>
             </div>
