@@ -252,8 +252,8 @@ section ul {
                 @endif
             </div>
             <div class="tablerow">
-                <span style="font-size: 12px;color:#706F6F;">{!! $exp['employer'] !!}, {!! $exp['city'] !!}, 
-                {!! $exp['state'] !!}, {!! $exp['country'] !!}</span>
+                <span style="font-size: 12px;color:#706F6F;">@if($exp['employer']){!! $exp['employer'] !!} @endif @if($exp['city']), {!! $exp['city'] !!} @endif @if($exp['state']), 
+                {!! $exp['state'] !!}@endif @if($exp['country']), {!! $exp['country'] !!}@endif</span>
             </div>
             @if(isset($exp['job_description']))
             <li class="bullet-check">
