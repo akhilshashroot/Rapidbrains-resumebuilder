@@ -207,20 +207,20 @@ section ul {
 <div class="row" style="margin-top: 40px;">
   <div class="column" >
    
-    <span><img style="width:4%;" src="https://www.rapidbrains.com/assets/img/icons/phone.png" > &nbsp;&nbsp;+91 977 8426 319 </span>
+    <span style="color: #706f6f;"><img style="width:4%;" src="https://www.rapidbrains.com/assets/img/icons/phone.png" > &nbsp;&nbsp;+91 977 8426 319 </span>
   </div>
   <div class="column1" >
-    <span><img style="width:3%;"  src="https://www.rapidbrains.com/assets/img/icons/2.png" > &nbsp;&nbsp;{!! $data['email'] !!}</span>
+    <span style="color: #706f6f;"><img style="width:3%;"  src="https://www.rapidbrains.com/assets/img/icons/2.png" > &nbsp;&nbsp;{!! $data['email'] !!}</span>
   </div>
 </div>
 
 <div class="row">
   <div class="column" >
   <img style="width:4%;"  src="https://www.rapidbrains.com/assets/img/icons/3.png" >
-    <span >&nbsp;&nbsp;Ground Floor, Athulya, Infopark,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kochi, Kerala, India</span>
+    <span style="color: #706f6f;">&nbsp;&nbsp;Ground Floor, Athulya, Infopark,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kochi, Kerala, India</span>
   </div>
   <div class="column1" >
-  <img style="width:3%;" src="https://www.rapidbrains.com/assets/img/icons/4.png" ><span>&nbsp;&nbsp;  www.rapidbrains.com</span>
+  <img style="width:3%;" src="https://www.rapidbrains.com/assets/img/icons/4.png" ><span style="color: #706f6f;">&nbsp;&nbsp;  www.rapidbrains.com</span>
   </div>
 </div>
     </header>
@@ -301,8 +301,8 @@ section ul {
         <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Certifications</h2>
         @foreach($data['certifications'] as $cert)
         <section>
-            <div class="jobtable">
-            <div class="tablerow">
+            <div class="jobtable" style="padding-bottom:10px;">
+            <div class="tablerow" style="padding-bottom:3px;">
                 <span class="jobtitle" style="font-size: 13px;color:#464A4E;text-transform:uppercase;">{!! $cert['certification'] !!}</span>
             </div>
             <div class="tablerow">
@@ -315,7 +315,7 @@ section ul {
       @endif
       @if(count( $data['kt_docs_repeater_education_count'])>0)
     <section id="education">
-        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Education</h2>
+        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:8px;text-transform:uppercase;color:#343f52;">Education</h2>
         @foreach($data['education_details'] as $edu)
         <section>
             <div class="jobtable">
