@@ -132,9 +132,6 @@ License: For each use you must have a valid license purchased only from above li
 				<div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2" style="background-image: url(assets/media/misc/inner-image.jpg)">
 					<!--begin::Content-->
 					<div class="d-flex flex-column flex-center py-15 px-5 px-md-15 w-100">
-						<!--begin::Logo-->
-							<img alt="Logo" src="{{asset('RapidBrains-logo.svg')}}" style="padding-left:100px;" class="h-55px" />
-						<!--end::Logo-->
 						<!--begin::Image-->
 						<img class="mx-auto w-275px w-md-50 w-xl-500px mb-10 mb-lg-20" src="assets/media/misc/auth-screens.png" alt="" />
 						<!--end::Image-->
@@ -159,7 +156,7 @@ License: For each use you must have a valid license purchased only from above li
 		<script src="assets/js/scripts.bundle.js"></script>
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Custom Javascript(used by this page)-->
-		// <script src="{{asset('assets/js/custom/authentication/sign-in/general.js')}}"></script>
+		 <script src="{{asset('assets/js/custom/authentication/sign-in/general.js')}}"></script>
 		<!--end::Custom Javascript-->
 		<!--end::Javascript-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
