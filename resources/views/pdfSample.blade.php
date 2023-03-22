@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,100italic,300italic,400italic,500italic,500,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lato:400,100,300,100italic,300italic,400italic,500italic,500,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
 
     <meta charset="UTF-8">
@@ -10,12 +10,12 @@
     <style>
 body {
     margin: 40px;
-    font-family: 'Roboto';
+    font-family: 'Lato';
     font-size: 12pt;
 }
 
 header {
-    font-family: 'Roboto';
+    font-family: 'Lato';
     padding-bottom: 10px;
     margin-top: -100px;
     /* border-bottom: 1px solid black !important; */
@@ -34,7 +34,7 @@ header span {
 }
 
 section h2 {
-    font-family: 'Roboto';
+    font-family: 'Lato';
     font-size: 14pt;
 }
 
@@ -151,6 +151,27 @@ section ul {
 .space{
     margin: 10px 0;
 }
+
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 15px; /* Should be removed. Only for demonstration */
+}
+.column1 {
+  float: left;
+  width: 65%;
+  padding: 10px;
+  height: 15px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
     </style>
 </head>
 
@@ -180,41 +201,27 @@ section ul {
     </div>
 </div>
 
-    <header id="info">
-    <table style="margin-top: 45px;">
+    <header id="info" style="margin-left:-10px;margin-bottom:30px;">
+   
+<div class="row" style="margin-top: 40px;">
+  <div class="column" >
+   
+    <span><img style="width:4%;" src="https://www.rapidbrains.com/assets/img/icons/phone.png" > &nbsp;&nbsp;+91 977 8426 319 </span>
+  </div>
+  <div class="column1" >
+    <span><img style="width:4%;"  src="https://www.rapidbrains.com/assets/img/icons/2.png" > &nbsp;&nbsp;{!! $data['email'] !!}</span>
+  </div>
+</div>
 
-<tbody><tr>
- <td style="font-size:10;"><img style="width:5%;" src="https://www.rapidbrains.com/assets/img/icons/phone.png" > &nbsp;&nbsp;+91 977 8426 319 
- </td>
-
- <td style="padding-left:72px;font-size:10;"><img style="width:5%;"  src="https://www.rapidbrains.com/assets/img/icons/2.png" > &nbsp;&nbsp;{!! $data['email'] !!}
- </td>
- <!-- <td style="padding-left:62px;"> Ground Floor, Athulya, Infopark,
-               Kochi, Kerala, India<br>
-
-               www.rapidbrains.com
-</td> -->
-
- 
- </tr>
- <tr>
- <td style="font-size:10;"><img style="width:5%;"  src="https://www.rapidbrains.com/assets/img/icons/3.png" >&nbsp;&nbsp;  Ground Floor, Athulya, Infopark, Kochi, Kerala, India</td>
-
- <td style="padding-left:72px;font-size:10;"><img style="width:5%;" src="https://www.rapidbrains.com/assets/img/icons/4.png" >&nbsp;&nbsp;  www.rapidbrains.com
- </td>
- <!-- <td style="padding-left:62px;"> Ground Floor, Athulya, Infopark,
-               Kochi, Kerala, India<br>
-
-               www.rapidbrains.com
-</td> -->
-
- 
- </tr>
-
-
-
-</tbody></table>
-
+<div class="row">
+  <div class="column" >
+   
+    <span><img style="width:4%;"  src="https://www.rapidbrains.com/assets/img/icons/3.png" >&nbsp;&nbsp;  Ground Floor, Athulya, Infopark, Kochi, Kerala, India</span>
+  </div>
+  <div class="column1" >
+    <span><img style="width:4%;" src="https://www.rapidbrains.com/assets/img/icons/4.png" >&nbsp;&nbsp;  www.rapidbrains.com</span>
+  </div>
+</div>
     </header>
     <section id="statement">
         <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;">Profile</h2>
