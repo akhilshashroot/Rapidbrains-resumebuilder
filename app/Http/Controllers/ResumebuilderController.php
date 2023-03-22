@@ -14,7 +14,7 @@ class ResumebuilderController extends Controller
       if(Auth::user()->role=='1'){
         $resumes= ResumeDetails::orderBy('id','desc')->get();
       }else{
-        $resumes= ResumeDetails::orderBy('id','desc')->where('added_by',Auth::user()->username)->get();
+        $resumes= ResumeDetails::orderBy('id','desc')->where('added_by',Auth::user()->id)->get();
 
       }  
      
@@ -66,7 +66,7 @@ class ResumebuilderController extends Controller
         $resume->education_institute = $request->education_institute;
         $resume->education_duration = $request->education_duration;
         $resume->education_location = $request->education_location;
-        $resume->added_by = Auth::user()->username;
+        $resume->added_by = Auth::user()->id;
         $filename = $resume->fullname.now()->timestamp.'.pdf';
         $resume->resume = 'Resume'.$filename;
         $resume->designation = $request->position;

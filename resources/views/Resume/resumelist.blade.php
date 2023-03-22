@@ -264,7 +264,7 @@ box-sizing: border-box;
 															{{$list->email}}
 														</td>
                                                         <td>
-															{{$list->added_by}}
+															{{$list->user->username}}
 														</td>
 														<td>
 														<a target="_blank" id="downloadlink" href="{{$list->resume}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Download Resume"><i class="fas fa-download"></i></a>&nbsp;&nbsp;
