@@ -185,7 +185,7 @@ class ResumebuilderController extends Controller
         $resume->education_institute = $request->education_institute;
         $resume->education_duration = $request->education_duration;
         $resume->education_location = $request->education_location;
-        $resume->added_by = Auth::user()->username;
+      
         $resume->designation = $request->position;
         $resume->certifications = json_encode($request->kt_docs_repeater_certification);
         $resume->education_details = json_encode($request->kt_docs_repeater_education);
