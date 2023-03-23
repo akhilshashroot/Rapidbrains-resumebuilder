@@ -228,13 +228,12 @@ section ul {
         <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Profile</h2>
       
 
-        <div class="jobtable">
-            <div class="tablerow">
-                <span class="jobtitle" style="font-size: 12px;color:#706F6F;text-align: justify;">{!! $data['summary'] !!}</span>
-            </div>
+            
+                <div style="font-size: 12px;color:#706F6F; margin-left: -35px;">{!! $data['summary'] !!}</div>
+       
           
           
-        </div>
+       
      
     </section>
     @if(count($data['kt_docs_repeater_basic_count'])>0)
@@ -269,11 +268,9 @@ section ul {
     @endif
     <section id="skills">
         <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Skills</h2>
-        <div class="jobtable">
-        <div class="tablerow">
-            <span class="jobtitle" style="font-size: 12px;color:#706F6F;">{!! $data['skills'] !!}</span>
-            </div>
-        </div>
+       
+             <div  style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $data['skills'] !!}</div>
+           
     </section>
     @if(count($data['kt_docs_repeater_basi_count'])>0)
     
