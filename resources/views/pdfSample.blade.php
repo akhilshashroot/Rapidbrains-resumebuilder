@@ -318,7 +318,7 @@ section ul {
         <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:8px;text-transform:uppercase;color:#343f52;">Education</h2>
         @foreach($data['education_details'] as $edu)
         <section>
-            <div class="jobtable">
+            <div class="jobtable" style="padding-bottom:10px;">
             <div class="tablerow">
                 <span class="jobtitle" style="font-size: 12px;color:#464A4E;text-transform:uppercase;">{!! $edu['education_course'] !!}</span>
             </div>
