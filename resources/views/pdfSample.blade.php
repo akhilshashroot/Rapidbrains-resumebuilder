@@ -241,26 +241,21 @@ section ul {
         <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Experience</h2>
         @foreach($data['experience'] as $exp)
         <section>
-            <div class="jobtable">
-            <div class="tablerow">
-                <span style="font-size: 12px;text-transform:uppercase;color:#464A4E;text-transform:uppercase;">{!! $exp['jobtitle'] !!}</span>
+                <div style="font-size: 12px;text-transform:uppercase;color:#464A4E;text-transform:uppercase;">{!! $exp['jobtitle'] !!}</div>
                 @if(!isset($exp['to']))
-                <span style="padding-left:380px;font-size: 12px;color:#706F6F;">{!! date("M-Y", strtotime($exp['from'])) !!} - Present</span>
+                <div style="padding-left:380px;font-size: 12px;color:#706F6F;">{!! date("M-Y", strtotime($exp['from'])) !!} - Present</div>
                 @else
-                <span style="padding-left:370px;font-size: 12px;color:#706F6F;">{!! date("M-Y", strtotime($exp['from'])) !!} - {!! date("M-Y", strtotime($exp['to'])) !!}</span>
+                <div style="padding-left:370px;font-size: 12px;color:#706F6F;">{!! date("M-Y", strtotime($exp['from'])) !!} - {!! date("M-Y", strtotime($exp['to'])) !!}</div>
                 @endif
-            </div>
-            <div class="tablerow">
-                <span style="font-size: 12px;color:#706F6F;">@if($exp['employer']){!! $exp['employer'] !!} @endif @if($exp['city']), {!! $exp['city'] !!} @endif @if($exp['state']), 
-                {!! $exp['state'] !!}@endif @if($exp['country']), {!! $exp['country'] !!}@endif</span>
-            </div>
+                <div style="font-size: 12px;color:#706F6F;">@if($exp['employer']){!! $exp['employer'] !!} @endif @if($exp['city']), {!! $exp['city'] !!} @endif @if($exp['state']), 
+                {!! $exp['state'] !!}@endif @if($exp['country']), {!! $exp['country'] !!}@endif</div>
+            
             @if(isset($exp['job_description']))
-                <span style="font-size: 12px;color:#706F6F;">{!! $exp['job_description'] !!}</span>
+                <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $exp['job_description'] !!}</div>
                 @endif
                 @if(isset($exp['job_projects']))
-                <span style="font-size: 12px;color:#706F6F;">{!! $exp['job_projects'] !!}</span>
+                <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $exp['job_projects'] !!}</div>
     @endif
-            </div>
         </section>
         @endforeach
        
@@ -278,19 +273,15 @@ section ul {
         <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Projects</h2>
         @foreach($data['projects'] as $prj)
         <section>
-            <div class="jobtable">
-            <div class="tablerow">
-                <span class="jobtitle" style="font-size: 13px;color:#464A4E;text-transform:uppercase;">{!! $prj['project_name'] !!}</span>
-                <span style="font-size: 12px;color:#706F6F;">{!! $prj['project_duration'] !!}</span>
-            </div>
+                <div  style="font-size: 13px;color:#464A4E;text-transform:uppercase;">{!! $prj['project_name'] !!}</div><br>
+                <div style="font-size: 12px;color:#706F6F;">{!! $prj['project_duration'] !!}</div>
             @if(isset($prj['project_description']))
-                <span style="font-size: 12px;color:#706F6F;">{!! $prj['project_description'] !!}</span>
+                <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $prj['project_description'] !!}</div>
     @endif
     @if(isset($prj['roles_responsibility']))
-                <span style="font-size: 12px;color:#706F6F;">{!! $prj['roles_responsibility'] !!}</span>
+                <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $prj['roles_responsibility'] !!}</div>
    
     @endif
-            </div>
         </section>
         @endforeach
     </section>
