@@ -242,9 +242,9 @@ section ul {
         @foreach($data['experience'] as $exp)
         <section>
                 <div style="font-size: 12px;text-transform:uppercase;color:#464A4E;text-transform:uppercase;">{!! $exp['jobtitle'] !!}</div>
-                @if(!isset($exp['to']))
+                @if(!isset($exp['to']) && isset($exp['from']))
                 <div style="padding-left:380px;font-size: 12px;color:#706F6F;">{!! date("M-Y", strtotime($exp['from'])) !!} - Present</div>
-                @else
+                @elseif(isset($exp['to']) && isset($exp['from']))
                 <div style="padding-left:370px;font-size: 12px;color:#706F6F;">{!! date("M-Y", strtotime($exp['from'])) !!} - {!! date("M-Y", strtotime($exp['to'])) !!}</div>
                 @endif
                 <div style="font-size: 12px;color:#706F6F;">@if($exp['employer']){!! $exp['employer'] !!} @endif @if($exp['city']), {!! $exp['city'] !!} @endif @if($exp['state']), 
