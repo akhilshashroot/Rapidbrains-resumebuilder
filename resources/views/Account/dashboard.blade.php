@@ -164,12 +164,12 @@
 												<div style="height: 10px;"></div>
 												<div class="col-lg-12">
 												<label class="form-label">Summary:</label>
-												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter summary" name="summary" ></textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0 summernote" placeholder="Enter summary" name="summary" ></textarea>
 												</div>
 												<div style="height: 10px;"></div>
 												<div class="col-lg-12">
 												<label class="form-label">Skills:</label>
-												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter skills" name="skills" ></textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0 summernote" placeholder="Enter skills" name="skills" ></textarea>
 												</div>
 												<!--end::Col-->
 											</div>
@@ -243,14 +243,14 @@
 				<div class="form-group row">
 				<div class="col-lg-12">
 												<label class="form-label">Job description:</label>
-												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter job description" name="job_description" ></textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0 summernote" placeholder="Enter job description" name="job_description" ></textarea>
 												</div>
 				</div>
 				<div style="height: 10px;"></div>
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Projects:</label>
-												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter project details" name="job_projects" ></textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0 summernote" placeholder="Enter project details" name="job_projects" ></textarea>
 												</div>
 				</div>
 				
@@ -266,7 +266,7 @@
 
     <!--begin::Form group-->
     <div class="form-group mt-5">
-        <a href="javascript:;" data-repeater-create class="btn btn-light-primary">
+        <a href="javascript:;" data-repeater-create class="btn btn-light-primary" onclick="reinitialize();">
             <i class="la la-plus"></i>Add
         </a>
     </div>
@@ -310,14 +310,14 @@
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Description:</label>
-												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter project description" name="project_description" ></textarea>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0 summernote" placeholder="Enter project description" name="project_description" ></textarea>
 												</div>
 				</div>
 				<div style="height: 10px;"></div>
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Roles & Responsibilities:</label>
-												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter Roles & Responsibilities" name="roles_responsibility" ></textarea>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0 summernote" placeholder="Enter Roles & Responsibilities" name="roles_responsibility" ></textarea>
 												</div>
 												<div class="col-md-2">
                         <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
@@ -332,7 +332,7 @@
 
     <!--begin::Form group-->
     <div class="form-group mt-5">
-        <a href="javascript:;" data-repeater-create class="btn btn-light-primary">
+        <a href="javascript:;" data-repeater-create class="btn btn-light-primary" onclick="reinitialize();">
             <i class="la la-plus"></i>Add
         </a>
     </div>
@@ -364,7 +364,7 @@
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Description:</label>
-												<textarea  rows="4"class="form-control mb-2 mb-md-0" placeholder="Enter certification description" name="certification_description" ></textarea>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0 summernote" placeholder="Enter certification description" name="certification_description" ></textarea>
 												</div>
 												<div class="col-md-2">
                         <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
@@ -379,7 +379,7 @@
 
     <!--begin::Form group-->
     <div class="form-group mt-5">
-        <a href="javascript:;" data-repeater-create class="btn btn-light-primary">
+        <a href="javascript:;" data-repeater-create class="btn btn-light-primary" onclick="reinitialize();">
             <i class="la la-plus"></i>Add
         </a>
     </div>
@@ -432,7 +432,7 @@
 
     <!--begin::Form group-->
     <div class="form-group mt-5">
-        <a href="javascript:;" data-repeater-create class="btn btn-light-primary">
+        <a href="javascript:;" data-repeater-create class="btn btn-light-primary" onclick="reinitialize();">
             <i class="la la-plus"></i>Add
         </a>
     </div>
@@ -665,6 +665,18 @@ error: function(request,msg,error) {
 
 				
 
+}
+$(document).ready(function() {
+   $('.summernote').summernote({
+	height: 150
+   });
+});
+function reinitialize() {
+	$(document).ready(function() {
+   $('.summernote').summernote({
+	height: 150
+   });
+});
 }
 </script>
 @endsection

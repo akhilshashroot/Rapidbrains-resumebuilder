@@ -26,6 +26,8 @@
 		<link href="{{asset('assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('assets/css/common.css')}}" rel="stylesheet" type="text/css" />
+		<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-lite.min.css" rel="stylesheet">
+
 
 		@yield('css')
 
@@ -1247,6 +1249,7 @@
 		<script src="{{asset('assets/js/custom/utilities/modals/upgrade-plan.js')}}"></script>
 		<script src="{{asset('assets/js/custom/utilities/modals/create-app.js')}}"></script>
 		<script src="{{asset('assets/js/custom/utilities/modals/users-search.js')}}"></script>
+		<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-lite.min.js"></script>
 		@yield('js')
 	
 
