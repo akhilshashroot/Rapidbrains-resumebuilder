@@ -180,6 +180,7 @@ class ResumebuilderController extends Controller
         $resume->summary = $request->summary;
         $resume->skill = json_encode($request->skills);
         $resume->experience = json_encode($request->kt_docs_repeater_basic);
+        dd($request->kt_docs_repeater_basic_exp);
         $resume->project_details = json_encode($request->kt_docs_repeater_basi);
         $resume->course = $request->education_course;
         $resume->education_institute = $request->education_institute;

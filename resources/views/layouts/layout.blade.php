@@ -1249,6 +1249,7 @@
 		<script src="{{asset('assets/js/custom/utilities/modals/upgrade-plan.js')}}"></script>
 		<script src="{{asset('assets/js/custom/utilities/modals/create-app.js')}}"></script>
 		<script src="{{asset('assets/js/custom/utilities/modals/users-search.js')}}"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-lite.min.js"></script>
 		@yield('js')
 	
