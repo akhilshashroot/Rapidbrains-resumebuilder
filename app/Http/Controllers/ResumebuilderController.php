@@ -179,17 +179,16 @@ class ResumebuilderController extends Controller
         $resume->address = $request->address;
         $resume->summary = $request->summary;
         $resume->skill = json_encode($request->skills);
-        $resume->experience = json_encode($request->kt_docs_repeater_basic);
-        dd($request->kt_docs_repeater_basic_exp);
-        $resume->project_details = json_encode($request->kt_docs_repeater_basi);
+        $resume->experience = json_encode(array_merge($request->kt_docs_repeater_basic,$request->kt_docs_repeater_basic_exp));
+        $resume->project_details = json_encode(array_merge($request->kt_docs_repeater_basi,$request->kt_docs_repeater_basi_prj));
         $resume->course = $request->education_course;
         $resume->education_institute = $request->education_institute;
         $resume->education_duration = $request->education_duration;
         $resume->education_location = $request->education_location;
       
         $resume->designation = $request->position;
-        $resume->certifications = json_encode($request->kt_docs_repeater_certification);
-        $resume->education_details = json_encode($request->kt_docs_repeater_education);
+        $resume->certifications = json_encode(array_merge($request->kt_docs_repeater_certification,$request->kt_docs_repeater_cert));
+        $resume->education_details = json_encode(array_merge($request->kt_docs_repeater_education,$request->kt_docs_repeater_edu));
         $res = $resume->save();
         $certifications_count= array_filter($request->kt_docs_repeater_certification[0]);
         $kt_docs_repeater_basi_count= array_filter($request->kt_docs_repeater_basi[0]);
@@ -201,17 +200,17 @@ class ResumebuilderController extends Controller
             'talentid' => $resume->talentid,
             'position' => $resume->designation,
             'summary' => $resume->summary,
-            'experience'=> $request->kt_docs_repeater_basic,
+            'experience'=> array_merge($request->kt_docs_repeater_basic,$request->kt_docs_repeater_basic_exp),
             'skills' => $request->skills,
-            'projects' => $request->kt_docs_repeater_basi,
+            'projects' => array_merge($request->kt_docs_repeater_basi,$request->kt_docs_repeater_basi_prj),
             'education' => $request->education_course,
             'education_institute' =>$request->education_institute,
             'education_duration' => $request->education_duration,
             'education_location' => $request->education_location,
             'phone' => $resume->phone,
             'email' => $resume->email,
-            'certifications'=> $request->kt_docs_repeater_certification,
-            'education_details'=> $request->kt_docs_repeater_education,
+            'certifications'=> array_merge($request->kt_docs_repeater_certification,$request->kt_docs_repeater_cert),
+            'education_details'=> array_merge($request->kt_docs_repeater_education,$request->kt_docs_repeater_edu),
             'certifications_count'=>$certifications_count,
             'kt_docs_repeater_basic_count'=>$kt_docs_repeater_basic_count,
             'kt_docs_repeater_basi_count'=>$kt_docs_repeater_basi_count,

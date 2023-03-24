@@ -149,7 +149,6 @@ var KTCreateAccount = (function () {
                             }
                         });
                         var formData = new FormData(document.getElementById("kt_create_account_form"));
-                        alert("hi");
                                         console.log(formData);
                                         var id = $('#resumeid').val();
                                         var base_url = $('#url').val();

@@ -200,10 +200,10 @@
 										@if(isset($resume_details->experienceArray))																	
 <div id="kt_docs_repeater_basic">
     <!--begin::Form group-->
-	
-	@foreach($resume_details->experienceArray as $exp)	
-    <div class="form-group">
+	<div class="form-group">
         <div data-repeater-list="kt_docs_repeater_basic">
+	@foreach($resume_details->experienceArray as $exp)	
+    
             <div data-repeater-item>
                 <div class="form-group row">
                     <div class="col-md-6">
@@ -264,10 +264,10 @@
                         </a>
                     </div>
             </div>
-        </div>
-    </div>
+        
 	@endforeach
-	
+	</div>
+    </div>
     <!--end::Form group-->
 
     <!--begin::Form group-->
@@ -372,10 +372,11 @@
 										</div>
 										@if(isset($resume_details->projectdetailsArray))
 										<div id="kt_docs_repeater_basi">
+										<div class="form-group">
+        <div data-repeater-list="kt_docs_repeater_basi">
 										@foreach($resume_details->projectdetailsArray as $prj)
     <!--begin::Form group-->
-    <div class="form-group">
-        <div data-repeater-list="kt_docs_repeater_basi">
+    
             <div data-repeater-item>
                 <div class="form-group row">
                     <div class="col-md-6">
@@ -408,9 +409,10 @@
                     </div>
 				</div>
             </div>
-        </div>
-    </div>
+        
 	@endforeach
+	</div>
+    </div>
     <!--end::Form group-->
 
     <!--begin::Form group-->
@@ -479,9 +481,10 @@
 										@if(isset($resume_details->certificationsArray))
 										<div id="kt_docs_repeater_certification">
     <!--begin::Form group-->
-	@foreach($resume_details->certificationsArray as $cert)
-    <div class="form-group">
+	<div class="form-group">
         <div data-repeater-list="kt_docs_repeater_certification">
+	@foreach($resume_details->certificationsArray as $cert)
+    
             <div data-repeater-item>
                 <div class="form-group row">
                     <div class="col-md-12">
@@ -503,9 +506,10 @@
                     </div>
 				</div>
             </div>
-        </div>
-    </div>
+        
 	@endforeach
+	</div>
+    </div>
     <!--end::Form group-->
 
     <!--begin::Form group-->
@@ -562,10 +566,11 @@
 										</div>
 										@if($resume_details->educationArray)
 										<div id="kt_docs_repeater_education">
+										<div class="form-group">
+        <div data-repeater-list="kt_docs_repeater_education">
 										@foreach($resume_details->educationArray as $edu)
     <!--begin::Form group-->
-    <div class="form-group">
-        <div data-repeater-list="kt_docs_repeater_education">
+    
             <div data-repeater-item>
 			<div class="form-group row">
 										<div class="col-lg-6">
@@ -595,9 +600,10 @@
 										</div>
 				
             </div>
-        </div>
-    </div>
+        
 	@endforeach
+	</div>
+    </div>
     <!--end::Form group-->
 
     <!--begin::Form group-->
@@ -710,7 +716,7 @@
 										<!--end::Svg Icon-->Previous</button>
 									</div>
 									<div>
-										<button type="button" class="btn btn-lg btn-primary" data-kt-stepper-action="submit"  id="display-submit">
+										<button type="button" class="btn btn-lg btn-primary" onclick="testsubmit();" data-kt-stepper-action="submit"  id="display-submit">
 											<span class="indicator-label">Submit
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
 											<span class="svg-icon svg-icon-4 ms-2">
@@ -949,6 +955,37 @@ function reinitialize() {
 	height: 150
    });
 });
+}
+function testsubmit() {
+	$.ajaxSetup({
+                            headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                        var formData = new FormData(document.getElementById("kt_create_account_form"));
+                                        console.log(formData);
+                                        var id = $('#resumeid').val();
+                                        var base_url = $('#url').val();
+                                        var url = base_url+'/resume/update/'+id;
+                                        console.log(url);
+                                        $.ajax({
+                                            type: 'post',
+                                            url: url,
+                                            data: formData,
+                                            contentType:false,
+                        cache: false,
+                        processData: false,
+                                            success: function (result) {
+                                                console.log(result.status);
+                                                if(result.status == true) {
+                                                    $("#downloadlink").attr("href", result.file)
+                                                        $('#downloadlink').show();
+                                                }
+                                            },
+                                            error: function(result) {
+            
+                                            }
+                                        });
 }
 </script>
 @endsection
