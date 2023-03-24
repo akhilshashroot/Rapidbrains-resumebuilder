@@ -241,14 +241,16 @@ section ul {
         <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Experience</h2>
         @foreach($data['experience'] as $exp)
         <section>
-                <div style="font-size: 12px;text-transform:uppercase;color:#464A4E;text-transform:uppercase;">{!! $exp['jobtitle'] !!}</div>
-                @if(!isset($exp['to']) && isset($exp['from']))
-                <div style="padding-left:380px;font-size: 12px;color:#706F6F;">{!! date("M-Y", strtotime($exp['from'])) !!} - Present</div>
-                @elseif(isset($exp['to']) && isset($exp['from']))
-                <div style="padding-left:370px;font-size: 12px;color:#706F6F;">{!! date("M-Y", strtotime($exp['from'])) !!} - {!! date("M-Y", strtotime($exp['to'])) !!}</div>
-                @endif
+                <div style="font-size: 12px;text-transform:uppercase;color:#464A4E;text-transform:uppercase;font-weight:500;">{!! $exp['jobtitle'] !!}</div>
                 <div style="font-size: 12px;color:#706F6F;">@if($exp['employer']){!! $exp['employer'] !!} @endif @if($exp['city']), {!! $exp['city'] !!} @endif @if($exp['state']), 
                 {!! $exp['state'] !!}@endif @if($exp['country']), {!! $exp['country'] !!}@endif</div>
+
+                @if(!isset($exp['to']) && isset($exp['from']))
+                <div style="font-size: 12px;color:#706F6F;">{!! date("M-Y", strtotime($exp['from'])) !!} - Present</div>
+                @elseif(isset($exp['to']) && isset($exp['from']))
+                <div style="font-size: 12px;color:#706F6F;">{!! date("M-Y", strtotime($exp['from'])) !!} - {!! date("M-Y", strtotime($exp['to'])) !!}</div>
+                @endif
+             
             
             @if(isset($exp['job_description']))
                 <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $exp['job_description'] !!}</div>
