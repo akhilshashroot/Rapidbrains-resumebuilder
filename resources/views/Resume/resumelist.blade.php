@@ -206,7 +206,8 @@ box-sizing: border-box;
 													<!--begin::Filter-->
 													<!--end::Filter-->
 													<!--begin::Export-->
-													
+													<a  class="btn btn-primary"  href="{{route('dashboard')}}">Add Resume</a>
+
 													<!--end::Export-->
 													<!--begin::Add customer--><!--end::Add customer-->
 												</div>
