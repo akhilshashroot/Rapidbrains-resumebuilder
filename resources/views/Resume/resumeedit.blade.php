@@ -197,7 +197,7 @@
 											<!--begin::Notice-->
 											<!--end::Notice-->
 										</div>
-										@if(isset($resume_details->experienceArray))																	
+										@if($resume_details->experience_count)																	
 <div id="kt_docs_repeater_basic">
     <!--begin::Form group-->
 	<div class="form-group">
@@ -370,7 +370,7 @@
 											<!--begin::Notice-->
 											<!--end::Notice-->
 										</div>
-										@if(isset($resume_details->projectdetailsArray))
+										@if($resume_details->project_count)
 										<div id="kt_docs_repeater_basi">
 										<div class="form-group">
         <div data-repeater-list="kt_docs_repeater_basi">
@@ -478,7 +478,7 @@
 											<!--begin::Notice-->
 											<!--end::Notice-->
 										</div>
-										@if(isset($resume_details->certificationsArray))
+										@if(isset($resume_details->certificationsArray[0]->certification))
 										<div id="kt_docs_repeater_certification">
     <!--begin::Form group-->
 	<div class="form-group">
@@ -564,7 +564,7 @@
 											<!--begin::Notice-->
 											<!--end::Notice-->
 										</div>
-										@if($resume_details->educationArray)
+										@if($resume_details->education_count)
 										<div id="kt_docs_repeater_education">
 										<div class="form-group">
         <div data-repeater-list="kt_docs_repeater_education">
