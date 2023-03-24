@@ -276,7 +276,7 @@ section ul {
         @foreach($data['projects'] as $prj)
         <section>
                 <div  style="font-size: 13px;color:#464A4E;text-transform:uppercase;">{!! $prj['project_name'] !!}</div><br>
-                <div style="font-size: 12px;color:#706F6F;">{!! $prj['project_duration'] !!}</div>
+                @if(isset($prj['project_duration']))<div style="font-size: 12px;color:#706F6F;">{!! $prj['project_duration'] !!}</div>   @endif
             @if(isset($prj['project_description']))
                 <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $prj['project_description'] !!}</div>
     @endif
@@ -298,10 +298,10 @@ section ul {
             <div class="tablerow" style="padding-bottom:3px;">
                 <span class="jobtitle" style="font-size: 13px;color:#464A4E;text-transform:uppercase;">{!! $cert['certification'] !!}</span>
             </div>
-            <div class="tablerow">
-                <span style="font-size: 12px;color:#706F6F;">{!! $cert['certification_description'] !!}</span>
+         
             </div>
-            </div>
+
+            <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $cert['certification_description'] !!}</div>
         </section>
         @endforeach
     </section>
