@@ -169,26 +169,46 @@ class ResumebuilderController extends Controller
         $resume_details->certificationsArray = json_decode($resume_details->certifications);
         $resume_details->educationArray = json_decode($resume_details->education_details);
         $resume_details->url = url('/');
-        if($resume_details->experienceArray[0]->employer) {
-            $resume_details->experience_count = 1;
+        if(is_array($resume_details->experienceArray)) {
+            if($resume_details->experienceArray[0]->employer) {
+                $resume_details->experience_count = 1;
+            } else {
+                $resume_details->experience_count = 0;
+            }
         } else {
             $resume_details->experience_count = 0;
         }
-        if($resume_details->projectdetailsArray[0]->project_name) {
-            $resume_details->project_count = 1;
+        
+        if(is_array($resume_details->projectdetailsArray)) {
+            if($resume_details->projectdetailsArray[0]->project_name) {
+                $resume_details->project_count = 1;
+            } else {
+                $resume_details->project_count = 0;
+            }
         } else {
             $resume_details->project_count = 0;
         }
-        if($resume_details->certificationsArray[0]->certification) {
-            $resume_details->certification_count = 1;
+        
+        if(is_array($resume_details->certificationsArray)) {
+            if($resume_details->certificationsArray[0]->certification) {
+                $resume_details->certification_count = 1;
+            } else {
+                $resume_details->certification_count = 0;
+            }
         } else {
             $resume_details->certification_count = 0;
         }
-        if($resume_details->educationArray[0]->education_course) {
-            $resume_details->education_count = 1;
+        
+        if(is_array($resume_details->educationArray)) {
+            if($resume_details->educationArray[0]->education_course) {
+                $resume_details->education_count = 1;
+            } else {
+                $resume_details->education_count = 0;
+            }
         } else {
-            $resume_details->education_count = 0;
+            $resume_details->education_count = 0;     
         }
+        
        /* $project_count= array_filter($resume_details->projectdetailsArray[0]);
         $certification_count= array_filter($resume_details->certificationsArray[0]);
         $education_count= array_filter($resume_details->educationArray[0]);*/

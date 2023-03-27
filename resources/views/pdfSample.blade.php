@@ -272,10 +272,10 @@ section ul {
     @if(count($data['kt_docs_repeater_basi_count'])>0)
     
     <section id="projects">
-        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Projects</h2>
+        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Projects</h2></br>
         @foreach($data['projects'] as $prj)
         <section>
-                <div  style="font-size: 13px;color:#464A4E;text-transform:uppercase;">{!! $prj['project_name'] !!}</div><br>
+                <div  style="font-size: 13px;color:#464A4E;text-transform:uppercase;">{!! $prj['project_name'] !!}</div>
                 @if(isset($prj['project_duration']))<div style="font-size: 12px;color:#706F6F;">{!! $prj['project_duration'] !!}</div>   @endif
             @if(isset($prj['project_description']))
                 <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $prj['project_description'] !!}</div>
