@@ -154,7 +154,7 @@
 												<div style="height: 10px;"></div>
 												<div class="col-lg-6">
 												<label class="form-label">Talent ID:</label>
-												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Talentid" name="talentid" value="{{$resume_details->talentid}}"/>
+												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Talentid" name="talentid" value="{{$resume_details->talentid}}" onblur="javascript:talentIdCheck(this);"/>
 												<label id="email-error" class="email" for="email" style="display:none;">Talent ID already exist</label>
 											   </div>
 												<div class="col-lg-6">
@@ -910,6 +910,7 @@ function talentIdCheck(e){
 
 	 
 var url = "{{ route('talentid.check') }}";
+var resumeid = $('#resumeid').val();
 
 $.ajax({
 	
@@ -919,7 +920,9 @@ $.ajax({
 dataType: 'json',
 data:{
 	'_token': '{{ csrf_token() }}',
-	'talentid':e.value
+	'talentid':e.value,
+	'resumeid':resumeid,
+	'mode':'edit'
 },
 success: function(result) {
 	console.log(result);

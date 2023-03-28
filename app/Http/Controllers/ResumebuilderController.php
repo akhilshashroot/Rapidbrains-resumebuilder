@@ -152,8 +152,12 @@ class ResumebuilderController extends Controller
  
     }
     public function talentIdChecker(Request $request) {
-      
+      if(isset($request->mode)) {
+        $talentid= ResumeDetails::where('talentid',$request->talentid)->where('id', '!=', $request->resumeid)->first();
+      } else {
         $talentid= ResumeDetails::where('talentid',$request->talentid)->first();
+      }
+        
        
         if($talentid){
             return 1;
@@ -222,6 +226,7 @@ class ResumebuilderController extends Controller
         $resume->address = $request->address;
         $resume->summary = $request->summary;
         $resume->skill = json_encode($request->skills);
+        $resume->talentid = $request->talentid;
         if(is_array($request->kt_docs_repeater_basic) && is_array($request->kt_docs_repeater_basic_exp)) {
             $resume->experience = json_encode(array_merge($request->kt_docs_repeater_basic,$request->kt_docs_repeater_basic_exp));
             $data_exp = array_merge($request->kt_docs_repeater_basic,$request->kt_docs_repeater_basic_exp);
@@ -260,21 +265,29 @@ class ResumebuilderController extends Controller
         $res = $resume->save();
         if(is_array($request->kt_docs_repeater_certification)) {
             $certifications_count= array_filter($request->kt_docs_repeater_certification[0]);
+        } elseif(is_array($request->kt_docs_repeater_cert)) {
+            $certifications_count= array_filter($request->kt_docs_repeater_cert[0]);
         } else {
             $certifications_count= [];
         }
         if(is_array($request->kt_docs_repeater_basi)) {
             $kt_docs_repeater_basi_count= array_filter($request->kt_docs_repeater_basi[0]);
+        } elseif(is_array($request->kt_docs_repeater_basi_prj)) {
+            $kt_docs_repeater_basi_count= array_filter($request->kt_docs_repeater_basi_prj[0]);
         } else {
             $kt_docs_repeater_basi_count= [];
         }
         if(is_array($request->kt_docs_repeater_basic)) {
             $kt_docs_repeater_basic_count= array_filter($request->kt_docs_repeater_basic[0]);
+        } elseif(is_array($request->kt_docs_repeater_basic_exp)) {
+            $kt_docs_repeater_basic_count= array_filter($request->kt_docs_repeater_basic_exp[0]);
         } else {
             $kt_docs_repeater_basic_count= [];
         }
         if(is_array($request->kt_docs_repeater_education)) {
             $kt_docs_repeater_education_count= array_filter($request->kt_docs_repeater_education[0]);
+        } elseif(is_array($request->kt_docs_repeater_edu)) {
+            $kt_docs_repeater_education_count= array_filter($request->kt_docs_repeater_edu[0]);
         } else {
             $kt_docs_repeater_education_count= [];
         }
