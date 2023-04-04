@@ -112,7 +112,8 @@ class ResumebuilderController extends Controller
             'certifications_count'=>$certifications_count,
             'kt_docs_repeater_basic_count'=>$kt_docs_repeater_basic_count,
             'kt_docs_repeater_basi_count'=>$kt_docs_repeater_basi_count,
-            'kt_docs_repeater_education_count'=>$kt_docs_repeater_education_count
+            'kt_docs_repeater_education_count'=>$kt_docs_repeater_education_count,
+            'logo'=>$request->logo
         ];
        
         
@@ -319,7 +320,8 @@ class ResumebuilderController extends Controller
             'certifications_count'=>$certifications_count,
             'kt_docs_repeater_basic_count'=>$kt_docs_repeater_basic_count,
             'kt_docs_repeater_basi_count'=>$kt_docs_repeater_basi_count,
-            'kt_docs_repeater_education_count'=>$kt_docs_repeater_education_count
+            'kt_docs_repeater_education_count'=>$kt_docs_repeater_education_count,
+            'logo'=>$request->logo
         ];
         $filename = $resume->resume;
         $pdf = PDF::loadView('pdfSample',compact('data'));
