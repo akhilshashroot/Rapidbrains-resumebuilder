@@ -51,6 +51,13 @@ class ResumebuilderController extends Controller
             'certification' => 'nullable',
             'certification_description' => 'nullable',
             ]);
+            $talentidcheck = ResumeDetails::where('talentid',$request->talentid)->first();
+            if($talentidcheck) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Error'
+                  ], 200);
+            }
         $resume = new ResumeDetails;
         $resume->logo = $request->logo;
         $resume->fullname = $request->fullname;
