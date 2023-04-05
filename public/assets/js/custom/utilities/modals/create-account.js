@@ -162,12 +162,23 @@ var KTCreateAccount = (function () {
                         processData: false,
                                             success: function (result) {
                                                 console.log(result.status);
-                                                $("#display-submit").removeAttr('disabled');
+                                                if(result.status) {
+                                                    $("#display-submit").removeAttr('disabled');
 
                                                 if(result.status == true) {
                                                     $("#downloadlink").attr("href", result.file)
                                                         $('#downloadlink').show();
                                                 }
+                                                } else {
+                                                    Swal.fire({
+                                                        text: "Talentid already created.",
+                                                        icon: "error",
+                                                        buttonsStyling: !1,
+                                                        confirmButtonText: "Ok, got it!",
+                                                        customClass: { confirmButton: "btn btn-primary" },
+                                                    });
+                                                }
+                                                
                                             },
                                             error: function(result) {
             

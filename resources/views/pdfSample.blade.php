@@ -190,8 +190,12 @@ section ul {
 </div> -->
 
 <div id="container">
+    @if($data['logo'] == 'rapidbrains') 
 <img style="width:100%;" class="full-width" src="https://www.rapidbrains.com/assets/img/svg/header-rb.png" >
-    <div id="example"><br>
+    @else
+    <img style="width:100%;" class="full-width" src="https://www.rapidbrains.com/assets/img/svg/no-logo.png" >
+    @endif
+<div id="example"><br>
     <span style="text-transform:uppercase;font-size:28;color:#343f52; letter-spacing: 2px;"><b>{!! $data['fullname'] !!}</b></span><br>
     <div style="padding-top:10px;"></div>
    <span  style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e;">{!! $data['position'] !!}</span><br>
