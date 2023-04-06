@@ -134,13 +134,20 @@
 											<input type="hidden"  name="email" id="email" />
 
 												<!--begin::Col-->
-												<div class="col-lg-6">
+												<div class="col-lg-4">
 												<label class="form-label">Select Logo:</label>
 												<select class="form-control mb-2 mb-md-0" name="logo">
 													<option value="rapidbrains">Rapidbrains</option>
 													<option value="hashroot">Hashroot</option>
 													<option value="uploadlogo">Upload logo</option>
 													<option value="nologo">No logo</option>
+												</select>
+												</div>
+												<div class="col-lg-2">
+												<label class="form-label">Save file as:</label>
+												<select class="form-control mb-2 mb-md-0" name="filetype">
+													<option value="pdf">PDF</option>
+													<option value="docs">docs</option>
 												</select>
 												</div>
 												<div class="col-lg-6">

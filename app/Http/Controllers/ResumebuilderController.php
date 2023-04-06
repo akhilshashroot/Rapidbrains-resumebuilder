@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\ResumeDetails;
 use Auth;
 use PDF;
+use DOMDocument;
+use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\IOFactory;
+use Html;
+use File;
+use Carbon\Carbon;
 
 class ResumebuilderController extends Controller
 {
@@ -50,6 +56,7 @@ class ResumebuilderController extends Controller
             'education_location' => 'nullable',
             'certification' => 'nullable',
             'certification_description' => 'nullable',
+            'filetype' => 'nullable',
             ]);
             $talentidcheck = ResumeDetails::where('talentid',$request->talentid)->first();
             if($talentidcheck) {
@@ -74,7 +81,12 @@ class ResumebuilderController extends Controller
         $resume->education_duration = $request->education_duration;
         $resume->education_location = $request->education_location;
         $resume->added_by = Auth::user()->id;
-        $filename = $resume->fullname.now()->timestamp.'.pdf';
+        if($request->filetype == 'PDF') {
+            $filename = $resume->fullname.now()->timestamp.'.pdf';
+        } else {
+            $filename = $resume->fullname.now()->timestamp.'.docx';
+        }
+        
         $resume->resume = 'Resume'.$filename;
         $resume->designation = $request->position;
         $resume->certifications = json_encode($request->kt_docs_repeater_certification);
@@ -115,11 +127,25 @@ class ResumebuilderController extends Controller
             'kt_docs_repeater_education_count'=>$kt_docs_repeater_education_count,
             'logo'=>$request->logo
         ];
-       
+        if($request->filetype == 'PDF') {
+            $pdf = PDF::loadView('pdfSample',compact('data'));
+            $pdf->save(public_path('Resume'.$filename));
+        } else {
+            $content = view('docSample',compact('data'))->render();
+            $dom = new DOMDocument();
+            @$dom->loadHTML($content);
+            $dom->saveXml();
+            
+            $phpWord = new PhpWord();
+            \PhpOffice\PhpWord\Shared\Html::addHtml($phpWord->addSection(), $dom->saveXml(), true);
+            $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
+            //$name='doc_index_'.Carbon::now()->format('d-m-y h-i').'.docx';
+            //dd($name);
+            $objWriter->save('Resume'.$filename);
+        }
         
-        $pdf = PDF::loadView('pdfSample',compact('data'));
-        $pdf->save(public_path('Resume'.$filename));
-        //return response()->download(public_path('Resume'.$filename));
+        
+    
         if($res) {
             return response()->json([
                 'status' => true,
@@ -238,16 +264,22 @@ class ResumebuilderController extends Controller
         if(is_array($request->kt_docs_repeater_basic) && is_array($request->kt_docs_repeater_basic_exp)) {
             $resume->experience = json_encode(array_merge($request->kt_docs_repeater_basic,$request->kt_docs_repeater_basic_exp));
             $data_exp = array_merge($request->kt_docs_repeater_basic,$request->kt_docs_repeater_basic_exp);
-        } else {
+        } elseif(is_array($request->kt_docs_repeater_basic_exp)) {
             $resume->experience = json_encode($request->kt_docs_repeater_basic_exp);
             $data_exp = $request->kt_docs_repeater_basic_exp;
+        } else {
+            $resume->experience = json_encode($request->kt_docs_repeater_basic);
+            $data_exp = $request->kt_docs_repeater_basic;
         }
         if(is_array($request->kt_docs_repeater_basi) && is_array($request->kt_docs_repeater_basi_prj)) {
             $resume->project_details = json_encode(array_merge($request->kt_docs_repeater_basi,$request->kt_docs_repeater_basi_prj));
             $data_prj = array_merge($request->kt_docs_repeater_basi,$request->kt_docs_repeater_basi_prj);
-        } else {
+        } elseif(is_array($request->kt_docs_repeater_basi_prj)) {
             $resume->project_details = json_encode($request->kt_docs_repeater_basi_prj);
             $data_prj = $request->kt_docs_repeater_basi_prj;
+        }else {
+            $resume->project_details = json_encode($request->kt_docs_repeater_basi);
+            $data_prj = $request->kt_docs_repeater_basi;
         }
         
         $resume->course = $request->education_course;
@@ -259,16 +291,22 @@ class ResumebuilderController extends Controller
         if(is_array($request->kt_docs_repeater_certification) && is_array($request->kt_docs_repeater_cert)) {
             $resume->certifications = json_encode(array_merge($request->kt_docs_repeater_certification,$request->kt_docs_repeater_cert));
             $data_cert = array_merge($request->kt_docs_repeater_certification,$request->kt_docs_repeater_cert);
-        } else {
+        } elseif(is_array($request->kt_docs_repeater_cert)) {
             $resume->certifications = json_encode($request->kt_docs_repeater_cert);
             $data_cert = $request->kt_docs_repeater_cert;
+        } else {
+            $resume->certifications = json_encode($request->kt_docs_repeater_certification);
+            $data_cert = $request->kt_docs_repeater_certification;
         }
         if(is_array($request->kt_docs_repeater_education) && is_array($request->kt_docs_repeater_edu)) {
             $resume->education_details = json_encode(array_merge($request->kt_docs_repeater_education,$request->kt_docs_repeater_edu));
             $data_edu = array_merge($request->kt_docs_repeater_education,$request->kt_docs_repeater_edu);
-        } else {
+        } elseif(is_array($request->kt_docs_repeater_edu)) {
             $resume->education_details = json_encode($request->kt_docs_repeater_edu);
             $data_edu = $request->kt_docs_repeater_edu;
+        } else {
+            $resume->education_details = json_encode($request->kt_docs_repeater_education);
+            $data_edu = $request->kt_docs_repeater_education;
         }
         $res = $resume->save();
         if(is_array($request->kt_docs_repeater_certification)) {

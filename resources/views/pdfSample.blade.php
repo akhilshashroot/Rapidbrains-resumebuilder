@@ -131,6 +131,13 @@ section ul {
     margin-right:-90px  !important;
 
 }
+#container12 {
+    position: relative;    
+    top: -80px;
+    margin-left:-90px  !important;
+    margin-right:-90px  !important;
+
+}
 .bullet-check{
     margin-left:15px  !important;
     color:#706f6f   !important;
@@ -188,13 +195,10 @@ section ul {
 </div>	
 
 </div> -->
-
+@if($data['logo'] == 'rapidbrains')
 <div id="container">
-    @if($data['logo'] == 'rapidbrains') 
 <img style="width:100%;" class="full-width" src="https://www.rapidbrains.com/assets/img/svg/header-rb.png" >
-    @else
-    <img style="width:100%;" class="full-width" src="https://www.rapidbrains.com/assets/img/svg/no-logo.png" >
-    @endif
+   
 <div id="example"><br>
     <span style="text-transform:uppercase;font-size:28;color:#343f52; letter-spacing: 2px;"><b>{!! $data['fullname'] !!}</b></span><br>
     <div style="padding-top:10px;"></div>
@@ -205,7 +209,21 @@ section ul {
 
     </div>
 </div>
+@else
+<div id="container12">
+    <img style="width:100%;" class="full-width" src="https://www.rapidbrains.com/assets/img/svg/no-logo.png" >
+    
+<div id="example"><br>
+    <span style="text-transform:uppercase;font-size:28;color:#343f52; letter-spacing: 2px;"><b>{!! $data['fullname'] !!}</b></span><br>
+    <div style="padding-top:10px;"></div>
+   <span  style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e;">{!! $data['position'] !!}</span><br>
+   <div style="padding-top:10px;"></div>
+        <span style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</span>
+      
 
+    </div>
+</div>
+@endif
     <header id="info" style="margin-left:-10px;margin-bottom:30px;">
    
 <div class="row" style="margin-top: 40px;">
