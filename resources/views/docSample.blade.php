@@ -1,13 +1,7 @@
-<!DOCTYPE HTML>
-
 <html>
-<head>
-<link href='https://fonts.googleapis.com/css?family=Lato:400,100,300,100italic,300italic,400italic,500italic,500,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
-
-    <meta charset="UTF-8">
-    <title>Resume</title>
-    <style>
+            <head><meta charset="utf-8">
+            <style>
 body {
     margin: 40px;
     font-family: 'Lato';
@@ -52,7 +46,6 @@ section.coverletter p {
 
 section ul {
     list-style-type: circle;
-    margin-left: 10px;
 }
 
 .jobtable {
@@ -182,77 +175,27 @@ section ul {
   clear: both;
 }
     </style>
-</head>
+        </head>
 
-<body>
-<!-- <div class="container1">
-    <div class="text">
-        <h1>Akhil Soman</h1>
-    <div>
- <div class="image">
-
-<img width="60" src="http://accounts.hashroot.com/assets/media/logo.png"/>
-
-</div>	
-
-</div> -->
-@if($data['logo'] == 'rapidbrains')
-<div id="container">
-<img style="width:100%;" class="full-width" src="https://www.rapidbrains.com/assets/img/svg/header-rb.png" >
+            <body>
+            <div id="container">
+    <p style="text-transform:uppercase;font-size:28;color:#343f52; letter-spacing: 2px;"><b>{{strtoupper($data['fullname']) }}</b></p>
+    <p  style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e;">{!! $data['position'] !!}</p>
+   <p style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</p>
    
-<div id="example"><br>
-    <span style="text-transform:uppercase;font-size:28;color:#343f52; letter-spacing: 2px;"><b>{!! $data['fullname'] !!}</b></span><br>
-    <div style="padding-top:10px;"></div>
-   <span  style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e;">{!! $data['position'] !!}</span><br>
-   <div style="padding-top:10px;"></div>
-        <span style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</span>
-      
-
-    </div>
 </div>
-@else
-<div id="container12">
-    <img style="width:100%;" class="full-width" src="https://www.rapidbrains.com/assets/img/svg/no-logo.png" >
-    
-<div id="example"><br>
-    <span style="text-transform:uppercase;font-size:28;color:#343f52; letter-spacing: 2px;"><b>{!! $data['fullname'] !!}</b></span><br>
-    <div style="padding-top:10px;"></div>
-   <span  style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e;">{!! $data['position'] !!}</span><br>
-   <div style="padding-top:10px;"></div>
-        <span style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</span>
-      
-
-    </div>
-</div>
-@endif
-    <header id="info" style="margin-left:-10px;margin-bottom:30px;">
-   
-<div class="row" style="margin-top: 40px;">
-  <div class="column" >
-   
-    <span style="color: #706f6f;"><img style="width:4%;" src="https://www.rapidbrains.com/assets/img/icons/phone.png" > &nbsp;&nbsp;+91 977 8426 319 </span>
-  </div>
-  <div class="column1" >
-    <span style="color: #706f6f;"><img style="width:3%;"  src="https://www.rapidbrains.com/assets/img/icons/2.png" > &nbsp;&nbsp;{!! $data['email'] !!}</span>
-  </div>
-</div>
-
-<div class="row">
-  <div class="column" >
-  <img style="width:4%;"  src="https://www.rapidbrains.com/assets/img/icons/3.png" >
-    <span style="color: #706f6f;">&nbsp;&nbsp;Ground Floor, Athulya, Infopark,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kochi, Kerala, India</span>
-  </div>
-  <div class="column1" >
-  <img style="width:3%;" src="https://www.rapidbrains.com/assets/img/icons/4.png" ><span style="color: #706f6f;">&nbsp;&nbsp;  www.rapidbrains.com</span>
-  </div>
-</div>
+<header id="info">
+    <span style="color: #706f6f;">+91 977 8426 319 </span>
+    <span style="color: #706f6f;">{!! $data['email'] !!}</span>
+    <span style="color: #706f6f;">Ground Floor, Athulya, Infopark,<br>Kochi, Kerala, India</span>
+    <span style="color: #706f6f;">www.rapidbrains.com</span>
     </header>
     <section id="statement">
         <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Profile</h2>
       
 
             
-                <div style="font-size: 12px;color:#706F6F; margin-left: -40px;">{!! $data['summary'] !!}</div>
+                <div style="font-size: 12px;color:#706F6F; margin-left: -35px;">{!! $data['summary'] !!}</div>
        
           
           
@@ -264,7 +207,7 @@ section ul {
         <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Experience</h2>
         @foreach($data['experience'] as $exp)
         <section>
-                <div style="font-size: 12px;text-transform:uppercase;color:#464A4E;text-transform:uppercase;">{!! $exp['jobtitle'] !!}</div>
+                <div style="font-size: 12px;text-transform:uppercase;color:#464A4E;text-transform:uppercase;font-weight:500;">{!! $exp['jobtitle'] !!}</div>
                 <div style="font-size: 12px;color:#706F6F;">@if($exp['employer']){!! $exp['employer'] !!} @endif @if($exp['city']), {!! $exp['city'] !!} @endif @if($exp['state']), 
                 {!! $exp['state'] !!}@endif @if($exp['country']), {!! $exp['country'] !!}@endif</div>
 
@@ -276,10 +219,10 @@ section ul {
              
             
             @if(isset($exp['job_description']))
-                <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $exp['job_description'] !!}</div>
+                <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $exp['job_description'] !!}</div>
                 @endif
                 @if(isset($exp['job_projects']))
-                <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $exp['job_projects'] !!}</div>
+                <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $exp['job_projects'] !!}</div>
     @endif
         </section>
         @endforeach
@@ -289,7 +232,7 @@ section ul {
     <section id="skills">
         <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Skills</h2>
        
-             <div  style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $data['skills'] !!}</div>
+             <div  style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $data['skills'] !!}</div>
            
     </section>
     @if(count($data['kt_docs_repeater_basi_count'])>0)
@@ -301,10 +244,10 @@ section ul {
                 <div  style="font-size: 13px;color:#464A4E;text-transform:uppercase;">{!! $prj['project_name'] !!}</div>
                 @if(isset($prj['project_duration']))<div style="font-size: 12px;color:#706F6F;">{!! $prj['project_duration'] !!}</div>   @endif
             @if(isset($prj['project_description']))
-                <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $prj['project_description'] !!}</div>
+                <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $prj['project_description'] !!}</div>
     @endif
     @if(isset($prj['roles_responsibility']))
-                <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $prj['roles_responsibility'] !!}</div>
+                <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $prj['roles_responsibility'] !!}</div>
    
     @endif
         </section>
@@ -324,7 +267,7 @@ section ul {
          
             </div>
 
-            <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $cert['certification_description'] !!}</div>
+            <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $cert['certification_description'] !!}</div>
         </section>
         @endforeach
     </section>
@@ -349,6 +292,7 @@ section ul {
        @endforeach
     </section>
     @endif
-   
-</body>
-</html>
+
+            </body>
+
+            </html>
