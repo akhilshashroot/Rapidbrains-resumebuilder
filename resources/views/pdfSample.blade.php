@@ -52,6 +52,7 @@ section.coverletter p {
 
 section ul {
     list-style-type: circle;
+    margin-left: 10px;
 }
 
 .jobtable {
@@ -233,7 +234,7 @@ section ul {
       
 
             
-                <div style="font-size: 12px;color:#706F6F; margin-left: -35px;">{!! $data['summary'] !!}</div>
+                <div style="font-size: 12px;color:#706F6F; margin-left: -40px;">{!! $data['summary'] !!}</div>
        
           
           
@@ -245,7 +246,7 @@ section ul {
         <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Experience</h2>
         @foreach($data['experience'] as $exp)
         <section>
-                <div style="font-size: 12px;text-transform:uppercase;color:#464A4E;text-transform:uppercase;font-weight:500;">{!! $exp['jobtitle'] !!}</div>
+                <div style="font-size: 12px;text-transform:uppercase;color:#464A4E;text-transform:uppercase;">{!! $exp['jobtitle'] !!}</div>
                 <div style="font-size: 12px;color:#706F6F;">@if($exp['employer']){!! $exp['employer'] !!} @endif @if($exp['city']), {!! $exp['city'] !!} @endif @if($exp['state']), 
                 {!! $exp['state'] !!}@endif @if($exp['country']), {!! $exp['country'] !!}@endif</div>
 
@@ -257,10 +258,10 @@ section ul {
              
             
             @if(isset($exp['job_description']))
-                <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $exp['job_description'] !!}</div>
+                <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $exp['job_description'] !!}</div>
                 @endif
                 @if(isset($exp['job_projects']))
-                <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $exp['job_projects'] !!}</div>
+                <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $exp['job_projects'] !!}</div>
     @endif
         </section>
         @endforeach
@@ -270,7 +271,7 @@ section ul {
     <section id="skills">
         <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Skills</h2>
        
-             <div  style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $data['skills'] !!}</div>
+             <div  style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $data['skills'] !!}</div>
            
     </section>
     @if(count($data['kt_docs_repeater_basi_count'])>0)
@@ -282,10 +283,10 @@ section ul {
                 <div  style="font-size: 13px;color:#464A4E;text-transform:uppercase;">{!! $prj['project_name'] !!}</div>
                 @if(isset($prj['project_duration']))<div style="font-size: 12px;color:#706F6F;">{!! $prj['project_duration'] !!}</div>   @endif
             @if(isset($prj['project_description']))
-                <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $prj['project_description'] !!}</div>
+                <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $prj['project_description'] !!}</div>
     @endif
     @if(isset($prj['roles_responsibility']))
-                <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $prj['roles_responsibility'] !!}</div>
+                <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $prj['roles_responsibility'] !!}</div>
    
     @endif
         </section>
@@ -305,7 +306,7 @@ section ul {
          
             </div>
 
-            <div style="font-size: 12px;color:#706F6F;margin-left: -35px;">{!! $cert['certification_description'] !!}</div>
+            <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $cert['certification_description'] !!}</div>
         </section>
         @endforeach
     </section>
