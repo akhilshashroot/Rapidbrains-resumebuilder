@@ -208,6 +208,7 @@ class ResumebuilderController extends Controller
         $resume_details->educationArray = json_decode($resume_details->education_details);
         $resume_details->url = url('/');
         if(is_array($resume_details->experienceArray)) {
+           
             if($resume_details->experienceArray[0]->employer) {
                 $resume_details->experience_count = 1;
             } else {

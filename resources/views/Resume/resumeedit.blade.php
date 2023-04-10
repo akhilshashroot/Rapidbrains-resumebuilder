@@ -198,21 +198,21 @@
 											<!--end::Notice-->
 										</div>
 										@if($resume_details->experience_count)																	
-<div id="kt_docs_repeater_basic">
+<div id="kt_docs_repeater_basic" style="margin-top: -40px;">
     <!--begin::Form group-->
 	<div class="form-group">
-        <div data-repeater-list="kt_docs_repeater_basic">
+        <div data-repeater-list="kt_docs_repeater_basic" >
 	@foreach($resume_details->experienceArray as $exp)	
     
-            <div data-repeater-item>
+            <div data-repeater-item><br><br>
                 <div class="form-group row">
                     <div class="col-md-6">
                         <label class="form-label">Employer:</label>
-                        <input type="text" class="form-control mb-2 mb-md-0" name="employer" placeholder="Enter full name" value="{{$exp->employer}}" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="employer" placeholder="Enter Employer name" value="{{$exp->employer}}" />
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Role or Job title:</label>
-                        <input type="text" class="form-control mb-2 mb-md-0" name="jobtitle" placeholder="Enter contact number" value="{{$exp->jobtitle}}" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="jobtitle" placeholder="Enter Role or Job title" value="{{$exp->jobtitle}}" />
                     </div>
                     
                 </div>
@@ -220,11 +220,11 @@
 				<div class="form-group row">
 					<div class="col-md-6">
                         <label class="form-label">From:</label>
-                        <input type="date" class="form-control mb-2 mb-md-0" name="from" placeholder="Enter full name" value="{{$exp->from}}" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="from" placeholder="Enter from" value="{{$exp->from}}" />
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">To:</label>
-                        <input type="date" class="form-control mb-2 mb-md-0" name="to" placeholder="Enter contact number" value="{{$exp->to}}" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="to" placeholder="Enter to" value="{{$exp->to}}" />
                     </div>
 				
 				</div>
@@ -275,11 +275,11 @@
     <!--end::Form group-->
 </div>
 @endif
-<div id="kt_docs_repeater_basic_exp">
+<div id="kt_docs_repeater_basic_exp" style="margin-top: -40px;">
     <!--begin::Form group-->
     <div class="form-group">
         <div data-repeater-list="kt_docs_repeater_basic_exp">
-            <div data-repeater-item>
+            <div data-repeater-item><br><br>
                 <div class="form-group row">
                     <div class="col-md-6">
                         <label class="form-label">Employer:</label>
@@ -371,13 +371,13 @@
 											<!--end::Notice-->
 										</div>
 										@if($resume_details->project_count)
-										<div id="kt_docs_repeater_basi">
+										<div id="kt_docs_repeater_basi" style="margin-top: -56px;">
 										<div class="form-group">
         <div data-repeater-list="kt_docs_repeater_basi">
 										@foreach($resume_details->projectdetailsArray as $prj)
     <!--begin::Form group-->
     
-            <div data-repeater-item>
+            <div data-repeater-item><br><br>
                 <div class="form-group row">
                     <div class="col-md-6">
                         <label class="form-label">Project Name:</label>
@@ -420,11 +420,11 @@
     <!--end::Form group-->
 </div>
 @endif
-<div id="kt_docs_repeater_basi_prj">
+<div id="kt_docs_repeater_basi_prj" style="margin-top: -56px;">
     <!--begin::Form group-->
     <div class="form-group">
         <div data-repeater-list="kt_docs_repeater_basi_prj">
-            <div data-repeater-item>
+            <div data-repeater-item><br><br>
                 <div class="form-group row">
                     <div class="col-md-6">
                         <label class="form-label">Project Name:</label>
@@ -473,19 +473,19 @@
 										<!--begin::Input group-->
 										<div class="pb-10 pb-lg-15">
 											<!--begin::Title-->
-											<h2 class="fw-bold text-dark">Certifications</h2>
+											<h2 class="fw-bold text-dark" style="padding-top: 41px;">Certifications</h2>
 											<!--end::Title-->
 											<!--begin::Notice-->
 											<!--end::Notice-->
 										</div>
 										@if(isset($resume_details->certificationsArray[0]->certification))
-										<div id="kt_docs_repeater_certification">
+										<div id="kt_docs_repeater_certification" style="margin-top: -70px;">
     <!--begin::Form group-->
 	<div class="form-group">
         <div data-repeater-list="kt_docs_repeater_certification">
 	@foreach($resume_details->certificationsArray as $cert)
     
-            <div data-repeater-item>
+            <div data-repeater-item><br><br>
                 <div class="form-group row">
                     <div class="col-md-12">
                         <label class="form-label">certification:</label>
@@ -519,11 +519,11 @@
 @endif
 										
 									
-										<div id="kt_docs_repeater_cert">
+										<div id="kt_docs_repeater_cert" style="margin-top: -70px;">
     <!--begin::Form group-->
     <div class="form-group">
         <div data-repeater-list="kt_docs_repeater_cert">
-            <div data-repeater-item>
+            <div data-repeater-item><br><br>
                 <div class="form-group row">
                     <div class="col-md-12">
                         <label class="form-label">certification:</label>
@@ -559,7 +559,7 @@
 
 <div class="pb-10 pb-lg-15">
 											<!--begin::Title-->
-											<h2 class="fw-bold text-dark">Education Details</h2>
+											<h2 class="fw-bold text-dark" style="padding-top: 41px;">Education Details</h2>
 											<!--end::Title-->
 											<!--begin::Notice-->
 											<!--end::Notice-->
@@ -567,11 +567,11 @@
 										@if($resume_details->education_count)
 										<div id="kt_docs_repeater_education">
 										<div class="form-group">
-        <div data-repeater-list="kt_docs_repeater_education">
+        <div data-repeater-list="kt_docs_repeater_education" style="margin-top: -56px;">
 										@foreach($resume_details->educationArray as $edu)
     <!--begin::Form group-->
     
-            <div data-repeater-item>
+            <div data-repeater-item><br><br>
 			<div class="form-group row">
 										<div class="col-lg-6">
 										<label class="form-label">Course:</label>
@@ -614,8 +614,8 @@
 <div id="kt_docs_repeater_edu">
     <!--begin::Form group-->
     <div class="form-group">
-        <div data-repeater-list="kt_docs_repeater_edu">
-            <div data-repeater-item>
+        <div data-repeater-list="kt_docs_repeater_edu" style="margin-top: -56px;">
+            <div data-repeater-item><br><br>
 			<div class="form-group row">
 										<div class="col-lg-6">
 										<label class="form-label">Course:</label>
