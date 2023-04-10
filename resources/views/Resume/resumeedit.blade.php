@@ -203,7 +203,7 @@
 											<!--end::Notice-->
 										</div>
 										@if($resume_details->experience_count)																	
-<div id="kt_docs_repeater_basic" style="margin-top: -40px;">
+<div id="kt_docs_repeater_basic" style="margin-top: -40px;margin-bottom: 30px;">
     <!--begin::Form group-->
 	<div class="form-group">
         <div data-repeater-list="kt_docs_repeater_basic" >
@@ -280,7 +280,7 @@
     <!--end::Form group-->
 </div>
 @endif
-<div id="kt_docs_repeater_basic_exp" style="margin-top: 10px;">
+<div id="kt_docs_repeater_basic_exp" style="margin-top: -20px;">
     <!--begin::Form group-->
     <div class="form-group">
         <div data-repeater-list="kt_docs_repeater_basic_exp">
@@ -376,7 +376,7 @@
 											<!--end::Notice-->
 										</div>
 										@if($resume_details->project_count)
-										<div id="kt_docs_repeater_basi" style="margin-top: -56px;">
+										<div id="kt_docs_repeater_basi" style="margin-top: -56px;margin-bottom: 30px;">
 										<div class="form-group">
         <div data-repeater-list="kt_docs_repeater_basi">
 										@foreach($resume_details->projectdetailsArray as $prj)
@@ -425,7 +425,7 @@
     <!--end::Form group-->
 </div>
 @endif
-<div id="kt_docs_repeater_basi_prj" style="margin-top: 10px;">
+<div id="kt_docs_repeater_basi_prj" style="margin-top: -30px;">
     <!--begin::Form group-->
     <div class="form-group">
         <div data-repeater-list="kt_docs_repeater_basi_prj">
@@ -484,7 +484,7 @@
 											<!--end::Notice-->
 										</div>
 										@if(isset($resume_details->certificationsArray[0]->certification))
-										<div id="kt_docs_repeater_certification" style="margin-top: -70px;">
+										<div id="kt_docs_repeater_certification" style="margin-top: -70px;margin-bottom: 30px;">
     <!--begin::Form group-->
 	<div class="form-group">
         <div data-repeater-list="kt_docs_repeater_certification">
@@ -524,7 +524,7 @@
 @endif
 										
 									
-										<div id="kt_docs_repeater_cert" style="margin-top: -10px;">
+										<div id="kt_docs_repeater_cert" style="margin-top: -30px;">
     <!--begin::Form group-->
     <div class="form-group">
         <div data-repeater-list="kt_docs_repeater_cert">
@@ -572,7 +572,7 @@
 										@if($resume_details->education_count)
 										<div id="kt_docs_repeater_education">
 										<div class="form-group">
-        <div data-repeater-list="kt_docs_repeater_education" style="margin-top: -56px;">
+        <div data-repeater-list="kt_docs_repeater_education" style="margin-top: -56px;margin-bottom: 30px;">
 										@foreach($resume_details->educationArray as $edu)
     <!--begin::Form group-->
     
@@ -619,7 +619,7 @@
 <div id="kt_docs_repeater_edu">
     <!--begin::Form group-->
     <div class="form-group">
-        <div data-repeater-list="kt_docs_repeater_edu" style="margin-top: 10px;">
+        <div data-repeater-list="kt_docs_repeater_edu" style="margin-top: -30px;">
             <div data-repeater-item><br><br>
 			<div class="form-group row">
 										<div class="col-lg-6">
