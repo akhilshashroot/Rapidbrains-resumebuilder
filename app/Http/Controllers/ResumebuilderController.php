@@ -81,7 +81,7 @@ class ResumebuilderController extends Controller
         $resume->education_duration = $request->education_duration;
         $resume->education_location = $request->education_location;
         $resume->added_by = Auth::user()->id;
-        if($request->filetype == 'PDF') {
+        if($request->filetype == 'pdf') {
             $filename = $resume->fullname.now()->timestamp.'.pdf';
         } else {
             $filename = $resume->fullname.now()->timestamp.'.docx';
@@ -127,7 +127,7 @@ class ResumebuilderController extends Controller
             'kt_docs_repeater_education_count'=>$kt_docs_repeater_education_count,
             'logo'=>$request->logo
         ];
-        if($request->filetype == 'PDF') {
+        if($request->filetype == 'pdf') {
             $pdf = PDF::loadView('pdfSample',compact('data'));
             $pdf->save(public_path('Resume'.$filename));
         } else {

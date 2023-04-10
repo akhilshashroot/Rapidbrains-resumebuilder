@@ -166,12 +166,12 @@
 												<div style="height: 10px;"></div>
 												<div class="col-lg-12">
 												<label class="form-label">Summary:</label>
-												<textarea rows="4" class="form-control mb-2 mb-md-0 summernote" placeholder="Enter summary" name="summary" >{!!$resume_details->summary!!}</textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0" placeholder="Enter summary" name="summary" >{!!$resume_details->summary!!}</textarea>
 												</div>
 												<div style="height: 10px;"></div>
 												<div class="col-lg-12">
 												<label class="form-label">Skills:</label>
-												<textarea rows="4" class="form-control mb-2 mb-md-0 summernote" placeholder="Enter skills" name="skills" >{!!$resume_details->skillArray!!}</textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0 " placeholder="Enter skills" name="skills" >{!!$resume_details->skillArray!!}</textarea>
 												</div>
 												<!--end::Col-->
 											</div>
@@ -247,14 +247,14 @@
 				<div class="form-group row">
 				<div class="col-lg-12">
 												<label class="form-label">Job description:</label>
-												<textarea rows="4" class="form-control mb-2 mb-md-0 summernote" placeholder="Enter job description" name="job_description" >{!!$exp->job_description!!}</textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0 " placeholder="Enter job description" name="job_description" >{!!$exp->job_description!!}</textarea>
 												</div>
 				</div>
 				<div style="height: 10px;"></div>
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Projects:</label>
-												<textarea rows="4" class="form-control mb-2 mb-md-0 summernote" placeholder="Enter project details" name="job_projects" >{!!$exp->job_projects!!}</textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0 " placeholder="Enter project details" name="job_projects" >{!!$exp->job_projects!!}</textarea>
 												</div>
 				</div>
 				
@@ -283,11 +283,11 @@
                 <div class="form-group row">
                     <div class="col-md-6">
                         <label class="form-label">Employer:</label>
-                        <input type="text" class="form-control mb-2 mb-md-0" name="employer" placeholder="Enter full name" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="employer" placeholder="Enter Employer name" />
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Role or Job title:</label>
-                        <input type="text" class="form-control mb-2 mb-md-0" name="jobtitle" placeholder="Enter contact number" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="jobtitle" placeholder="Enter Role or Job title" />
                     </div>
                     
                 </div>
@@ -295,11 +295,11 @@
 				<div class="form-group row">
 					<div class="col-md-6">
                         <label class="form-label">From:</label>
-                        <input type="date" class="form-control mb-2 mb-md-0" name="from" placeholder="Enter full name" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="from" placeholder="From" />
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">To:</label>
-                        <input type="date" class="form-control mb-2 mb-md-0" name="to" placeholder="Enter contact number" />
+                        <input type="text" class="form-control mb-2 mb-md-0" name="to" placeholder="To" />
                     </div>
 				
 				</div>
@@ -322,14 +322,14 @@
 				<div class="form-group row">
 				<div class="col-lg-12">
 												<label class="form-label">Job description:</label>
-												<textarea rows="4" class="form-control mb-2 mb-md-0 summernote" placeholder="Enter job description" name="job_description" ></textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0 " placeholder="Enter job description" name="job_description" ></textarea>
 												</div>
 				</div>
 				<div style="height: 10px;"></div>
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Projects:</label>
-												<textarea rows="4" class="form-control mb-2 mb-md-0 summernote" placeholder="Enter project details" name="job_projects" ></textarea>
+												<textarea rows="4" class="form-control mb-2 mb-md-0 " placeholder="Enter project details" name="job_projects" ></textarea>
 												</div>
 				</div>
 				
@@ -393,14 +393,14 @@
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Description:</label>
-												<textarea  rows="4"class="form-control mb-2 mb-md-0 summernote" placeholder="Enter project description" name="project_description" >{!!$prj->project_description!!}</textarea>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0 " placeholder="Enter project description" name="project_description" >{!!$prj->project_description!!}</textarea>
 												</div>
 				</div>
 				<div style="height: 10px;"></div>
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Roles & Responsibilities:</label>
-												<textarea  rows="4"class="form-control mb-2 mb-md-0 summernote" placeholder="Enter Roles & Responsibilities" name="roles_responsibility" >{!!@$prj->roles_responsibility!!}</textarea>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0 " placeholder="Enter Roles & Responsibilities" name="roles_responsibility" >{!!@$prj->roles_responsibility!!}</textarea>
 												</div>
 												<div class="col-md-2">
                         <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
@@ -440,14 +440,14 @@
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Description:</label>
-												<textarea  rows="4"class="form-control mb-2 mb-md-0 summernote" placeholder="Enter project description" name="project_description" ></textarea>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0 " placeholder="Enter project description" name="project_description" ></textarea>
 												</div>
 				</div>
 				<div style="height: 10px;"></div>
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Roles & Responsibilities:</label>
-												<textarea  rows="4"class="form-control mb-2 mb-md-0 summernote" placeholder="Enter Roles & Responsibilities" name="roles_responsibility" ></textarea>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0 " placeholder="Enter Roles & Responsibilities" name="roles_responsibility" ></textarea>
 												</div>
 												<div class="col-md-2">
                         <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
@@ -497,7 +497,7 @@
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Description:</label>
-												<textarea  rows="4"class="form-control mb-2 mb-md-0 summernote" placeholder="Enter certification description" name="certification_description" >{!!$cert->certification_description!!}</textarea>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0 " placeholder="Enter certification description" name="certification_description" >{!!$cert->certification_description!!}</textarea>
 												</div>
 												<div class="col-md-2">
                         <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">
@@ -535,7 +535,7 @@
 				<div class="form-group row">
 				<div class="col-lg-10">
 												<label class="form-label">Description:</label>
-												<textarea  rows="4"class="form-control mb-2 mb-md-0 summernote" placeholder="Enter certification description" name="certification_description" ></textarea>
+												<textarea  rows="4"class="form-control mb-2 mb-md-0 " placeholder="Enter certification description" name="certification_description" ></textarea>
 												</div>
 												<div class="col-md-2">
                         <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-light-danger mt-3 mt-md-8">

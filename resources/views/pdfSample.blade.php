@@ -252,7 +252,21 @@ section ul {
       
 
             
-                <div style="font-size: 12px;color:#706F6F; margin-left: -40px;">{!! $data['summary'] !!}</div>
+                <div style="font-size: 12px;color:#706F6F; margin-left: -40px;">
+                
+                @if($data['summary'])
+                <ul>
+              <?php  $lines = explode("\n",$data['summary']); ?>
+                @foreach ($lines as $line)
+<li>{{$line}}</li>
+@endforeach
+</ul>
+                @endif
+           
+                
+               
+            
+            </div>
        
           
           
@@ -269,45 +283,113 @@ section ul {
                 {!! $exp['state'] !!}@endif @if($exp['country']), {!! $exp['country'] !!}@endif</div>
 
                 @if(!isset($exp['to']) && isset($exp['from']))
-                <div style="font-size: 12px;color:#706F6F;">{!! date("M-Y", strtotime($exp['from'])) !!} - Present</div>
+                <div style="font-size: 12px;color:#706F6F;">{!! $exp['from'] !!}- Present</div>
                 @elseif(isset($exp['to']) && isset($exp['from']))
-                <div style="font-size: 12px;color:#706F6F;">{!! date("M-Y", strtotime($exp['from'])) !!} - {!! date("M-Y", strtotime($exp['to'])) !!}</div>
+                <div style="font-size: 12px;color:#706F6F;">{!! $exp['from'] !!} - {!! $exp['to'] !!}</div>
                 @endif
              
             
             @if(isset($exp['job_description']))
-                <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $exp['job_description'] !!}</div>
+                <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">
+                @if($exp['job_description'])
+                <ul>
+              <?php  $job_descriptions = explode("\n",$exp['job_description']); ?>
+                @foreach ($job_descriptions as $job_description)
+<li>{{$job_description}}</li>
+@endforeach
+</ul>
+                @endif
+                
+                
+              </div>
                 @endif
                 @if(isset($exp['job_projects']))
-                <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $exp['job_projects'] !!}</div>
+                <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">
+                
+                @if($exp['job_projects'])
+                <ul>
+              <?php  $job_projects = explode("\n",$exp['job_projects']); ?>
+                @foreach ($job_projects as $job_project)
+<li>{{$job_project}}</li>
+@endforeach
+</ul>
+                @endif
+                
+                
+                
+               </div>
     @endif
         </section>
         @endforeach
        
     </section>
     @endif
+    @if(isset($data['skills']))
     <section id="skills">
         <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Skills</h2>
        
-             <div  style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $data['skills'] !!}</div>
+             <div  style="font-size: 12px;color:#706F6F;margin-left: -40px;">
+             
+             @if($data['skills'])
+                <ul>
+              <?php  $skillsss = explode("\n",$data['skills']); ?>
+                @foreach ($skillsss as $skillss)
+<li>{{$skillss}}</li>
+@endforeach
+</ul>
+                @endif
+            
+            </div>
            
     </section>
+    @endif
     @if(count($data['kt_docs_repeater_basi_count'])>0)
     
     <section id="projects">
-        <h2 style="border-bottom: 1px solid black;font-size: 18px;padding-bottom:5px;text-transform:uppercase;color:#343f52;">Projects</h2></br>
+        <h2 style="border-bottom: 1px solid black;font-size: 18px;text-transform:uppercase;color:#343f52;padding-bottom:8px;">Projects</h2>
         @foreach($data['projects'] as $prj)
-        <section>
-                <div  style="font-size: 13px;color:#464A4E;text-transform:uppercase;">{!! $prj['project_name'] !!}</div>
+       
+                <div  style="font-size: 13px;color:#464A4E;text-transform:uppercase;padding-top:3px">{!! $prj['project_name'] !!}</div>
                 @if(isset($prj['project_duration']))<div style="font-size: 12px;color:#706F6F;">{!! $prj['project_duration'] !!}</div>   @endif
             @if(isset($prj['project_description']))
-                <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $prj['project_description'] !!}</div>
+            <span style="font-size: 12px;color:#343f52;margin-left: -1px;">Description</span>
+                <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">
+                
+              
+          
+                @if( $prj['project_description'])
+                <ul>
+              <?php  $project_descriptions = explode("\n", $prj['project_description']); ?>
+                @foreach ($project_descriptions as $project_description)
+<li>{{$project_description}}</li>
+@endforeach
+</ul>
+                @endif
+            
+            
+            
+            </div>
     @endif
     @if(isset($prj['roles_responsibility']))
-                <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $prj['roles_responsibility'] !!}</div>
+    <span style="font-size: 12px;color:#343f52;margin-left: -1px;">Roles & Responsibilities</span>
+                <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">
+                
+                
+                   
+            @if( $prj['roles_responsibility'])
+                <ul>
+              <?php  $roles_responsibilities = explode("\n", $prj['roles_responsibility']); ?>
+                @foreach ($roles_responsibilities as $roles_responsibilitiy)
+<li>{{$roles_responsibilitiy}}</li>
+@endforeach
+</ul>
+                @endif
+                
+                
+            </div>
    
     @endif
-        </section>
+       
         @endforeach
     </section>
       @endif
@@ -324,7 +406,19 @@ section ul {
          
             </div>
 
-            <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">{!! $cert['certification_description'] !!}</div>
+            <div style="font-size: 12px;color:#706F6F;margin-left: -40px;">
+            
+            @if($cert['certification_description'])
+                <ul>
+              <?php  $certification_descriptions = explode("\n",$cert['certification_description']); ?>
+                @foreach ($certification_descriptions as $certification_description)
+<li>{{$certification_description}}</li>
+@endforeach
+</ul>
+                @endif
+            
+            
+            </div>
         </section>
         @endforeach
     </section>
