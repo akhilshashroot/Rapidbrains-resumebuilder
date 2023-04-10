@@ -280,7 +280,7 @@
     <!--end::Form group-->
 </div>
 @endif
-<div id="kt_docs_repeater_basic_exp" style="margin-top: -40px;">
+<div id="kt_docs_repeater_basic_exp" style="margin-top: 10px;">
     <!--begin::Form group-->
     <div class="form-group">
         <div data-repeater-list="kt_docs_repeater_basic_exp">
@@ -425,7 +425,7 @@
     <!--end::Form group-->
 </div>
 @endif
-<div id="kt_docs_repeater_basi_prj" style="margin-top: -56px;">
+<div id="kt_docs_repeater_basi_prj" style="margin-top: 10px;">
     <!--begin::Form group-->
     <div class="form-group">
         <div data-repeater-list="kt_docs_repeater_basi_prj">
@@ -524,7 +524,7 @@
 @endif
 										
 									
-										<div id="kt_docs_repeater_cert" style="margin-top: -70px;">
+										<div id="kt_docs_repeater_cert" style="margin-top: -10px;">
     <!--begin::Form group-->
     <div class="form-group">
         <div data-repeater-list="kt_docs_repeater_cert">
@@ -619,7 +619,7 @@
 <div id="kt_docs_repeater_edu">
     <!--begin::Form group-->
     <div class="form-group">
-        <div data-repeater-list="kt_docs_repeater_edu" style="margin-top: -56px;">
+        <div data-repeater-list="kt_docs_repeater_edu" style="margin-top: 10px;">
             <div data-repeater-item><br><br>
 			<div class="form-group row">
 										<div class="col-lg-6">
