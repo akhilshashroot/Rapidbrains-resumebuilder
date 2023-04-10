@@ -142,7 +142,12 @@
 													<option value="rapidbrains">Rapidbrains</option>
 													<option value="hashroot">Hashroot</option>
 													<option value="uploadlogo">Upload logo</option>
-													<option value="nologo">No logo</option>
+													@if($resume_details->logo_type=='nologo')
+													<option value="nologo" selected>No logo</option>
+													@else
+													<option value="nologo" >No logo</option>
+
+													@endif
 												</select>
 												</div>
 												<div class="col-lg-6">

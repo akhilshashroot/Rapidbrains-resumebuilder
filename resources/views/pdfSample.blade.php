@@ -151,6 +151,13 @@ section ul {
     padding: 60px;
  
 }
+#example1 {
+   position: absolute;
+   top: -32px;
+    left: 10px;
+    padding: 60px;
+ 
+}
 .full-width{
   
     
@@ -214,7 +221,7 @@ section ul {
 <div id="container12">
     <img style="width:100%;" class="full-width" src="https://www.rapidbrains.com/assets/img/svg/no-logo.png" >
     
-<div id="example"><br>
+<div id="example1"><br>
     <span style="text-transform:uppercase;font-size:28;color:#343f52; letter-spacing: 2px;"><b>{!! $data['fullname'] !!}</b></span><br>
     <div style="padding-top:10px;"></div>
    <span  style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e;">{!! $data['position'] !!}</span><br>

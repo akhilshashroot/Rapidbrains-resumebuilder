@@ -207,6 +207,8 @@ class ResumebuilderController extends Controller
         $resume_details->certificationsArray = json_decode($resume_details->certifications);
         $resume_details->educationArray = json_decode($resume_details->education_details);
         $resume_details->url = url('/');
+        $resume_details->logo_type = $resume_details->logo;
+
         if(is_array($resume_details->experienceArray)) {
            
             if($resume_details->experienceArray[0]->employer) {
@@ -262,6 +264,8 @@ class ResumebuilderController extends Controller
         $resume->summary = $request->summary;
         $resume->skill = json_encode($request->skills);
         $resume->talentid = $request->talentid;
+        $resume->logo = $request->logo;
+
         if(is_array($request->kt_docs_repeater_basic) && is_array($request->kt_docs_repeater_basic_exp)) {
             $resume->experience = json_encode(array_merge($request->kt_docs_repeater_basic,$request->kt_docs_repeater_basic_exp));
             $data_exp = array_merge($request->kt_docs_repeater_basic,$request->kt_docs_repeater_basic_exp);
