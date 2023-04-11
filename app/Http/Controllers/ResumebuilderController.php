@@ -131,17 +131,74 @@ class ResumebuilderController extends Controller
             $pdf = PDF::loadView('pdfSample',compact('data'));
             $pdf->save(public_path('Resume'.$filename));
         } else {
-            $content = view('docSample',compact('data'))->render();
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(base_path('Template.docx'));
+            //dd($data['skills']);
+            $templateProcessor->setValues(array('fullname' => $data['fullname'],
+             'talentid' => $data['talentid'],
+             'position' => $data['position'],
+             'profile' => $data['summary'],
+             'email' => $data['email'],
+             'experience' => 'gdfgdgdf',
+             'skills' => $data['skills'],
+             'projects' => 'ghgfjhg',
+             'certifications' => 'hgjhgjgjhg',
+             'education' => 'bgfhgfj',
+            ));
+            $replacements_experience = array();
+            foreach($data['experience'] as $exp) {
+                $expArray = array(
+                    'jobtitle' => $exp['jobtitle'],
+                    'employer' => $exp['employer'],
+                    'city' => $exp['city'],
+                    'state' => $exp['state'],
+                    'country' => $exp['country'],
+                    'from' => $exp['from'],
+                    'to' => $exp['to'],
+                    'job_description' => $exp['job_description'],
+                    'job_projects'=> $exp['job_projects']);
+                array_push($replacements_experience,$expArray);
+            }
+            $templateProcessor->cloneBlock('block_experience', 0, true, false, $replacements_experience);
+            $replacements_projects = array();
+            foreach($data['projects'] as $prj) {
+                $prjArray = array(
+                    'project_name' => $prj['project_name'],
+                    'project_duration' => $prj['project_duration'],
+                    'project_description' => $prj['project_description'],
+                    'roles_responsibility' => $prj['roles_responsibility']);
+                array_push($replacements_projects,$prjArray);
+            }
+            $templateProcessor->cloneBlock('block_project', 0, true, false, $replacements_projects);
+            $replacements_certifications = array();
+            foreach($data['certifications'] as $cert) {
+                $certArray = array(
+                    'certification' => $cert['certification'],
+                    'certification_description' => $cert['certification_description']);
+                array_push($replacements_certifications,$certArray);
+            }
+            $templateProcessor->cloneBlock('block_certification', 0, true, false, $replacements_certifications);
+            $replacements_education = array();
+            foreach($data['education_details'] as $edu) {
+                $eduArray = array(
+                    'education_course' => $edu['education_course'],
+                    'education_institute' => $edu['education_institute'],
+                    'education_location' => $edu['education_location'],
+                    'education_duration' => $edu['education_duration']);
+                array_push($replacements_education,$eduArray);
+            }
+            $templateProcessor->cloneBlock('block_education', 0, true, false, $replacements_education);
+            $templateProcessor->saveAs('Resume'.$filename);
+            /*$content = view('docSample',compact('data'))->render();
             $dom = new DOMDocument();
             @$dom->loadHTML($content);
             $dom->saveXml();
             
             $phpWord = new PhpWord();
-            \PhpOffice\PhpWord\Shared\Html::addHtml($phpWord->addSection(), $dom->saveXml(), true);
+            \PhpOffice\PhpWord\Shared\Html::addHtml($phpWord->addSection(array(
+                'marginTop' => 500,
+                )), $dom->saveXml(), true);
             $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
-            //$name='doc_index_'.Carbon::now()->format('d-m-y h-i').'.docx';
-            //dd($name);
-            $objWriter->save('Resume'.$filename);
+            $objWriter->save('Resume'.$filename);*/
         }
         
         
