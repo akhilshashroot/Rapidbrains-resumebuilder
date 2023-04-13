@@ -128,11 +128,17 @@ class ResumebuilderController extends Controller
             $pdf->save(public_path('Resume'.$filenamepdf));
         //} else {
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(base_path('Template.docx'));
+            $lines = explode("\n",$data['summary']); 
+            foreach($lines as $line){
+              $text_to_insert_in_template[] = "&#8226;$line.<w:br/>";
+            }
+            
+            $summaryString = implode(" ", $text_to_insert_in_template);
             //dd($data['skills']);
             $templateProcessor->setValues(array('fullname' => $data['fullname'],
              'talentid' => $data['talentid'],
              'position' => $data['position'],
-             'profile' => $data['summary'],
+             'profile' => $summaryString,
              'email' => $data['email'],
              'experience' => 'gdfgdgdf',
              'skills' => $data['skills'],
@@ -435,13 +441,21 @@ class ResumebuilderController extends Controller
             $pdf->save(public_path($filenamepdf));
         //}else {
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(base_path('Template.docx'));
+            $lines = explode("\n",$data['summary']); 
+            foreach($lines as $line){
+              $text_to_insert_in_template[] = "&#8226;$line.<w:br/>";
+            }
+            
+            $summaryString = implode(" ", $text_to_insert_in_template);
+            
             $templateProcessor->setValues(array('fullname' => $data['fullname'],
              'talentid' => $data['talentid'],
              'position' => $data['position'],
-             'profile' => $data['summary'],
+             'profile' => $summaryString,
              'email' => $data['email'],
              'skills' => $data['skills']
             ));
+            
             $replacements_experience = array();
             foreach($data['experience'] as $exp) {
                 if(isset($exp['jobtitle'])) {
@@ -462,7 +476,13 @@ class ResumebuilderController extends Controller
                 }
                 
             }
-            $templateProcessor->cloneBlock('block_experience', 0, true, false, $replacements_experience);
+            //dd(count($replacements_experience));
+            //if(count($replacements_experience)) {
+                $templateProcessor->cloneBlock('block_experience', 0, true, false, $replacements_experience);
+            /*} else {
+                $templateProcessor->replaceBlock('block_experience', ' ');
+            }*/
+            
             $replacements_projects = array();
             foreach($data['projects'] as $prj) {
                 if(isset($prj['project_name'])) {
@@ -475,7 +495,12 @@ class ResumebuilderController extends Controller
                 }
                 
             }
-            $templateProcessor->cloneBlock('block_project', 0, true, false, $replacements_projects);
+            //if(count($replacements_projects)) {
+                $templateProcessor->cloneBlock('block_project', 0, true, false, $replacements_projects);
+            /*} else {
+                $templateProcessor->deleteBlock('block_project');
+            }*/
+            
             $replacements_certifications = array();
             foreach($data['certifications'] as $cert) {
                 if(isset($cert['certification'])) {
@@ -486,7 +511,12 @@ class ResumebuilderController extends Controller
                 }
                 
             }
-            $templateProcessor->cloneBlock('block_certification', 0, true, false, $replacements_certifications);
+            //if(count($replacements_certifications)) {
+                $templateProcessor->cloneBlock('block_certification', 0, true, false, $replacements_certifications);
+            /*} else {
+                $templateProcessor->deleteBlock('block_certification');
+            }*/
+            
             $replacements_education = array();
             foreach($data['education_details'] as $edu) {
                 if(isset($edu['education_course'])) {
@@ -499,8 +529,19 @@ class ResumebuilderController extends Controller
                 }
                 
             }
-            $templateProcessor->cloneBlock('block_education', 0, true, false, $replacements_education);
+            //if(count($replacements_education)) {
+                $templateProcessor->cloneBlock('block_education', 0, true, false, $replacements_education);
+            /*} else {
+                $templateProcessor->deleteBlock('block_education');
+            }*/
+            
+            
+            if(File::exists(public_path($filenamedocx))){
+                $d =File::delete(public_path($filenamedocx));
+            }
+            //dd($d);
             $templateProcessor->saveAs($filenamedocx);
+            //dd($d);
             /*$content = view('docSample',compact('data'))->render();
             $dom = new DOMDocument();
             @$dom->loadHTML($content);
