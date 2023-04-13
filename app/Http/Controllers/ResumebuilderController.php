@@ -56,7 +56,6 @@ class ResumebuilderController extends Controller
             'education_location' => 'nullable',
             'certification' => 'nullable',
             'certification_description' => 'nullable',
-            'filetype' => 'nullable',
             ]);
             $talentidcheck = ResumeDetails::where('talentid',$request->talentid)->first();
             if($talentidcheck) {
@@ -81,13 +80,10 @@ class ResumebuilderController extends Controller
         $resume->education_duration = $request->education_duration;
         $resume->education_location = $request->education_location;
         $resume->added_by = Auth::user()->id;
-        if($request->filetype == 'pdf') {
-            $filename = $resume->fullname.now()->timestamp.'.pdf';
-        } else {
-            $filename = $resume->fullname.now()->timestamp.'.docx';
-        }
+        $filenamepdf = $resume->fullname.now()->timestamp.'.pdf';
+        $filenamedocx = $resume->fullname.now()->timestamp.'.docx';
         
-        $resume->resume = 'Resume'.$filename;
+        $resume->resume = 'Resume'.$filenamepdf;
         $resume->designation = $request->position;
         $resume->certifications = json_encode($request->kt_docs_repeater_certification);
         $resume->education_details = json_encode($request->kt_docs_repeater_education);
@@ -127,10 +123,10 @@ class ResumebuilderController extends Controller
             'kt_docs_repeater_education_count'=>$kt_docs_repeater_education_count,
             'logo'=>$request->logo
         ];
-        if($request->filetype == 'pdf') {
+        //if($request->filetype == 'pdf') {
             $pdf = PDF::loadView('pdfSample',compact('data'));
-            $pdf->save(public_path('Resume'.$filename));
-        } else {
+            $pdf->save(public_path('Resume'.$filenamepdf));
+        //} else {
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(base_path('Template.docx'));
             //dd($data['skills']);
             $templateProcessor->setValues(array('fullname' => $data['fullname'],
@@ -145,7 +141,11 @@ class ResumebuilderController extends Controller
              'education' => 'bgfhgfj',
             ));
             $replacements_experience = array();
+            
             foreach($data['experience'] as $exp) {
+                if(!isset($exp['to'])) {
+                    $exp['to'] = 'Present';
+                }
                 $expArray = array(
                     'jobtitle' => $exp['jobtitle'],
                     'employer' => $exp['employer'],
@@ -187,7 +187,7 @@ class ResumebuilderController extends Controller
                 array_push($replacements_education,$eduArray);
             }
             $templateProcessor->cloneBlock('block_education', 0, true, false, $replacements_education);
-            $templateProcessor->saveAs('Resume'.$filename);
+            $templateProcessor->saveAs('Resume'.$filenamedocx);
             /*$content = view('docSample',compact('data'))->render();
             $dom = new DOMDocument();
             @$dom->loadHTML($content);
@@ -199,7 +199,7 @@ class ResumebuilderController extends Controller
                 )), $dom->saveXml(), true);
             $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
             $objWriter->save('Resume'.$filename);*/
-        }
+        //}
         
         
     
@@ -207,7 +207,8 @@ class ResumebuilderController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'Success',
-                'file' => 'Resume'.$filename
+                'filepdf' => 'Resume'.$filenamepdf,
+                'filedocx' => 'Resume'.$filenamedocx,
             ], 200);
         } else {
             return response()->json([
@@ -334,6 +335,7 @@ class ResumebuilderController extends Controller
             $data_exp = $request->kt_docs_repeater_basic;
         }
         if(is_array($request->kt_docs_repeater_basi) && is_array($request->kt_docs_repeater_basi_prj)) {
+            //dd($request->kt_docs_repeater_basi_prj);
             $resume->project_details = json_encode(array_merge($request->kt_docs_repeater_basi,$request->kt_docs_repeater_basi_prj));
             $data_prj = array_merge($request->kt_docs_repeater_basi,$request->kt_docs_repeater_basi_prj);
         } elseif(is_array($request->kt_docs_repeater_basi_prj)) {
@@ -370,6 +372,10 @@ class ResumebuilderController extends Controller
             $resume->education_details = json_encode($request->kt_docs_repeater_education);
             $data_edu = $request->kt_docs_repeater_education;
         }
+        $fileArray = explode('.',$resume->resume);
+        $filenamepdf = $fileArray[0].'.pdf';
+        $filenamedocx = $fileArray[0].'.docx';
+        $resume->resume = $filenamepdf;
         $res = $resume->save();
         if(is_array($request->kt_docs_repeater_certification)) {
             $certifications_count= array_filter($request->kt_docs_repeater_certification[0]);
@@ -423,14 +429,96 @@ class ResumebuilderController extends Controller
             'kt_docs_repeater_education_count'=>$kt_docs_repeater_education_count,
             'logo'=>$request->logo
         ];
-        $filename = $resume->resume;
-        $pdf = PDF::loadView('pdfSample',compact('data'));
-        $pdf->save(public_path($filename));
+        
+        //if($request->filetype == 'pdf') {
+            $pdf = PDF::loadView('pdfSample',compact('data'));
+            $pdf->save(public_path($filenamepdf));
+        //}else {
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(base_path('Template.docx'));
+            $templateProcessor->setValues(array('fullname' => $data['fullname'],
+             'talentid' => $data['talentid'],
+             'position' => $data['position'],
+             'profile' => $data['summary'],
+             'email' => $data['email'],
+             'skills' => $data['skills']
+            ));
+            $replacements_experience = array();
+            foreach($data['experience'] as $exp) {
+                if(isset($exp['jobtitle'])) {
+                    if(!isset($exp['to'])) {
+                        $exp['to'] = 'Present';
+                    }
+                    $expArray = array(
+                        'jobtitle' => $exp['jobtitle'],
+                        'employer' => $exp['employer'],
+                        'city' => $exp['city'],
+                        'state' => $exp['state'],
+                        'country' => $exp['country'],
+                        'from' => $exp['from'],
+                        'to' => $exp['to'],
+                        'job_description' => $exp['job_description'],
+                        'job_projects'=> $exp['job_projects']);
+                    array_push($replacements_experience,$expArray);
+                }
+                
+            }
+            $templateProcessor->cloneBlock('block_experience', 0, true, false, $replacements_experience);
+            $replacements_projects = array();
+            foreach($data['projects'] as $prj) {
+                if(isset($prj['project_name'])) {
+                    $prjArray = array(
+                        'project_name' => $prj['project_name'],
+                        'project_duration' => $prj['project_duration'],
+                        'project_description' => $prj['project_description'],
+                        'roles_responsibility' => $prj['roles_responsibility']);
+                    array_push($replacements_projects,$prjArray);
+                }
+                
+            }
+            $templateProcessor->cloneBlock('block_project', 0, true, false, $replacements_projects);
+            $replacements_certifications = array();
+            foreach($data['certifications'] as $cert) {
+                if(isset($cert['certification'])) {
+                    $certArray = array(
+                        'certification' => $cert['certification'],
+                        'certification_description' => $cert['certification_description']);
+                    array_push($replacements_certifications,$certArray);
+                }
+                
+            }
+            $templateProcessor->cloneBlock('block_certification', 0, true, false, $replacements_certifications);
+            $replacements_education = array();
+            foreach($data['education_details'] as $edu) {
+                if(isset($edu['education_course'])) {
+                    $eduArray = array(
+                        'education_course' => $edu['education_course'],
+                        'education_institute' => $edu['education_institute'],
+                        'education_location' => $edu['education_location'],
+                        'education_duration' => $edu['education_duration']);
+                    array_push($replacements_education,$eduArray);
+                }
+                
+            }
+            $templateProcessor->cloneBlock('block_education', 0, true, false, $replacements_education);
+            $templateProcessor->saveAs($filenamedocx);
+            /*$content = view('docSample',compact('data'))->render();
+            $dom = new DOMDocument();
+            @$dom->loadHTML($content);
+            $dom->saveXml();
+            
+            $phpWord = new PhpWord();
+            \PhpOffice\PhpWord\Shared\Html::addHtml($phpWord->addSection(array(
+                'marginTop' => 500,
+                )), $dom->saveXml(), true);
+            $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
+            $objWriter->save('Resume'.$filename);*/
+        //}
         if($res) {
             return response()->json([
                 'status' => true,
                 'message' => 'Success',
-                'file' => url($filename)
+                'filepdf' => url($filenamepdf),
+                'filedocx' => url($filenamedocx)
             ], 200);
         } else {
             return response()->json([

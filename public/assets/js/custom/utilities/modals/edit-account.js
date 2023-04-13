@@ -164,8 +164,10 @@ var KTCreateAccount = (function () {
                                             success: function (result) {
                                                 console.log(result.status);
                                                 if(result.status == true) {
-                                                    $("#downloadlink").attr("href", result.file)
+                                                    $("#downloadlink").attr("href", result.filepdf)
                                                         $('#downloadlink').show();
+                                                        $("#downloadlinkdocx").attr("href", result.filedocx)
+                                                        $('#downloadlinkdocx').show();
                                                 }
                                             },
                                             error: function(result) {

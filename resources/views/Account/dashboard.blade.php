@@ -134,20 +134,13 @@
 											<input type="hidden"  name="email" id="email" />
 
 												<!--begin::Col-->
-												<div class="col-lg-4">
+												<div class="col-lg-6">
 												<label class="form-label">Select Logo:</label>
 												<select class="form-control mb-2 mb-md-0" name="logo">
 													<option value="rapidbrains">Rapidbrains</option>
 													<option value="hashroot">Hashroot</option>
 													<option value="uploadlogo">Upload logo</option>
 													<option value="nologo">No logo</option>
-												</select>
-												</div>
-												<div class="col-lg-2">
-												<label class="form-label">Save file as:</label>
-												<select class="form-control mb-2 mb-md-0" name="filetype">
-													<option value="pdf">PDF</option>
-													<option value="docs">docs</option>
 												</select>
 												</div>
 												<div class="col-lg-6">
@@ -526,8 +519,9 @@
 												<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="currentColor" />
 											</svg>
 										</span>
-										<!--end::Svg Icon--></button>
-										<a id="downloadlink" class="btn btn-lg btn-primary" style="display:none;" href="" download>Download</a>
+										<!--end::Svg Icon--></button></br></br>
+										<a id="downloadlink" class="btn btn-lg btn-primary" style="display:none;" href="" download>Download in PDF</a>
+										<a id="downloadlinkdocx" class="btn btn-lg btn-primary" style="display:none;" href="" download>Download in DOCX</a>
 									</div>
 								</div>
 								<!--end::Actions-->

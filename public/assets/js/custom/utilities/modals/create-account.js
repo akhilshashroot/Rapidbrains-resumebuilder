@@ -166,8 +166,10 @@ var KTCreateAccount = (function () {
                                                     $("#display-submit").removeAttr('disabled');
 
                                                 if(result.status == true) {
-                                                    $("#downloadlink").attr("href", result.file)
+                                                    $("#downloadlink").attr("href", result.filepdf)
                                                         $('#downloadlink').show();
+                                                        $("#downloadlinkdocx").attr("href", result.filedocx)
+                                                        $('#downloadlinkdocx').show();
                                                 }
                                                 } else {
                                                     Swal.fire({
