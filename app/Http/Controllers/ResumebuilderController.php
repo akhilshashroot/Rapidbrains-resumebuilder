@@ -130,7 +130,7 @@ class ResumebuilderController extends Controller
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(base_path('Template.docx'));
             $lines = explode("\n",$data['summary']); 
             foreach($lines as $line){
-              $text_to_insert_in_template[] = "&#8226;$line.<w:br/>";
+              $text_to_insert_in_template[] = "&#8226; $line<w:br/>";
             }
             
             $summaryString = implode(" ", $text_to_insert_in_template);
@@ -443,7 +443,7 @@ class ResumebuilderController extends Controller
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(base_path('Template.docx'));
             $lines = explode("\n",$data['summary']); 
             foreach($lines as $line){
-              $text_to_insert_in_template[] = "&#8226;$line.<w:br/>";
+              $text_to_insert_in_template[] = "&#8226; $line<w:br/>";
             }
             
             $summaryString = implode(" ", $text_to_insert_in_template);
