@@ -128,12 +128,17 @@ class ResumebuilderController extends Controller
             $pdf->save(public_path('Resume'.$filenamepdf));
         //} else {
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(base_path('Template.docx'));
-            $lines = explode("\n",$data['summary']); 
-            foreach($lines as $line){
-              $text_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+            if(isset($data['summary'])) {
+                $lines = explode("\n",$data['summary']); 
+                foreach($lines as $line){
+                $text_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                }
+                
+                $summaryString = implode(" ", $text_to_insert_in_template);
+            } else {
+                $summaryString = '';
             }
             
-            $summaryString = implode(" ", $text_to_insert_in_template);
             //dd($data['skills']);
             $templateProcessor->setValues(array('fullname' => $data['fullname'],
              'talentid' => $data['talentid'],
@@ -526,12 +531,17 @@ class ResumebuilderController extends Controller
             $pdf->save(public_path($filenamepdf));
         //}else {
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(base_path('Template.docx'));
-            $lines = explode("\n",$data['summary']); 
-            foreach($lines as $line){
-              $text_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+            if(isset($data['summary'])) {
+                $lines = explode("\n",$data['summary']); 
+                foreach($lines as $line){
+                $text_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                }
+                
+                $summaryString = implode(" ", $text_to_insert_in_template);
+            } else {
+                $summaryString = '';
             }
             
-            $summaryString = implode(" ", $text_to_insert_in_template);
             
             $templateProcessor->setValues(array('fullname' => $data['fullname'],
              'talentid' => $data['talentid'],
