@@ -150,18 +150,28 @@ class ResumebuilderController extends Controller
             
             foreach($data['experience'] as $exp) {
                 if(isset($exp['jobtitle'])) {
-                    $linesexperience = explode("\n",$exp['job_description']); 
-                foreach($linesexperience as $line){
-                $textexperience_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
-                }
+                    if(isset($exp['job_description'])) {
+                        $linesexperience = explode("\n",$exp['job_description']); 
+                        foreach($linesexperience as $line){
+                        $textexperience_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                        }
+                        
+                        $job_descriptionString = implode(" ", $textexperience_to_insert_in_template);
+                    } else {
+                        $job_descriptionString = '';
+                    }
+                    if(isset($exp['job_projects'])) {
+                        $linesjob_projects = explode("\n",$exp['job_projects']); 
+                        foreach($linesjob_projects as $line){
+                        $textjob_projects_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                        }
+                        
+                        $job_projectsString = implode(" ", $textjob_projects_to_insert_in_template);
+                    } else {
+                        $job_projectsString = '';
+                    }
+                    
                 
-                $job_descriptionString = implode(" ", $textexperience_to_insert_in_template);
-                $linesjob_projects = explode("\n",$exp['job_projects']); 
-                foreach($linesjob_projects as $line){
-                $textjob_projects_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
-                }
-                
-                $job_projectsString = implode(" ", $textjob_projects_to_insert_in_template);
                 if(!isset($exp['to'])) {
                     $exp['to'] = 'Present';
                 }
@@ -182,18 +192,27 @@ class ResumebuilderController extends Controller
             $replacements_projects = array();
             foreach($data['projects'] as $prj) {
                 if(isset($prj['project_name'])) {
-                    $linesproject_description = explode("\n",$prj['project_description']); 
-                    foreach($linesproject_description as $line){
-                    $textproject_description_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                    if(isset($prj['project_description'])) {
+                        $linesproject_description = explode("\n",$prj['project_description']); 
+                        foreach($linesproject_description as $line){
+                        $textproject_description_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                        }
+                        
+                        $project_descriptionString = implode(" ", $textproject_description_to_insert_in_template);
+                    } else {
+                        $project_descriptionString = '';
+                    }
+                    if(isset($prj['roles_responsibility'])) {
+                        $linesroles_responsibility = explode("\n",$prj['roles_responsibility']); 
+                        foreach($linesroles_responsibility as $line){
+                        $textroles_responsibility_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                        }
+                        
+                        $roles_responsibilityString = implode(" ", $textroles_responsibility_to_insert_in_template);
+                    } else {
+                        $roles_responsibilityString = '';
                     }
                     
-                    $project_descriptionString = implode(" ", $textproject_description_to_insert_in_template);
-                    $linesroles_responsibility = explode("\n",$prj['roles_responsibility']); 
-                    foreach($linesroles_responsibility as $line){
-                    $textroles_responsibility_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
-                    }
-                    
-                    $roles_responsibilityString = implode(" ", $textroles_responsibility_to_insert_in_template);
                     $prjArray = array(
                         'project_name' => $prj['project_name'],
                         'project_duration' => $prj['project_duration'],
@@ -206,12 +225,17 @@ class ResumebuilderController extends Controller
             $replacements_certifications = array();
             foreach($data['certifications'] as $cert) {
                 if(isset($cert['certification'])) {
-                    $linescertifications = explode("\n",$cert['certification_description']); 
-                    foreach($linescertifications as $line){
-                    $textcertifications_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                    if(isset($cert['certification_description'])) {
+                        $linescertifications = explode("\n",$cert['certification_description']); 
+                        foreach($linescertifications as $line){
+                        $textcertifications_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                        }
+                        
+                        $certification_descriptionString = implode(" ", $textcertifications_to_insert_in_template);
+                    } else {
+                        $certification_descriptionString = '';
                     }
                     
-                    $certification_descriptionString = implode(" ", $textcertifications_to_insert_in_template);
                     $certArray = array(
                         'certification' => $cert['certification'],
                         'certification_description' => $certification_descriptionString);
@@ -367,21 +391,34 @@ class ResumebuilderController extends Controller
         $resume->skill = json_encode($request->skills);
         $resume->talentid = $request->talentid;
         $resume->logo = $request->logo;
-
         if(is_array($request->kt_docs_repeater_basic) && is_array($request->kt_docs_repeater_basic_exp)) {
-            $resume->experience = json_encode(array_merge($request->kt_docs_repeater_basic,$request->kt_docs_repeater_basic_exp));
-            $data_exp = array_merge($request->kt_docs_repeater_basic,$request->kt_docs_repeater_basic_exp);
+            if(isset($request->kt_docs_repeater_basic_exp[0]['jobtitle'])) {
+                $resume->experience = json_encode(array_merge($request->kt_docs_repeater_basic,$request->kt_docs_repeater_basic_exp));
+                $data_exp = array_merge($request->kt_docs_repeater_basic,$request->kt_docs_repeater_basic_exp);
+            } else {
+                $data_exp = $request->kt_docs_repeater_basic;
+            }
+            
         } elseif(is_array($request->kt_docs_repeater_basic_exp)) {
-            $resume->experience = json_encode($request->kt_docs_repeater_basic_exp);
-            $data_exp = $request->kt_docs_repeater_basic_exp;
+            if(isset($request->kt_docs_repeater_basic_exp[0]['jobtitle'])) {
+                $resume->experience = json_encode($request->kt_docs_repeater_basic_exp);
+                $data_exp = $request->kt_docs_repeater_basic_exp;
+            } else {
+                $data_exp = null;
+            }
+            
         } else {
             $resume->experience = json_encode($request->kt_docs_repeater_basic);
             $data_exp = $request->kt_docs_repeater_basic;
         }
         if(is_array($request->kt_docs_repeater_basi) && is_array($request->kt_docs_repeater_basi_prj)) {
-            //dd($request->kt_docs_repeater_basi_prj);
-            $resume->project_details = json_encode(array_merge($request->kt_docs_repeater_basi,$request->kt_docs_repeater_basi_prj));
-            $data_prj = array_merge($request->kt_docs_repeater_basi,$request->kt_docs_repeater_basi_prj);
+            if(isset($request->kt_docs_repeater_basi_prj[0]['project_name'])) {
+                $resume->project_details = json_encode(array_merge($request->kt_docs_repeater_basi,$request->kt_docs_repeater_basi_prj));
+                $data_prj = array_merge($request->kt_docs_repeater_basi,$request->kt_docs_repeater_basi_prj);
+            } else {
+                $data_prj = $request->kt_docs_repeater_basi;
+            }
+            
         } elseif(is_array($request->kt_docs_repeater_basi_prj)) {
             $resume->project_details = json_encode($request->kt_docs_repeater_basi_prj);
             $data_prj = $request->kt_docs_repeater_basi_prj;
@@ -397,8 +434,13 @@ class ResumebuilderController extends Controller
       
         $resume->designation = $request->position;
         if(is_array($request->kt_docs_repeater_certification) && is_array($request->kt_docs_repeater_cert)) {
-            $resume->certifications = json_encode(array_merge($request->kt_docs_repeater_certification,$request->kt_docs_repeater_cert));
-            $data_cert = array_merge($request->kt_docs_repeater_certification,$request->kt_docs_repeater_cert);
+            if(isset($request->kt_docs_repeater_cert[0]['certification'])) {
+                $resume->certifications = json_encode(array_merge($request->kt_docs_repeater_certification,$request->kt_docs_repeater_cert));
+                $data_cert = array_merge($request->kt_docs_repeater_certification,$request->kt_docs_repeater_cert);
+            } else {
+                $data_cert = $request->kt_docs_repeater_certification;
+            }
+            
         } elseif(is_array($request->kt_docs_repeater_cert)) {
             $resume->certifications = json_encode($request->kt_docs_repeater_cert);
             $data_cert = $request->kt_docs_repeater_cert;
@@ -407,8 +449,13 @@ class ResumebuilderController extends Controller
             $data_cert = $request->kt_docs_repeater_certification;
         }
         if(is_array($request->kt_docs_repeater_education) && is_array($request->kt_docs_repeater_edu)) {
-            $resume->education_details = json_encode(array_merge($request->kt_docs_repeater_education,$request->kt_docs_repeater_edu));
-            $data_edu = array_merge($request->kt_docs_repeater_education,$request->kt_docs_repeater_edu);
+            if(isset($request->kt_docs_repeater_edu[0]['education_course'])) {
+                $resume->education_details = json_encode(array_merge($request->kt_docs_repeater_education,$request->kt_docs_repeater_edu));
+                $data_edu = array_merge($request->kt_docs_repeater_education,$request->kt_docs_repeater_edu);
+            } else {
+                $data_edu = $request->kt_docs_repeater_education;
+            }
+            
         } elseif(is_array($request->kt_docs_repeater_edu)) {
             $resume->education_details = json_encode($request->kt_docs_repeater_edu);
             $data_edu = $request->kt_docs_repeater_edu;
@@ -495,38 +542,51 @@ class ResumebuilderController extends Controller
             ));
             
             $replacements_experience = array();
-            foreach($data['experience'] as $exp) {
-                if(isset($exp['jobtitle'])) {
-                    $linesexperience = explode("\n",$exp['job_description']); 
-                foreach($linesexperience as $line){
-                $textexperience_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
-                }
-                
-                $job_descriptionString = implode(" ", $textexperience_to_insert_in_template);
-                $linesjob_projects = explode("\n",$exp['job_projects']); 
-                foreach($linesjob_projects as $line){
-                $textjob_projects_to_insert_in_template[] = "&#8226; $line<w:br/>";
-                }
-                
-                $job_projectsString = implode(" ", $textjob_projects_to_insert_in_template);
-                if(isset($exp['jobtitle'])) {
-                    if(!isset($exp['to'])) {
-                        $exp['to'] = 'Present';
+            if(isset($data['experience'])) {
+                foreach($data['experience'] as $exp) {
+                    if(isset($exp['jobtitle'])) {
+                        if(isset($exp['job_description'])) {
+                            $linesexperience = explode("\n",$exp['job_description']); 
+                            foreach($linesexperience as $line){
+                            $textexperience_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                            }
+                            
+                            $job_descriptionString = implode(" ", $textexperience_to_insert_in_template);
+                        } else {
+                            $job_descriptionString = '';
+                        }
+                        if(isset($exp['job_projects'])) {
+                            $linesjob_projects = explode("\n",$exp['job_projects']); 
+                            foreach($linesjob_projects as $line){
+                            $textjob_projects_to_insert_in_template[] = "&#8226; $line<w:br/>";
+                            }
+                            
+                            $job_projectsString = implode(" ", $textjob_projects_to_insert_in_template);
+                        } else {
+                            $job_projectsString = '';
+                        }
+                        
+                    
+                    if(isset($exp['jobtitle'])) {
+                        if(!isset($exp['to'])) {
+                            $exp['to'] = 'Present';
+                        }
+                        $expArray = array(
+                            'jobtitle' => $exp['jobtitle'],
+                            'employer' => $exp['employer'],
+                            'city' => $exp['city'],
+                            'state' => $exp['state'],
+                            'country' => $exp['country'],
+                            'from' => $exp['from'],
+                            'to' => $exp['to'],
+                            'job_description' => $job_descriptionString,
+                            'job_projects'=> $job_projectsString);
+                        array_push($replacements_experience,$expArray);
                     }
-                    $expArray = array(
-                        'jobtitle' => $exp['jobtitle'],
-                        'employer' => $exp['employer'],
-                        'city' => $exp['city'],
-                        'state' => $exp['state'],
-                        'country' => $exp['country'],
-                        'from' => $exp['from'],
-                        'to' => $exp['to'],
-                        'job_description' => $job_descriptionString,
-                        'job_projects'=> $job_projectsString);
-                    array_push($replacements_experience,$expArray);
-                }
+                    }
                 }
             }
+            
             //dd(count($replacements_experience));
             //if(count($replacements_experience)) {
                 $templateProcessor->cloneBlock('block_experience', 0, true, false, $replacements_experience);
@@ -537,18 +597,27 @@ class ResumebuilderController extends Controller
             $replacements_projects = array();
             foreach($data['projects'] as $prj) {
                 if(isset($prj['project_name'])) {
-                    $linesproject_description = explode("\n",$prj['project_description']); 
-                    foreach($linesproject_description as $line){
-                    $textproject_description_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                    if(isset($prj['project_description'])) {
+                        $linesproject_description = explode("\n",$prj['project_description']); 
+                        foreach($linesproject_description as $line){
+                        $textproject_description_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                        }
+                        
+                        $project_descriptionString = implode(" ", $textproject_description_to_insert_in_template);
+                    } else {
+                        $project_descriptionString = '';
+                    }
+                    if(isset($prj['roles_responsibility'])) {
+                        $linesroles_responsibility = explode("\n",$prj['roles_responsibility']); 
+                        foreach($linesroles_responsibility as $line){
+                        $textroles_responsibility_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                        }
+                        
+                        $roles_responsibilityString = implode(" ", $textroles_responsibility_to_insert_in_template);
+                    } else {
+                        $roles_responsibilityString = '';
                     }
                     
-                    $project_descriptionString = implode(" ", $textproject_description_to_insert_in_template);
-                    $linesroles_responsibility = explode("\n",$prj['roles_responsibility']); 
-                    foreach($linesroles_responsibility as $line){
-                    $textroles_responsibility_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
-                    }
-                    
-                    $roles_responsibilityString = implode(" ", $textroles_responsibility_to_insert_in_template);
                     if(isset($prj['project_name'])) {
                         $prjArray = array(
                             'project_name' => $prj['project_name'],
@@ -568,12 +637,17 @@ class ResumebuilderController extends Controller
             $replacements_certifications = array();
             foreach($data['certifications'] as $cert) {
                 if(isset($cert['certification'])) {
-                    $linescertifications = explode("\n",$cert['certification_description']); 
-                    foreach($linescertifications as $line){
-                    $textcertifications_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                    if(isset($cert['certification_description'])) {
+                        $linescertifications = explode("\n",$cert['certification_description']); 
+                        foreach($linescertifications as $line){
+                        $textcertifications_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                        }
+                        
+                        $certification_descriptionString = implode(" ", $textcertifications_to_insert_in_template);
+                    } else {
+                        $certification_descriptionString = '';
                     }
                     
-                    $certification_descriptionString = implode(" ", $textcertifications_to_insert_in_template);
                     if(isset($cert['certification'])) {
                         $certArray = array(
                             'certification' => $cert['certification'],
