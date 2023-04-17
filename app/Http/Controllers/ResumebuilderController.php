@@ -138,6 +138,16 @@ class ResumebuilderController extends Controller
             } else {
                 $summaryString = '';
             }
+            if(isset($data['skills'])) {
+                $linesskills = explode("\n",$data['skills']); 
+                foreach($linesskills as $line){
+                $textskills_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                }
+                
+                $skillString = implode(" ", $textskills_to_insert_in_template);
+            } else {
+                $skillString = '';
+            }
             
             //dd($data['skills']);
             $templateProcessor->setValues(array('fullname' => $data['fullname'],
@@ -146,7 +156,7 @@ class ResumebuilderController extends Controller
              'profile' => $summaryString,
              'email' => $data['email'],
              'experience' => 'gdfgdgdf',
-             'skills' => $data['skills'],
+             'skills' => $skillString,
              'projects' => 'ghgfjhg',
              'certifications' => 'hgjhgjgjhg',
              'education' => 'bgfhgfj',
@@ -541,14 +551,23 @@ class ResumebuilderController extends Controller
             } else {
                 $summaryString = '';
             }
-            
+            if(isset($data['skills'])) {
+                $linesskills = explode("\n",$data['skills']); 
+                foreach($linesskills as $line){
+                $textskills_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                }
+                
+                $skillString = implode(" ", $textskills_to_insert_in_template);
+            } else {
+                $skillString = '';
+            }
             
             $templateProcessor->setValues(array('fullname' => $data['fullname'],
              'talentid' => $data['talentid'],
              'position' => $data['position'],
              'profile' => $summaryString,
              'email' => $data['email'],
-             'skills' => $data['skills']
+             'skills' => $skillString
             ));
             
             $replacements_experience = array();
