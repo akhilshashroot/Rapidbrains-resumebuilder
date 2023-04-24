@@ -131,7 +131,7 @@ class ResumebuilderController extends Controller
             if(isset($data['summary'])) {
                 $lines = explode("\n",$data['summary']); 
                 foreach($lines as $line){
-                $text_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                $text_to_insert_in_template[] = "&#8226; $line<w:br/>";
                 }
                 
                 $summaryString = implode(" ", $text_to_insert_in_template);
@@ -141,7 +141,7 @@ class ResumebuilderController extends Controller
             if(isset($data['skills'])) {
                 $linesskills = explode("\n",$data['skills']); 
                 foreach($linesskills as $line){
-                $textskills_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                $textskills_to_insert_in_template[] = "&#8226; $line<w:br/>";
                 }
                 
                 $skillString = implode(" ", $textskills_to_insert_in_template);
@@ -168,7 +168,7 @@ class ResumebuilderController extends Controller
                     if(isset($exp['job_description'])) {
                         $linesexperience = explode("\n",$exp['job_description']); 
                         foreach($linesexperience as $line){
-                        $textexperience_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                        $textexperience_to_insert_in_template[] = "&#8226; $line<w:br/>";
                         }
                         
                         $job_descriptionString = implode(" ", $textexperience_to_insert_in_template);
@@ -178,7 +178,7 @@ class ResumebuilderController extends Controller
                     if(isset($exp['job_projects'])) {
                         $linesjob_projects = explode("\n",$exp['job_projects']); 
                         foreach($linesjob_projects as $line){
-                        $textjob_projects_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                        $textjob_projects_to_insert_in_template[] = "&#8226; $line<w:br/>";
                         }
                         
                         $job_projectsString = implode(" ", $textjob_projects_to_insert_in_template);
@@ -210,7 +210,7 @@ class ResumebuilderController extends Controller
                     if(isset($prj['project_description'])) {
                         $linesproject_description = explode("\n",$prj['project_description']); 
                         foreach($linesproject_description as $line){
-                        $textproject_description_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                        $textproject_description_to_insert_in_template[] = "&#8226; $line<w:br/>";
                         }
                         
                         $project_descriptionString = implode(" ", $textproject_description_to_insert_in_template);
@@ -220,7 +220,7 @@ class ResumebuilderController extends Controller
                     if(isset($prj['roles_responsibility'])) {
                         $linesroles_responsibility = explode("\n",$prj['roles_responsibility']); 
                         foreach($linesroles_responsibility as $line){
-                        $textroles_responsibility_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                        $textroles_responsibility_to_insert_in_template[] = "&#8226; $line<w:br/>";
                         }
                         
                         $roles_responsibilityString = implode(" ", $textroles_responsibility_to_insert_in_template);
@@ -243,7 +243,7 @@ class ResumebuilderController extends Controller
                     if(isset($cert['certification_description'])) {
                         $linescertifications = explode("\n",$cert['certification_description']); 
                         foreach($linescertifications as $line){
-                        $textcertifications_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                        $textcertifications_to_insert_in_template[] = "&#8226; $line<w:br/>";
                         }
                         
                         $certification_descriptionString = implode(" ", $textcertifications_to_insert_in_template);
@@ -544,7 +544,7 @@ class ResumebuilderController extends Controller
             if(isset($data['summary'])) {
                 $lines = explode("\n",$data['summary']); 
                 foreach($lines as $line){
-                $text_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                $text_to_insert_in_template[] = "&#8226; $line<w:br/>";
                 }
                 
                 $summaryString = implode(" ", $text_to_insert_in_template);
@@ -554,7 +554,7 @@ class ResumebuilderController extends Controller
             if(isset($data['skills'])) {
                 $linesskills = explode("\n",$data['skills']); 
                 foreach($linesskills as $line){
-                $textskills_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                $textskills_to_insert_in_template[] = "&#8226; $line<w:br/>";
                 }
                 
                 $skillString = implode(" ", $textskills_to_insert_in_template);
@@ -577,7 +577,7 @@ class ResumebuilderController extends Controller
                         if(isset($exp['job_description'])) {
                             $linesexperience = explode("\n",$exp['job_description']); 
                             foreach($linesexperience as $line){
-                            $textexperience_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                            $textexperience_to_insert_in_template[] = "&#8226; $line<w:br/>";
                             }
                             
                             $job_descriptionString = implode(" ", $textexperience_to_insert_in_template);
@@ -629,7 +629,7 @@ class ResumebuilderController extends Controller
                     if(isset($prj['project_description'])) {
                         $linesproject_description = explode("\n",$prj['project_description']); 
                         foreach($linesproject_description as $line){
-                        $textproject_description_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                        $textproject_description_to_insert_in_template[] = "&#8226; $line<w:br/>";
                         }
                         
                         $project_descriptionString = implode(" ", $textproject_description_to_insert_in_template);
@@ -639,7 +639,7 @@ class ResumebuilderController extends Controller
                     if(isset($prj['roles_responsibility'])) {
                         $linesroles_responsibility = explode("\n",$prj['roles_responsibility']); 
                         foreach($linesroles_responsibility as $line){
-                        $textroles_responsibility_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                        $textroles_responsibility_to_insert_in_template[] = "&#8226; $line<w:br/>";
                         }
                         
                         $roles_responsibilityString = implode(" ", $textroles_responsibility_to_insert_in_template);
@@ -669,7 +669,7 @@ class ResumebuilderController extends Controller
                     if(isset($cert['certification_description'])) {
                         $linescertifications = explode("\n",$cert['certification_description']); 
                         foreach($linescertifications as $line){
-                        $textcertifications_to_insert_in_template[] = "&#8226; $line<w:br/><w:br/>";
+                        $textcertifications_to_insert_in_template[] = "&#8226; $line<w:br/>";
                         }
                         
                         $certification_descriptionString = implode(" ", $textcertifications_to_insert_in_template);
