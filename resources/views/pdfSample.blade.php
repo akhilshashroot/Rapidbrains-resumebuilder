@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<link href='https://fonts.googleapis.com/css?family=Lato:400,100,300,100italic,300italic,400italic,500italic,500,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Verdana:400,100,300,100italic,300italic,400italic,500italic,500,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
 
     <meta charset="UTF-8">
@@ -10,12 +10,12 @@
     <style>
 body {
     margin: 40px;
-    font-family: 'Lato';
+    font-family: 'Verdana';
     font-size: 12pt;
 }
 
 header {
-    font-family: 'Lato';
+    font-family: 'Verdana';
     padding-bottom: 10px;
     margin-top: -100px;
     /* border-bottom: 1px solid black !important; */
@@ -34,7 +34,7 @@ header span {
 }
 
 section h2 {
-    font-family: 'Lato';
+    font-family: 'Verdana';
     font-size: 14pt;
 }
 
