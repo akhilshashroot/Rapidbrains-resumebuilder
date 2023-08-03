@@ -68,6 +68,13 @@ class ResumebuilderController extends Controller
         $resume->logo = $request->logo;
         $resume->fullname = $request->fullname;
         $resume->email = $request->email;
+        $email= $request->email;
+        if(!$request->email){
+           // dd($this->emailChecker_be($request->fullname));
+            $resume->email =    $this->email_be($request->fullname);
+            $email= $this->email_be($request->fullname);
+        }
+       
         $resume->phone = $request->phone;
         $resume->address = $request->address;
         $resume->talentid = $request->talentid;
@@ -114,7 +121,7 @@ class ResumebuilderController extends Controller
             'education_location' => $request->education_location,
             'company_address' => $company_address,
             'phone' => $request->phone,
-            'email' => $request->email,
+            'email' =>   $email,
             'certifications'=> $request->kt_docs_repeater_certification,
             'education_details'=> $request->kt_docs_repeater_education,
             'certifications_count'=>$certifications_count,
@@ -308,7 +315,7 @@ class ResumebuilderController extends Controller
     $email_id=preg_replace('/\s+/', '_', $name);
     $email_id= $email_id.'@hashroot.org';
     $email= ResumeDetails::where('fullname', 'like', '%' .$request->name. '%')->get();
-  ;
+  
     if(count($email)>0){
         $email_id=  preg_replace('/\s+/', '_', $name);
         $count=count($email);
@@ -326,6 +333,27 @@ class ResumebuilderController extends Controller
    
  
     }
+
+    public function email_be($name) {
+        $name=   strtolower($name);
+        $email_id=preg_replace('/\s+/', '_', $name);
+        $email_id= $email_id.'@hashroot.org';
+        $email= ResumeDetails::where('fullname', 'like', '%' .$name. '%')->get();
+      
+        if(count($email)>0){
+            $email_id=  preg_replace('/\s+/', '_', $name);
+            $count=count($email);
+            $email_id= $email_id.$count.'@rapidbrains.org';
+            return $email_id; 
+    
+        }
+        $email_id=preg_replace('/\s+/', '_', $name);
+        $email_id= $email_id.'@rapidbrains.org';
+         return $email_id;
+           
+       
+     
+        }
     public function talentIdChecker(Request $request) {
       if(isset($request->mode)) {
         $talentid= ResumeDetails::where('talentid',$request->talentid)->where('id', '!=', $request->resumeid)->first();
