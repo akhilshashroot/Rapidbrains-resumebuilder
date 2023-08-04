@@ -437,8 +437,15 @@ class ResumebuilderController extends Controller
         if(is_array($request->kt_docs_repeater_basic) && is_array($request->kt_docs_repeater_basic_exp)) {
             if(isset($request->kt_docs_repeater_basic_exp[0]['jobtitle'])) {
                 $resume->experience = json_encode(array_merge($request->kt_docs_repeater_basic,$request->kt_docs_repeater_basic_exp));
+
                 $data_exp = array_merge($request->kt_docs_repeater_basic,$request->kt_docs_repeater_basic_exp);
-            } else {
+            } 
+            elseif(!isset($request->kt_docs_repeater_basic_exp[0]['jobtitle']) && isset($request->kt_docs_repeater_basic[0]['jobtitle'])) {
+                $resume->experience = json_encode($request->kt_docs_repeater_basic);
+                $data_exp = $request->kt_docs_repeater_basic;
+            }
+            
+            else {
                 $data_exp = $request->kt_docs_repeater_basic;
             }
             
