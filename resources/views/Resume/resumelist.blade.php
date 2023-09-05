@@ -256,7 +256,7 @@ box-sizing: border-box;
 															{{$list->fullname}}
 														</td>
 														<td>
-															{{$list->talentid}}
+														@if($list->logo !== 'uploadlogo')	{{$list->talentid}}@endif
 														</td>
 														<td>
 															{{$list->designation}}

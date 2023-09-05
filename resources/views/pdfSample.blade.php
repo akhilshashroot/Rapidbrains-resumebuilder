@@ -144,6 +144,11 @@ section ul {
     color:#706f6f   !important;
 
 }
+.cks{
+    background-color: #80808059  !important;
+  background-repeat: no-repeat  !important;
+  background-size: auto  !important;
+}
 #example {
    position: absolute;
    top: -48px;
@@ -163,6 +168,20 @@ section ul {
     
         left: 100px !important;
         right: 0 !important;
+}
+.half-width{
+  
+    
+    float: right !important;
+    margin: 50px  !important;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+ 
+}
+.bloc{
+    padding-bottom:100px
 }
 .space{
     margin: 10px 0;
@@ -219,12 +238,13 @@ section ul {
 </div>
 @elseif($data['logo'] == 'uploadlogo')
 <div id="container12">
-@if($data['photo'])
-    <img style="width:100%;" class="full-width" src="{{$data['photo']}}" >
- @else
- <img style="width:100%;" class="full-width" src="https://www.rapidbrains.com/assets/img/svg/no-logo.png" >
+    @if($data['photo'])
+    <img  class="half-width" src="{{$data['photo']}}" >
+   
+    @else
+    <img style="width:100%;" class="full-width" src="https://www.rapidbrains.com/assets/img/svg/no-logo.png" >
 
- @endif   
+    @endif   
 <div id="example1"><br>
     <span style="text-transform:uppercase;font-size:28;color:#343f52; letter-spacing: 2px;"><b>{!! $data['fullname'] !!}</b></span><br>
     <div style="padding-top:10px;"></div>
@@ -235,6 +255,23 @@ section ul {
 
     </div>
 </div>
+<br><br><br><br><br><br><br>
+@else
+<div id="container12">
+  
+    <img style="width:100%;" class="full-width" src="https://www.rapidbrains.com/assets/img/svg/no-logo.png" >
+
+<div id="example1"><br>
+    <span style="text-transform:uppercase;font-size:28;color:#343f52; letter-spacing: 2px;"><b>{!! $data['fullname'] !!}</b></span><br>
+    <div style="padding-top:10px;"></div>
+   <span  style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e;">{!! $data['position'] !!}</span><br>
+   <div style="padding-top:10px;"></div>
+   <span style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</span>
+      
+
+    </div>
+</div>
+
 @endif
     <header id="info" style="margin-left:-10px;margin-bottom:30px;">
    
