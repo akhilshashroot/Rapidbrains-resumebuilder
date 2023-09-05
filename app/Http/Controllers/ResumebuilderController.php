@@ -99,8 +99,10 @@ class ResumebuilderController extends Controller
 //////////////////////////////////
         $resume->phone = $request->phone;
         $resume->address = $request->address;
-        $resume->company_number = $request->company_phone;
-        $resume->company_address = $request->company_address;
+        $resume->company_number =($request->logo=='uploadlogo' || $request->logo=='nologo')? $request->company_phone:'';
+        $resume->company_address = ($request->logo=='uploadlogo' || $request->logo=='nologo')?$request->company_address:'';
+
+       
         $resume->talentid = $request->talentid;
         $resume->summary = $request->summary;
         $resume->skill = json_encode($request->skills);
@@ -133,8 +135,8 @@ class ResumebuilderController extends Controller
         $data = [
             'title' => 'Resume',
             'fullname' => $request->fullname,
-            'company_number' => $request->company_phone,
-            'company_address_real' => $request->company_address,
+            'company_number' =>($request->logo=='uploadlogo' || $request->logo=='nologo')? $request->company_phone:'',
+            'company_address_real' => ($request->logo=='uploadlogo' || $request->logo=='nologo')?$request->company_address:'',
             'talentid' => $request->talentid,
             'position' => $request->position,
             'summary' => $request->summary,
@@ -467,10 +469,12 @@ class ResumebuilderController extends Controller
         $resume->skill = json_encode($request->skills);
         $resume->talentid = $request->talentid;
         $resume->logo = $request->logo;
-        $resume->company_number = $request->company_phone;
+       // $resume->company_number = $request->company_phone;
         $resume->email = $request->email;
 
-        $resume->company_address = $request->company_address;
+      //  $resume->company_address = $request->company_address;
+        $resume->company_number =($request->logo=='uploadlogo' || $request->logo=='nologo')? $request->company_phone:'';
+        $resume->company_address = ($request->logo=='uploadlogo' || $request->logo=='nologo')?$request->company_address:'';
 
 
     /////////////////////////
@@ -626,8 +630,10 @@ class ResumebuilderController extends Controller
         $data = [
             'title' => 'Resume',
             'fullname' => $request->fullname,
-            'company_number' => $request->company_phone,
-            'company_address_real' => $request->company_address,
+        
+            'company_number' =>($request->logo=='uploadlogo' || $request->logo=='nologo')? $request->company_phone:'',
+            'company_address_real' => ($request->logo=='uploadlogo' || $request->logo=='nologo')?$request->company_address:'',
+  
             'talentid' => $resume->talentid,
             'position' => $resume->designation,
             'summary' => $resume->summary,

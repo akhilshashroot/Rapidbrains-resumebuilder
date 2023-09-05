@@ -186,14 +186,30 @@ select {
 												<label class="form-label">Email:</label>
 												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Email" name="email" value="{{$resume_details->email}}"/>
 											   </div>
-												<div class="col-lg-6" id="mobile1" >
+
+
+											   @if($resume_details->logo_type=='uploadlogo' || $resume_details->logo_type=='nologo')
+												<div class="col-lg-6" id="mobile1" style="display:block;" >
+
+@else
+<div class="col-lg-6" id="mobile1" style="display:none;">
+
+
+@endif
 												<label class="form-label">Mobile Number:</label>
 												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Mobile Number" name="company_phone"  value="{{$resume_details->company_number}}"/>
 												</div>
 												<div style="height: 10px;"></div>
 
 												<div style="height: 10px;"></div>
-												<div class="col-lg-12" id="address1" >
+
+												@if($resume_details->logo_type=='uploadlogo' || $resume_details->logo_type=='nologo')
+												<div class="col-lg-12" id="address1" style="display:block;" >
+@else
+
+<div class="col-lg-12" id="address1"  style="display:none;">
+@endif
+											
 												<label class="form-label">Address:</label>
 												<textarea rows="6" class="form-control mb-2 mb-md-0 " placeholder="Enter Address" name="company_address" >{{$resume_details->company_address}}</textarea>
 												</div>
@@ -1050,12 +1066,21 @@ function testsubmit() {
 
 function logoChange() {
   
-   if($('#logo').val()=="uploadlogo"){
+   if($('#logo').val()=="uploadlogo" || $('#logo').val()=="nologo"){
 	   $('#myFile-logo1').css('display','block');
 	   $("#talentid").attr("placeholder", "Enter linkedin url");
+	   if($('#logo').val()=="uploadlogo"){
+				$('#myFile-logo1').css('display','block');
+			}else{
+				$('#myFile-logo1').css('display','none');
+			}
 			$("#LabelID").html("Linkedin Url:");
+			$('#address1').css('display','block');
+	$('#mobile1').css('display','block');
 
    }else{
+	$('#address1').css('display','none');
+	$('#mobile1').css('display','none');
 	$('#myFile-logo1').css('display','none');
 	$("#talentid").attr("placeholder", "Enter talentid");
 	$("#LabelID").html("Talent ID:");

@@ -184,23 +184,24 @@ select {
 												<input type="file" id="myFile" name="filename">
 												<div style="height: 10px;"></div>
 											</div>
-												
+											<div style="height: 10px;"></div>
+
 										<!-- 	$('#address').html('Ground Floor, Athulya, Infopark,\n Kochi, Kerala, India');
 		$('#mobile').val("+91 977 8426 319 "); -->
 												
 												<div class="col-lg-6" id="email1" >
-												<div style="height: 10px;"></div>
+											
 												<label class="form-label">Email:</label>
 												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Email" name="email" id="email"/>
 											   </div>
-												<div class="col-lg-6" id="mobile1" >
+												<div class="col-lg-6" id="mobile1" style="display:none;"  >
 												<label class="form-label">Mobile Number:</label>
 												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Mobile Number" name="company_phone" id="mobile" value="+91 977 8426 319"/>
 												</div>
 												<div style="height: 10px;"></div>
 
 												<div style="height: 10px;"></div>
-												<div class="col-lg-12" id="address1" >
+												<div class="col-lg-12" id="address1" style="display:none;" >
 												<label class="form-label">Address:</label>
 												<textarea rows="6" class="form-control mb-2 mb-md-0 " placeholder="Enter Address" name="company_address" id="address" >Ground Floor, Athulya, Infopark, 
 Kochi, Kerala, India</textarea>
@@ -754,9 +755,15 @@ function reinitialize() {
 
 function logoChange() {
    
-		if($('#logo').val()=="uploadlogo"){
-			$('#myFile-logo').css('display','block');
-			$('#myFile-logo').css('display','block');
+		if($('#logo').val()=="uploadlogo" || $('#logo').val()=="nologo"){
+			if($('#logo').val()=="uploadlogo"){
+				$('#myFile-logo').css('display','block');
+			}else{
+				$('#myFile-logo').css('display','none');
+			}
+			
+			$('#address1').css('display','block');
+			$('#mobile1').css('display','block');
 			$("#talentid").attr("placeholder", "Enter linkedin url");
 			$("#LabelID").html("Linkedin Url:");
 			$("#logo_up").val(1);
@@ -765,6 +772,8 @@ function logoChange() {
 
 		}  else{
 	$('#myFile-logo').css('display','none');
+	$('#address1').css('display','none');
+	$('#mobile1').css('display','none');
 	$("#talentid").attr("placeholder", "Enter talentid");
 	$("#LabelID").html("Talent ID:");
 	$("#logo_up").val(0);

@@ -250,7 +250,6 @@ section ul {
     <div style="padding-top:10px;"></div>
    <span  style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e;">{!! $data['position'] !!}</span><br>
    <div style="padding-top:10px;"></div>
-   @if($data['logo'] !== 'uploadlogo')     <span style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</span>@endif
       
 
     </div>
@@ -266,7 +265,7 @@ section ul {
     <div style="padding-top:10px;"></div>
    <span  style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e;">{!! $data['position'] !!}</span><br>
    <div style="padding-top:10px;"></div>
-   <span style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</span>
+   @if($data['logo'] == 'rapidbrains' || $data['logo'] == 'hashroot')     <span style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</span>@endif
       
 
     </div>
@@ -288,10 +287,10 @@ section ul {
 <div class="row">
   <div class="column" >
   <img style="width:4%;"  src="https://www.rapidbrains.com/assets/img/icons/3.png" >
-    <span style="color: #706f6f;">&nbsp;&nbsp;@if($data['company_address_real']){!! $data['company_address_real'] !!} @else Ground Floor, Athulya, Infopark,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kochi, Kerala, India @endif</span>
+    <span style="color: #706f6f;">&nbsp;&nbsp;@if($data['company_address_real']){!! $data['company_address_real'] !!} @else Ground Floor, Athulya, Infopark,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kochi, Kerala, India @endif</span>
   </div>
   <div class="column1" >
-  <img style="width:3%;" src="https://www.rapidbrains.com/assets/img/icons/4.png" ><span style="color: #706f6f;">&nbsp;&nbsp;    @if($data['logo'] == 'uploadlogo') {!! $data['talentid'] !!} @else www.rapidbrains.com @endif</span>
+  <img style="width:3%;" src="https://www.rapidbrains.com/assets/img/icons/4.png" ><span style="color: #706f6f;">&nbsp;&nbsp;    @if($data['logo'] == 'uploadlogo' || $data['logo'] == 'nologo') {!! $data['talentid'] !!} @else www.rapidbrains.com @endif</span>
   </div>
 </div>
     </header>
