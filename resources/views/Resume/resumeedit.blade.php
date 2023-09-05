@@ -143,14 +143,14 @@ select {
 
 												<!--begin::Col-->
 												<div class="col-lg-6">
-												<label class="form-label">Select Logo:</label>
+												<label class="form-label">Select:</label>
 												<select class="form-control mb-2 mb-md-0" name="logo" id="logo" onchange="logoChange()">
 													<option value="rapidbrains">RapidBrains</option>
 													<option value="hashroot">HashRoot</option>
 													@if($resume_details->logo_type=='uploadlogo')
-													<option value="uploadlogo"  selected>Upload logo</option>
+													<option value="uploadlogo"  selected>Upload Photo</option>
 													@else
-													<option value="uploadlogo">Upload logo</option>
+													<option value="uploadlogo">Upload Photo</option>
 
 													@endif
 													@if($resume_details->logo_type=='nologo')
@@ -175,7 +175,7 @@ select {
 @endif
 
 												<div style="height: 10px;"></div>
-												<label class="form-label">Upload Logo:</label><br>
+												<label class="form-label">Upload Photo:</label><br>
 												
 												<input type="file" id="myFile" name="filename">
 												<a href="{{$resume_details->photo}}">{{$resume_details->photo}}</a>

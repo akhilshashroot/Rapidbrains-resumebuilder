@@ -3,8 +3,27 @@
 <style>
 
 select {
--webkit-appearance: listbox !important;
+	background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20256%20448%22%20enable-background%3D%22new%200%200%20256%20448%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E.arrow%7Bfill%3A%23424242%3B%7D%3C%2Fstyle%3E%3Cpath%20class%3D%22arrow%22%20d%3D%22M255.9%20168c0-4.2-1.6-7.9-4.8-11.2-3.2-3.2-6.9-4.8-11.2-4.8H16c-4.2%200-7.9%201.6-11.2%204.8S0%20163.8%200%20168c0%204.4%201.6%208.2%204.8%2011.4l112%20112c3.1%203.1%206.8%204.6%2011.2%204.6%204.4%200%208.2-1.5%2011.4-4.6l112-112c3-3.2%204.5-7%204.5-11.4z%22%2F%3E%3C%2Fsvg%3E%0A");
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-size: auto 50%;
+  border-radius:2px;
+  border:none;
+  color: #ffffff;
+  padding: 10px 30px 10px 10px;
+  // disable default appearance
+  outline: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  &::-ms-expand { display: none };
 }
+
+
+
+
+
+
 	</style>
 <div class="d-flex flex-column flex-root" id="kt_app_root">
 			<!--begin::Authentication - Multi-steps-->
@@ -142,11 +161,11 @@ select {
 											
 												<!--begin::Col-->
 												<div class="col-lg-6">
-												<label class="form-label">Select Logo:</label>
-												<select class="form-control mb-2 mb-md-0 dropdown" onchange="logoChange()" name="logo" id="logo">
+												<label class="form-label">Select:</label>
+												<select class="form-control mb-2 mb-md-0 round" onchange="logoChange()" name="logo" id="logo">
 													<option value="rapidbrains">RapidBrains</option>
 													<option value="hashroot">HashRoot</option>
-													<option value="uploadlogo">Upload logo</option>
+													<option value="uploadlogo">Upload Photo</option>
 													<option value="nologo">No logo</option>
 												</select>
 												</div>
@@ -161,28 +180,30 @@ select {
 
 												<div class="col-lg-12" id="myFile-logo" style="display:none;" >
 												<div style="height: 10px;"></div>
-												<label class="form-label">Upload Logo:</label><br>
+												<label class="form-label">Upload Photo:</label><br>
 												<input type="file" id="myFile" name="filename">
-											
+												<div style="height: 10px;"></div>
 											</div>
 												
-										
+										<!-- 	$('#address').html('Ground Floor, Athulya, Infopark,\n Kochi, Kerala, India');
+		$('#mobile').val("+91 977 8426 319 "); -->
 												
-												<div class="col-lg-6" id="email1" style="display:none;">
+												<div class="col-lg-6" id="email1" >
 												<div style="height: 10px;"></div>
 												<label class="form-label">Email:</label>
 												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Email" name="email" id="email"/>
 											   </div>
-												<div class="col-lg-6" id="mobile1" style="display:none;">
+												<div class="col-lg-6" id="mobile1" >
 												<label class="form-label">Mobile Number:</label>
-												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Mobile Number" name="company_phone" id="mobile"/>
+												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Mobile Number" name="company_phone" id="mobile" value="+91 977 8426 319"/>
 												</div>
 												<div style="height: 10px;"></div>
 
 												<div style="height: 10px;"></div>
-												<div class="col-lg-12" id="address1" style="display:none;">
+												<div class="col-lg-12" id="address1" >
 												<label class="form-label">Address:</label>
-												<textarea rows="6" class="form-control mb-2 mb-md-0 " placeholder="Enter Address" name="company_address" id="address" ></textarea>
+												<textarea rows="6" class="form-control mb-2 mb-md-0 " placeholder="Enter Address" name="company_address" id="address" >Ground Floor, Athulya, Infopark, 
+Kochi, Kerala, India</textarea>
 												</div>
 
 
@@ -658,11 +679,8 @@ function mail_add(e){
         console.log(result.data);
 		$('#email').val(result.data);
 	
-		$('#email1').css('display','block');
-		$('#address1').css('display','block');
-		$('#mobile1').css('display','block');
-		$('#address').html('Ground Floor, Athulya, Infopark,\n Kochi, Kerala, India');
-		$('#mobile').val("+91 977 8426 319 ");
+
+	
 		// if($('#logo').val()=="uploadlogo"){
 		// 	$('#myFile-logo').css('display','block');
 
