@@ -12,6 +12,8 @@ use PhpOffice\PhpWord\IOFactory;
 use Html;
 use File;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
+
 
 class ResumebuilderController extends Controller
 {
@@ -64,6 +66,9 @@ class ResumebuilderController extends Controller
                     'message' => 'Error'
                   ], 200);
             }
+          
+
+
         $resume = new ResumeDetails;
         $resume->logo = $request->logo;
         $resume->fullname = $request->fullname;
@@ -74,9 +79,28 @@ class ResumebuilderController extends Controller
             $resume->email =    $this->email_be($request->fullname);
             $email= $this->email_be($request->fullname);
         }
-       
+        /////////////////////////
+        $fileNameToStore="";
+        if($request->hasFile('filename')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('filename')->getClientOriginalName();
+            //Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            
+            // Get just ext
+            $extension = $request->file('filename')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore = Str::lower(rand()).'.'.$extension;
+            // Upload Image
+            $path = $request->file('filename')->storeAs('public/photo',$fileNameToStore);
+            $resume->photo =$fileNameToStore ;
+        }
+
+//////////////////////////////////
         $resume->phone = $request->phone;
         $resume->address = $request->address;
+        $resume->company_number = $request->company_phone;
+        $resume->company_address = $request->company_address;
         $resume->talentid = $request->talentid;
         $resume->summary = $request->summary;
         $resume->skill = json_encode($request->skills);
@@ -109,6 +133,8 @@ class ResumebuilderController extends Controller
         $data = [
             'title' => 'Resume',
             'fullname' => $request->fullname,
+            'company_number' => $request->company_phone,
+            'company_address_real' => $request->company_address,
             'talentid' => $request->talentid,
             'position' => $request->position,
             'summary' => $request->summary,
@@ -128,7 +154,9 @@ class ResumebuilderController extends Controller
             'kt_docs_repeater_basic_count'=>$kt_docs_repeater_basic_count,
             'kt_docs_repeater_basi_count'=>$kt_docs_repeater_basi_count,
             'kt_docs_repeater_education_count'=>$kt_docs_repeater_education_count,
-            'logo'=>$request->logo
+            'logo'=>$request->logo,
+            'check_logo'=>($request->logo=='uploadlogo')?1:0,
+            'photo'=>($fileNameToStore)? 'https://resume.rapidbrains.com/storage/photo/'.$fileNameToStore:''
         ];
         //if($request->filetype == 'pdf') {
             $pdf = PDF::loadView('pdfSample',compact('data'));
@@ -361,7 +389,9 @@ class ResumebuilderController extends Controller
         $talentid= ResumeDetails::where('talentid',$request->talentid)->first();
       }
         
-       
+       if($request->logo_up){
+        return 0;
+       }
         if($talentid){
             return 1;
         }else{
@@ -377,7 +407,10 @@ class ResumebuilderController extends Controller
         $resume_details->educationArray = json_decode($resume_details->education_details);
         $resume_details->url = url('/');
         $resume_details->logo_type = $resume_details->logo;
-
+        $resume_details->email = $resume_details->email;
+        $resume_details->company_number = (!$resume_details->company_number)?"+91 977 8426 319":$resume_details->company_number;
+        $resume_details->company_address = (!$resume_details->company_address)?"Ground Floor, Athulya, Infopark,\n Kochi, Kerala, India":$resume_details->company_address;
+        $resume_details->photo=($resume_details->photo)? 'https://resume.rapidbrains.com/storage/photo/'.$resume_details->photo:'';
         if(is_array($resume_details->experienceArray)) {
            
             if($resume_details->experienceArray[0]->employer) {
@@ -434,6 +467,35 @@ class ResumebuilderController extends Controller
         $resume->skill = json_encode($request->skills);
         $resume->talentid = $request->talentid;
         $resume->logo = $request->logo;
+        $resume->company_number = $request->company_phone;
+        $resume->email = $request->email;
+
+        $resume->company_address = $request->company_address;
+
+
+    /////////////////////////
+    $fileNameToStore="";
+    if($request->hasFile('filename')){
+        // Get filename with the extension
+        $filenameWithExt = $request->file('filename')->getClientOriginalName();
+        //Get just filename
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        
+        // Get just ext
+        $extension = $request->file('filename')->getClientOriginalExtension();
+        // Filename to store
+        $fileNameToStore = Str::lower(rand()).'.'.$extension;
+        // Upload Image
+        $path = $request->file('filename')->storeAs('public/photo',$fileNameToStore);
+        $resume->photo =$fileNameToStore ;
+    }
+
+//////////////////////////////////
+
+
+
+
+
         if(is_array($request->kt_docs_repeater_basic) && is_array($request->kt_docs_repeater_basic_exp)) {
             if(isset($request->kt_docs_repeater_basic_exp[0]['jobtitle'])) {
                 $resume->experience = json_encode(array_merge($request->kt_docs_repeater_basic,$request->kt_docs_repeater_basic_exp));
@@ -461,15 +523,29 @@ class ResumebuilderController extends Controller
             $resume->experience = json_encode($request->kt_docs_repeater_basic);
             $data_exp = $request->kt_docs_repeater_basic;
         }
-        if(is_array($request->kt_docs_repeater_basi) && is_array($request->kt_docs_repeater_basi_prj)) {
+
+
+        ///
+        if(is_array($request->kt_docs_repeater_basi) ) {
+           
             if(isset($request->kt_docs_repeater_basi_prj[0]['project_name'])) {
+              
                 $resume->project_details = json_encode(array_merge($request->kt_docs_repeater_basi,$request->kt_docs_repeater_basi_prj));
                 $data_prj = array_merge($request->kt_docs_repeater_basi,$request->kt_docs_repeater_basi_prj);
-            } else {
+            }  elseif(!isset($request->kt_docs_repeater_basi_prj[0]['project_name']) ) {
+              
+                $resume->project_details = json_encode(array_merge($request->kt_docs_repeater_basi));
+                $data_prj = $request->kt_docs_repeater_basi;
+            }
+            
+            
+            
+            else {
                 $data_prj = $request->kt_docs_repeater_basi;
             }
             
         } elseif(is_array($request->kt_docs_repeater_basi_prj)) {
+            
             $resume->project_details = json_encode($request->kt_docs_repeater_basi_prj);
             $data_prj = $request->kt_docs_repeater_basi_prj;
         }else {
@@ -550,6 +626,8 @@ class ResumebuilderController extends Controller
         $data = [
             'title' => 'Resume',
             'fullname' => $request->fullname,
+            'company_number' => $request->company_phone,
+            'company_address_real' => $request->company_address,
             'talentid' => $resume->talentid,
             'position' => $resume->designation,
             'summary' => $resume->summary,
@@ -568,7 +646,9 @@ class ResumebuilderController extends Controller
             'kt_docs_repeater_basic_count'=>$kt_docs_repeater_basic_count,
             'kt_docs_repeater_basi_count'=>$kt_docs_repeater_basi_count,
             'kt_docs_repeater_education_count'=>$kt_docs_repeater_education_count,
-            'logo'=>$request->logo
+            'logo'=>$request->logo,
+            'check_logo'=>($request->logo=='uploadlogo')?1:0,
+            'photo'=>($resume->photo)? 'https://resume.rapidbrains.com/storage/photo/'.$resume->photo:''
         ];
         
         //if($request->filetype == 'pdf') {

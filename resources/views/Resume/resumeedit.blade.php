@@ -1,5 +1,11 @@
 @extends('layouts.layout')
 @section('content')
+<style>
+
+select {
+-webkit-appearance: listbox !important;
+}
+	</style>
 <div class="d-flex flex-column flex-root" id="kt_app_root">
 			<!--begin::Authentication - Multi-steps-->
 			<div class="d-flex flex-column flex-lg-row flex-column-fluid stepper stepper-pills stepper-column stepper-multistep" id="kt_create_account_stepper">
@@ -114,7 +120,7 @@
 						<!--begin::Wrapper-->
 						<div class="w-lg-650px w-xl-700px p-10 p-lg-15 mx-auto">
 							<!--begin::Form-->
-							<form class="my-auto pb-5" novalidate="novalidate" id="kt_create_account_form">
+							<form class="my-auto pb-5" novalidate="novalidate" id="kt_create_account_form" enctype="multipart/form-data">
 								<!--begin::Step 1-->
 								<div class="current" data-kt-stepper-element="content">
 									<!--begin::Wrapper-->
@@ -138,10 +144,15 @@
 												<!--begin::Col-->
 												<div class="col-lg-6">
 												<label class="form-label">Select Logo:</label>
-												<select class="form-control mb-2 mb-md-0" name="logo">
-													<option value="rapidbrains">Rapidbrains</option>
-													<option value="hashroot">Hashroot</option>
+												<select class="form-control mb-2 mb-md-0" name="logo" id="logo" onchange="logoChange()">
+													<option value="rapidbrains">RapidBrains</option>
+													<option value="hashroot">HashRoot</option>
+													@if($resume_details->logo_type=='uploadlogo')
+													<option value="uploadlogo"  selected>Upload logo</option>
+													@else
 													<option value="uploadlogo">Upload logo</option>
+
+													@endif
 													@if($resume_details->logo_type=='nologo')
 													<option value="nologo" selected>No logo</option>
 													@else
@@ -154,12 +165,52 @@
 												<label class="form-label">Full Name:</label>
 												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter full name" name="fullname" value="{{$resume_details->fullname}}"/>
 												</div>
+
+@if($resume_details->logo_type=='uploadlogo')
+												<div class="col-lg-12" id="myFile-logo1" style="display:block;" >
+@else
+<div class="col-lg-12" id="myFile-logo1" style="display:none;" >
+
+
+@endif
+
+												<div style="height: 10px;"></div>
+												<label class="form-label">Upload Logo:</label><br>
+												
+												<input type="file" id="myFile" name="filename">
+												<a href="{{$resume_details->photo}}">{{$resume_details->photo}}</a>
+											</div>
+
+												<div style="height: 10px;"></div>
+												<div class="col-lg-6" id="email1">
+												<label class="form-label">Email:</label>
+												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Email" name="email" value="{{$resume_details->email}}"/>
+											   </div>
+												<div class="col-lg-6" id="mobile1" >
+												<label class="form-label">Mobile Number:</label>
+												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Mobile Number" name="company_phone"  value="{{$resume_details->company_number}}"/>
+												</div>
+												<div style="height: 10px;"></div>
+
+												<div style="height: 10px;"></div>
+												<div class="col-lg-12" id="address1" >
+												<label class="form-label">Address:</label>
+												<textarea rows="6" class="form-control mb-2 mb-md-0 " placeholder="Enter Address" name="company_address" >{{$resume_details->company_address}}</textarea>
+												</div>
+
 												<!--end::Col-->
 												<!--begin::Col-->
 												<div style="height: 10px;"></div>
 												<div class="col-lg-6">
-												<label class="form-label">Talent ID:</label>
-												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Talentid" name="talentid" value="{{$resume_details->talentid}}" onblur="javascript:talentIdCheck(this);"/>
+											
+													
+												@if($resume_details->logo_type!='uploadlogo')			<label class="form-label" id="LabelID">		Talent ID:
+													</label>	@else
+													<label class="form-label" id="LabelID">	Linkedin Url:	</label>
+											@endif
+											
+										
+												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Talentid"  id="talentid" name="talentid" value="{{$resume_details->talentid}}" onblur="javascript:talentIdCheck(this);"/>
 												<label id="email-error" class="email" for="email" style="display:none;">Talent ID already exist</label>
 											   </div>
 												<div class="col-lg-6">
@@ -995,6 +1046,20 @@ function testsubmit() {
             
                                             }
                                         });
+}
+
+function logoChange() {
+  
+   if($('#logo').val()=="uploadlogo"){
+	   $('#myFile-logo1').css('display','block');
+	   $("#talentid").attr("placeholder", "Enter linkedin url");
+			$("#LabelID").html("Linkedin Url:");
+
+   }else{
+	$('#myFile-logo1').css('display','none');
+	$("#talentid").attr("placeholder", "Enter talentid");
+	$("#LabelID").html("Talent ID:");
+   }  
 }
 </script>
 @endsection

@@ -1,5 +1,11 @@
 @extends('layouts.layout')
 @section('content')
+<style>
+
+select {
+-webkit-appearance: listbox !important;
+}
+	</style>
 <div class="d-flex flex-column flex-root" id="kt_app_root">
 			<!--begin::Authentication - Multi-steps-->
 			<div class="d-flex flex-column flex-lg-row flex-column-fluid stepper stepper-pills stepper-column stepper-multistep" id="kt_create_account_stepper">
@@ -114,7 +120,7 @@
 						<!--begin::Wrapper-->
 						<div class="w-lg-650px w-xl-700px p-10 p-lg-15 mx-auto">
 							<!--begin::Form-->
-							<form class="my-auto pb-5" novalidate="novalidate" id="kt_create_account_form">
+							<form class="my-auto pb-5" novalidate="novalidate" id="kt_create_account_form" enctype="multipart/form-data">
 								<!--begin::Step 1-->
 								<div class="current" data-kt-stepper-element="content">
 									<!--begin::Wrapper-->
@@ -131,28 +137,62 @@
 											<!--begin::Row-->
 											<div class="row">
 											<input type="hidden"  name="hidden_talent_id" id="hidden_talent_id"/>
-											<input type="hidden"  name="email" id="email" />
+											<input type="hidden"  name="logo_up" id="logo_up" value="0"/>
 
+											
 												<!--begin::Col-->
 												<div class="col-lg-6">
 												<label class="form-label">Select Logo:</label>
-												<select class="form-control mb-2 mb-md-0" name="logo">
-													<option value="rapidbrains">Rapidbrains</option>
-													<option value="hashroot">Hashroot</option>
+												<select class="form-control mb-2 mb-md-0 dropdown" onchange="logoChange()" name="logo" id="logo">
+													<option value="rapidbrains">RapidBrains</option>
+													<option value="hashroot">HashRoot</option>
 													<option value="uploadlogo">Upload logo</option>
 													<option value="nologo">No logo</option>
 												</select>
 												</div>
+												
+
+
 												<div class="col-lg-6">
 												<label class="form-label">Full Name:</label>
 												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter full name" name="fullname" onblur="javascript:mail_add(this);"/>
 												</div>
+												<div style="height: 10px;"></div>
+
+												<div class="col-lg-12" id="myFile-logo" style="display:none;" >
+												<div style="height: 10px;"></div>
+												<label class="form-label">Upload Logo:</label><br>
+												<input type="file" id="myFile" name="filename">
+											
+											</div>
+												
+										
+												
+												<div class="col-lg-6" id="email1" style="display:none;">
+												<div style="height: 10px;"></div>
+												<label class="form-label">Email:</label>
+												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Email" name="email" id="email"/>
+											   </div>
+												<div class="col-lg-6" id="mobile1" style="display:none;">
+												<label class="form-label">Mobile Number:</label>
+												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Mobile Number" name="company_phone" id="mobile"/>
+												</div>
+												<div style="height: 10px;"></div>
+
+												<div style="height: 10px;"></div>
+												<div class="col-lg-12" id="address1" style="display:none;">
+												<label class="form-label">Address:</label>
+												<textarea rows="6" class="form-control mb-2 mb-md-0 " placeholder="Enter Address" name="company_address" id="address" ></textarea>
+												</div>
+
+
+											
 												<!--end::Col-->
 												<!--begin::Col-->
 												<div style="height: 10px;"></div>
 												<div class="col-lg-6">
-												<label class="form-label">Talent ID:</label>
-												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Talentid" name="talentid" onblur="javascript:talentIdCheck(this);"/>
+												<label class="form-label" id="LabelID">Talent ID:</label>
+												<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter Talentid" name="talentid"  id="talentid" onblur="javascript:talentIdCheck(this);"/>
 												<label id="email-error" class="email" for="email" style="display:none;">Talent ID already exist</label>
 											   </div>
 												<div class="col-lg-6">
@@ -617,7 +657,19 @@ function mail_add(e){
     success: function(result) {
         console.log(result.data);
 		$('#email').val(result.data);
-       
+	
+		$('#email1').css('display','block');
+		$('#address1').css('display','block');
+		$('#mobile1').css('display','block');
+		$('#address').html('Ground Floor, Athulya, Infopark,\n Kochi, Kerala, India');
+		$('#mobile').val("+91 977 8426 319 ");
+		// if($('#logo').val()=="uploadlogo"){
+		// 	$('#myFile-logo').css('display','block');
+
+		// }
+		
+		
+
    
     },
     error: function(request,msg,error) {
@@ -633,7 +685,7 @@ function talentIdCheck(e){
 
 	 
 var url = "{{ route('talentid.check') }}";
-
+logo_up
 $.ajax({
 	
 						url: url,
@@ -642,7 +694,8 @@ $.ajax({
 dataType: 'json',
 data:{
 	'_token': '{{ csrf_token() }}',
-	'talentid':e.value
+	'talentid':e.value,
+	'logo_up':$("#logo_up").val(),
 },
 success: function(result) {
 	console.log(result);
@@ -678,6 +731,27 @@ function reinitialize() {
 	height: 150
    });
 });
+}
+
+
+function logoChange() {
+   
+		if($('#logo').val()=="uploadlogo"){
+			$('#myFile-logo').css('display','block');
+			$('#myFile-logo').css('display','block');
+			$("#talentid").attr("placeholder", "Enter linkedin url");
+			$("#LabelID").html("Linkedin Url:");
+			$("#logo_up").val(1);
+
+			
+
+		}  else{
+	$('#myFile-logo').css('display','none');
+	$("#talentid").attr("placeholder", "Enter talentid");
+	$("#LabelID").html("Talent ID:");
+	$("#logo_up").val(0);
+
+   }  
 }
 </script>
 @endsection

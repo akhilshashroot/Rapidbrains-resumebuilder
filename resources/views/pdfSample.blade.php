@@ -212,21 +212,25 @@ section ul {
     <div style="padding-top:10px;"></div>
    <span  style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e;">{!! $data['position'] !!}</span><br>
    <div style="padding-top:10px;"></div>
-        <span style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</span>
+     <span style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</span>
       
 
     </div>
 </div>
-@else
+@elseif($data['logo'] == 'uploadlogo')
 <div id="container12">
-    <img style="width:100%;" class="full-width" src="https://www.rapidbrains.com/assets/img/svg/no-logo.png" >
-    
+@if($data['photo'])
+    <img style="width:100%;" class="full-width" src="{{$data['photo']}}" >
+ @else
+ <img style="width:100%;" class="full-width" src="https://www.rapidbrains.com/assets/img/svg/no-logo.png" >
+
+ @endif   
 <div id="example1"><br>
     <span style="text-transform:uppercase;font-size:28;color:#343f52; letter-spacing: 2px;"><b>{!! $data['fullname'] !!}</b></span><br>
     <div style="padding-top:10px;"></div>
    <span  style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e;">{!! $data['position'] !!}</span><br>
    <div style="padding-top:10px;"></div>
-        <span style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</span>
+   @if($data['logo'] !== 'uploadlogo')     <span style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</span>@endif
       
 
     </div>
@@ -237,7 +241,7 @@ section ul {
 <div class="row" style="margin-top: 40px;">
   <div class="column" >
    
-    <span style="color: #706f6f;"><img style="width:4%;" src="https://www.rapidbrains.com/assets/img/icons/phone.png" > &nbsp;&nbsp;+91 977 8426 319 </span>
+    <span style="color: #706f6f;"><img style="width:4%;" src="https://www.rapidbrains.com/assets/img/icons/phone.png" > &nbsp;&nbsp;@if($data['company_number']){{ $data['company_number'] }} @else +91 977 8426 319 @endif  </span>
   </div>
   <div class="column1" >
     <span style="color: #706f6f;"><img style="width:3%;"  src="https://www.rapidbrains.com/assets/img/icons/2.png" > &nbsp;&nbsp;{!! $data['email'] !!}</span>
@@ -247,10 +251,10 @@ section ul {
 <div class="row">
   <div class="column" >
   <img style="width:4%;"  src="https://www.rapidbrains.com/assets/img/icons/3.png" >
-    <span style="color: #706f6f;">&nbsp;&nbsp;Ground Floor, Athulya, Infopark,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kochi, Kerala, India</span>
+    <span style="color: #706f6f;">&nbsp;&nbsp;@if($data['company_address_real']){!! $data['company_address_real'] !!} @else Ground Floor, Athulya, Infopark,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kochi, Kerala, India @endif</span>
   </div>
   <div class="column1" >
-  <img style="width:3%;" src="https://www.rapidbrains.com/assets/img/icons/4.png" ><span style="color: #706f6f;">&nbsp;&nbsp;  www.rapidbrains.com</span>
+  <img style="width:3%;" src="https://www.rapidbrains.com/assets/img/icons/4.png" ><span style="color: #706f6f;">&nbsp;&nbsp;    @if($data['logo'] == 'uploadlogo') {!! $data['talentid'] !!} @else www.rapidbrains.com @endif</span>
   </div>
 </div>
     </header>
