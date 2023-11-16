@@ -185,6 +185,9 @@ box-sizing: border-box;
 											<!--begin::Card title-->
 											<div class="card-title">
 												<!--begin::Search-->
+
+												<form action="{{ route('listresumes') }}" method="GET" role="search" id="empform">
+
 												<div class="d-flex align-items-center position-relative my-1">
 													<!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
 													<span class="svg-icon svg-icon-1 position-absolute ms-6">
@@ -193,9 +196,11 @@ box-sizing: border-box;
 															<path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor" />
 														</svg>
 													</span>
+
 													<!--end::Svg Icon-->
-													<input type="text" data-kt-customer-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="Search resumes" />
+													<input type="text" name="search" class="form-control form-control-solid w-250px ps-15" placeholder="Search resumes" />
 												</div>
+</form>
 												<!--end::Search-->
 											</div>
 											<!--begin::Card title-->
@@ -226,7 +231,7 @@ box-sizing: border-box;
 										<!--begin::Card body-->
 										<div class="card-body pt-0">
 											<!--begin::Table-->
-											<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_customers_table">
+											<table class="table align-middle table-row-dashed fs-6 gy-5" >
 												<!--begin::Table head-->
 												<thead>
 													<!--begin::Table row-->
@@ -246,10 +251,10 @@ box-sizing: border-box;
 												<!--end::Table head-->
 												<!--begin::Table body-->
 												<tbody >
-                                                    @foreach($resumes as $list)
+                                                    @foreach($resumes as $index =>  $list)
 													<tr>
 														<!--begin::Checkbox-->
-														<td >{{ $loop->iteration }}</td>
+														<td >{{$index + $resumes->firstItem() }}</td>
 														<!--end::Checkbox-->
 														<!--begin::Name=-->
 														<td>
@@ -283,7 +288,13 @@ box-sizing: border-box;
 													</tr>
                                                     @endforeach
 												</tbody>
-												<!--end::Table body-->
+												<tr>
+   
+   <td colspan="10" align="right">
+   {!! $resumes->appends(Request::all())->links('pagination') !!}
+   </td>
+</tr>                            
+           
 											</table>
 											<!--end::Table-->
 										</div>

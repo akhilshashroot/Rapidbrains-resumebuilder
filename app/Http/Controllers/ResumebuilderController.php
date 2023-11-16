@@ -17,12 +17,43 @@ use Illuminate\Support\Str;
 
 class ResumebuilderController extends Controller
 {
-    public function resume()
+    public function resume(Request $request)
     {
       if(Auth::user()->role=='1'){
-        $resumes= ResumeDetails::orderBy('id','desc')->get();
+
+
+        if($request->search){
+            $resumes=  ResumeDetails::orderBy('id','desc')
+            ->where('fullname', 'like', '%'.$request->search.'%')
+                            ->orWhere('email', 'like', '%'.$request->search.'%')
+                            ->orWhere('talentid', 'like', '%'.$request->search.'%')
+            
+            ->paginate(20);
+            return view('Resume.resumelist',compact('resumes'));
+        
+        }
+
+
+
+
+        $resumes= ResumeDetails::orderBy('id','desc')->paginate(20);
       }else{
-        $resumes= ResumeDetails::orderBy('id','desc')->where('added_by',Auth::user()->id)->get();
+
+
+        if($request->search){
+            $resumes= ResumeDetails::orderBy('id','desc')->where('added_by',Auth::user()->id)
+            ->where('fullname', 'like', '%'.$request->search.'%')
+            ->orWhere('email', 'like', '%'.$request->search.'%')
+            ->orWhere('talentid', 'like', '%'.$request->search.'%')
+
+->paginate(20);
+      
+
+            return view('Resume.resumelist',compact('resumes'));
+        
+        }
+
+        $resumes= ResumeDetails::orderBy('id','desc')->where('added_by',Auth::user()->id)->paginate(20);
 
       }  
      
