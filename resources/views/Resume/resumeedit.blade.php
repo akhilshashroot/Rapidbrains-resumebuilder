@@ -146,7 +146,12 @@ select {
 												<label class="form-label">Select:</label>
 												<select class="form-control mb-2 mb-md-0" name="logo" id="logo" onchange="logoChange()">
 													<option value="rapidbrains">RapidBrains</option>
+													@if($resume_details->logo_type=='hashroot')
+													<option value="hashroot" selected>HashRoot</option>
+													@else
 													<option value="hashroot">HashRoot</option>
+
+													@endif
 													@if($resume_details->logo_type=='uploadlogo')
 													<option value="uploadlogo"  selected>Upload Photo</option>
 													@else

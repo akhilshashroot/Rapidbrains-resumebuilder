@@ -180,6 +180,19 @@ section ul {
     border-radius: 50%;
  
 }
+
+
+.half-width1{
+  
+    
+  float: right !important;
+  margin: 45px  !important;
+  width: 120px;
+  height: 165px;
+  object-fit: cover;
+  border-radius: 50%;
+
+}
 .bloc{
     padding-bottom:100px
 }
@@ -236,6 +249,21 @@ section ul {
 
     </div>
 </div>
+@elseif($data['logo'] == 'hashroot')
+<div id="container">
+<img   class="half-width1" src="https://resume.rapidbrains.com/assets/logo-pdf.png" >
+   
+<div id="example"><br>
+    <span style="text-transform:uppercase;font-size:28;color:#343f52; letter-spacing: 2px;"><b>{!! $data['fullname'] !!}</b></span><br>
+    <div style="padding-top:10px;"></div>
+   <span  style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e;">{!! $data['position'] !!}</span><br>
+   <div style="padding-top:10px;"></div>
+     <span style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</span>
+      
+
+    </div>
+</div>
+<br><br><br><br><br><br><br>
 @elseif($data['logo'] == 'uploadlogo')
 <div id="container12">
     @if($data['photo'])
@@ -265,7 +293,7 @@ section ul {
     <div style="padding-top:10px;"></div>
    <span  style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e;">{!! $data['position'] !!}</span><br>
    <div style="padding-top:10px;"></div>
-   @if($data['logo'] == 'rapidbrains' || $data['logo'] == 'hashroot')     <span style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</span>@endif
+   @if($data['logo'] == 'rapidbrains')     <span style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</span>@endif
       
 
     </div>
