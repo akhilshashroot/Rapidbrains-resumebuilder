@@ -158,6 +158,13 @@ select {
 													<option value="uploadlogo">Upload Photo</option>
 
 													@endif
+													@if($resume_details->logo_type=='serveradminz')
+													<option value="serveradminz"  selected>ServerAdminz</option>
+													@else
+													<option value="serveradminz">ServerAdminz</option>
+
+													@endif
+													
 													@if($resume_details->logo_type=='nologo')
 													<option value="nologo" selected>No logo</option>
 													@else

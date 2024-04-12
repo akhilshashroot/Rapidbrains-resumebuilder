@@ -165,6 +165,7 @@ select {
 												<select class="form-control mb-2 mb-md-0 round" onchange="logoChange()" name="logo" id="logo">
 													<option value="rapidbrains">RapidBrains</option>
 													<option value="hashroot">HashRoot</option>
+													<option value="serveradminz">ServerAdminz</option>
 													<option value="uploadlogo">Upload Photo</option>
 													<option value="nologo">No logo</option>
 												</select>
@@ -764,8 +765,8 @@ function logoChange() {
 			
 			$('#address1').css('display','block');
 			$('#mobile1').css('display','block');
-			$("#talentid").attr("placeholder", "Enter linkedin url");
-			$("#LabelID").html("Linkedin Url:");
+			$("#talentid").attr("placeholder", "Enter linkedin url or Talent ID");
+			$("#LabelID").html("Linkedin Url or Talent ID:");
 			$("#logo_up").val(1);
 
 			

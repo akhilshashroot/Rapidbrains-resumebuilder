@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+h<!DOCTYPE HTML>
 
 <html>
 <head>
@@ -185,12 +185,11 @@ section ul {
 .half-width1{
   
     
-  float: right !important;
-  margin: 45px  !important;
-  width: 120px;
-  height: 165px;
-  object-fit: cover;
-  border-radius: 50%;
+ float: right !important;
+ 
+  width: 95px;
+  height: 105px;
+  padding: 25px;
 
 }
 .bloc{
@@ -251,7 +250,7 @@ section ul {
 </div>
 @elseif($data['logo'] == 'hashroot')
 <div id="container">
-<img   class="half-width1" src="https://resume.rapidbrains.com/assets/logo-pdf.png" >
+<img  style="width:100%;" class="full-width" src="https://www.rapidbrains.com/assets/img/resumebuilder/hashroot.png" >
    
 <div id="example"><br>
     <span style="text-transform:uppercase;font-size:28;color:#343f52; letter-spacing: 2px;"><b>{!! $data['fullname'] !!}</b></span><br>
@@ -263,7 +262,21 @@ section ul {
 
     </div>
 </div>
-<br><br><br><br><br><br><br>
+@elseif($data['logo'] == 'serveradminz')
+<div id="container">
+<img  style="width:100%;" class="full-width" src="https://www.rapidbrains.com/assets/img/resumebuilder/serveradminz.png" >
+   
+<div id="example"><br>
+    <span style="text-transform:uppercase;font-size:28;color:#343f52; letter-spacing: 2px;"><b>{!! $data['fullname'] !!}</b></span><br>
+    <div style="padding-top:10px;"></div>
+   <span  style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e;">{!! $data['position'] !!}</span><br>
+   <div style="padding-top:10px;"></div>
+     <span style="text-transform:uppercase; letter-spacing: 2px;color:#464a4e">TALENT ID: {!! $data['talentid'] !!}</span>
+      
+
+    </div>
+</div>
+
 @elseif($data['logo'] == 'uploadlogo')
 <div id="container12">
     @if($data['photo'])
@@ -318,7 +331,7 @@ section ul {
     <span style="color: #706f6f;">&nbsp;&nbsp;@if($data['company_address_real']){!! $data['company_address_real'] !!} @else Ground Floor, Athulya, Infopark,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kochi, Kerala, India @endif</span>
   </div>
   <div class="column1" >
-  <img style="width:3%;" src="https://www.rapidbrains.com/assets/img/icons/4.png" ><span style="color: #706f6f;">&nbsp;&nbsp;    @if($data['logo'] == 'uploadlogo' || $data['logo'] == 'nologo') {!! $data['talentid'] !!} @else www.rapidbrains.com @endif</span>
+  <img style="width:3%;" src="https://www.rapidbrains.com/assets/img/icons/4.png" ><span style="color: #706f6f;">&nbsp;&nbsp;    @if($data['logo'] == 'uploadlogo' || $data['logo'] == 'nologo') {!! $data['talentid'] !!} @elseif($data['logo'] == 'hashroot') www.hashroot.com @elseif($data['logo'] == 'serveradminz') www.serveradminz.com @else www.rapidbrains.com @endif</span>
   </div>
 </div>
     </header>

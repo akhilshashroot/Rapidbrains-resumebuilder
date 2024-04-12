@@ -444,9 +444,10 @@ class ResumebuilderController extends Controller
         $resume_details->company_number = (!$resume_details->company_number)?"+91 977 8426 319":$resume_details->company_number;
         $resume_details->company_address = (!$resume_details->company_address)?"Ground Floor, Athulya, Infopark,\n Kochi, Kerala, India":$resume_details->company_address;
         $resume_details->photo=($resume_details->photo)? 'https://resume.rapidbrains.com/storage/photo/'.$resume_details->photo:'';
-        if(is_array($resume_details->experienceArray)) {
-           
-            if($resume_details->experienceArray[0]->employer) {
+          if(is_array($resume_details->experienceArray)) {
+       
+            if($resume_details->experienceArray[0]->employer || $resume_details->experienceArray[0]->jobtitle) {
+                
                 $resume_details->experience_count = 1;
             } else {
                 $resume_details->experience_count = 0;
@@ -489,7 +490,7 @@ class ResumebuilderController extends Controller
         $certification_count= array_filter($resume_details->certificationsArray[0]);
         $education_count= array_filter($resume_details->educationArray[0]);*/
         //$bg_url = 
-       // dd($resume_details->educationArray);
+       // dd($resume_details);
         return view('Resume.resumeedit',compact('resume_details'));
     }
     public function update(Request $request, $id) {
