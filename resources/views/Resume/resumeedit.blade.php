@@ -140,6 +140,7 @@ select {
 											<input type="hidden"  name="email" id="email" />
 											<input type="hidden"  name="resumeid" id="resumeid" value="{{$resume_details->id}}" />
 											<input type="hidden"  name="url" id="url" value="{{$resume_details->url}}" />
+											<input type="hidden"  name="logo_name" id="logo_name" value="{{$resume_details->logo_type}}"/>
 
 												<!--begin::Col-->
 												<div class="col-lg-6">
@@ -1007,6 +1008,7 @@ data:{
 	'_token': '{{ csrf_token() }}',
 	'talentid':e.value,
 	'resumeid':resumeid,
+	'logo_name':$("#logo_name").val(),
 	'mode':'edit'
 },
 success: function(result) {
@@ -1089,13 +1091,29 @@ function logoChange() {
 			$("#LabelID").html("Linkedin Url:");
 			$('#address1').css('display','block');
 	$('#mobile1').css('display','block');
+	$("#logo_name").val($('#logo').val());
 
-   }else{
+   } else if($('#logo').val()=="serveradminz" ){
+			$('#hidden_talent_id').val(0);
+			$('#address1').css('display','none');
+	$('#mobile1').css('display','none');
+	$('#myFile-logo1').css('display','none');
+	$("#talentid").attr("placeholder", "Enter talentid");
+	$("#LabelID").html("Talent ID:");
+	$("#logo_name").val($('#logo').val());
+
+		}
+		
+   
+ 
+   else{
 	$('#address1').css('display','none');
 	$('#mobile1').css('display','none');
 	$('#myFile-logo1').css('display','none');
 	$("#talentid").attr("placeholder", "Enter talentid");
 	$("#LabelID").html("Talent ID:");
+	$("#logo_name").val($('#logo').val());
+
    }  
 }
 </script>
