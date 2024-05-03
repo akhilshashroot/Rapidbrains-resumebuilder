@@ -773,7 +773,7 @@ function logoChange() {
 			$("#logo_name").val($('#logo').val());
 			
 
-		}  else if($('#logo').val()=="serveradminz" ){
+		}  else if($('#logo').val()=="serveradminz" ||  $('#logo').val()=="hashroot"){
 			$('#hidden_talent_id').val(0);
 			$('#myFile-logo').css('display','none');
 	$('#address1').css('display','none');

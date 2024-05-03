@@ -91,11 +91,15 @@ class ResumebuilderController extends Controller
             'certification_description' => 'nullable',
             ]);
             $talentidcheck = ResumeDetails::where('talentid',$request->talentid)->first();
-            if($talentidcheck && $request->logo !='serveradminz') {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Error'
-                  ], 200);
+            
+            if($talentidcheck && $request->logo !='serveradminz' ) {
+                if($request->logo !='hashroot'){
+                    return response()->json([
+                        'status' => false,
+                        'message' => 'Error'
+                      ], 200);
+                }
+               
             }
           
 
@@ -422,7 +426,7 @@ class ResumebuilderController extends Controller
         $talentid= ResumeDetails::where('talentid',$request->talentid)->first();
       }
         
-      if($request->logo_name=='serveradminz'){
+      if($request->logo_name=='serveradminz'|| $request->logo_name=='hashroot'){
         return 0;
       }
        if($request->logo_up){

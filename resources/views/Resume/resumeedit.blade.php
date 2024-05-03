@@ -1093,7 +1093,8 @@ function logoChange() {
 	$('#mobile1').css('display','block');
 	$("#logo_name").val($('#logo').val());
 
-   } else if($('#logo').val()=="serveradminz" ){
+}  else if($('#logo').val()=="serveradminz" ||  $('#logo').val()=="hashroot"){
+
 			$('#hidden_talent_id').val(0);
 			$('#address1').css('display','none');
 	$('#mobile1').css('display','none');
