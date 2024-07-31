@@ -1008,7 +1008,7 @@ function editBox(id) {
 	// 	$('#flexCheckDefault31').prop('checked', true);
 
 	// }
-	if(result.data.role){
+	if(result.data.role=='1'){
 		$('#flexCheckDefault').prop('checked', true);
 
 	}

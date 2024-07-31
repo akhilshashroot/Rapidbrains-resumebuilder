@@ -172,6 +172,8 @@ var KTCreateAccount = (function () {
                                                         $('#downloadlinkdocx').show();
                                                 }
                                                 } else {
+                                                    $("#display-submit").removeAttr('disabled');
+
                                                     Swal.fire({
                                                         text: "Talentid already created.",
                                                         icon: "error",
@@ -183,7 +185,8 @@ var KTCreateAccount = (function () {
                                                 
                                             },
                                             error: function(result) {
-            
+                                                $("#display-submit").removeAttr('disabled');
+
                                             }
                                         });
                         n[3].validate().then(function (t) {

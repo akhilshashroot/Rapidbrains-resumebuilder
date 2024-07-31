@@ -331,8 +331,18 @@ section ul {
     <span style="color: #706f6f;">&nbsp;&nbsp;@if($data['company_address_real']){!! $data['company_address_real'] !!} @else Ground Floor, Athulya, Infopark,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kochi, Kerala, India @endif</span>
   </div>
   <div class="column1" >
-  <img style="width:3%;" src="https://www.rapidbrains.com/assets/img/icons/4.png" ><span style="color: #706f6f;">&nbsp;&nbsp;    @if($data['logo'] == 'uploadlogo' || $data['logo'] == 'nologo') {!! $data['talentid'] !!} @elseif($data['logo'] == 'hashroot') www.hashroot.com @elseif($data['logo'] == 'serveradminz') www.serveradminz.com @else www.rapidbrains.com @endif</span>
-  </div>
+    @if($data['logo'] == 'nologo')
+   @if($data['talentid']) <img style="width:3%;" src="https://www.rapidbrains.com/assets/img/icons/4.png" ><span style="color: #706f6f;">&nbsp;&nbsp;    @if($data['logo'] == 'uploadlogo' || $data['logo'] == 'nologo') {!! $data['talentid'] !!} @elseif($data['logo'] == 'hashroot') www.hashroot.com @elseif($data['logo'] == 'serveradminz') www.serveradminz.com @else www.rapidbrains.com @endif</span>
+     @endif
+
+    @else
+    <img style="width:3%;" src="https://www.rapidbrains.com/assets/img/icons/4.png" ><span style="color: #706f6f;">&nbsp;&nbsp;    @if($data['logo'] == 'uploadlogo' || $data['logo'] == 'nologo') {!! $data['talentid'] !!} @elseif($data['logo'] == 'hashroot') www.hashroot.com @elseif($data['logo'] == 'serveradminz') www.serveradminz.com @else www.rapidbrains.com @endif</span>
+
+    @endif
+ 
+
+
+</div>
 </div>
     </header>
     <section id="statement">
